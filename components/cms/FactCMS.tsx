@@ -1,5 +1,4 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
@@ -13,7 +12,9 @@ type FactCMSProps = {
 };
 
 export default function FactCMS(props: FactCMSProps) {
-  const [newFact, setNewFact] = useState({ title: "", content: "" }); // ID?
+  const [newFact, setNewFact] = useState({ title: "", content: "" });
+
+  /* ID is auto generated in backend */
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setNewFact({ ...newFact, [event.target.name]: event.target.value });
@@ -23,12 +24,12 @@ export default function FactCMS(props: FactCMSProps) {
     event.preventDefault();
     const res = await fetch("/api/facts", {
       method: "POST",
-      mode: "cors",
       body: JSON.stringify(newFact),
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json",
       },
     });
+
     const status = await res.status;
     console.log(status);
   }
@@ -52,7 +53,7 @@ export default function FactCMS(props: FactCMSProps) {
           <TextField
             fullWidth
             multiline
-            id="fact-title"
+            id="fact-content"
             label="Fact Content"
             name="content"
             variant="outlined"
