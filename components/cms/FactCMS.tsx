@@ -42,7 +42,7 @@ export default function FactCMS(props: FactCMSProps) {
           <TextField
             fullWidth
             id="fact-title"
-            label={process.env.NEXT_PUBLIC_BASEURL}
+            label="Fact Title"
             name="title"
             variant="outlined"
             value={newFact.title}
@@ -53,7 +53,7 @@ export default function FactCMS(props: FactCMSProps) {
           <TextField
             fullWidth
             multiline
-            id="fact-title"
+            id="fact-content"
             label="Fact Content"
             name="content"
             variant="outlined"
