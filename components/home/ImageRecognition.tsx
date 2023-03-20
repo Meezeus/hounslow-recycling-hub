@@ -28,7 +28,6 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         ["small electrical", "Small Electrical Items Recycling"],
         ["bulky waste", "Bulky Waste Collection Service"],
         ["clinical waste", "Clinical Waste Collection Service"],
-        ["garden waste", "Garden Waste Recycling Service"],
       ])
     : new Map<string, string>([
         ["plastic", "Plastic and Metal Recycling Service"],
@@ -122,16 +121,22 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         {category && (
           <div>
             <h4> This item was categorized as {category}. </h4>
-            <h4> You can use the {labelsToServices.get(category)}. </h4>
-            <button
-              className={style["image-recognition-button"]}
-              type="button"
-              onClick={(event) =>
-                jumpToAccordion(event, labelsToServices.get(category)!)
-              }
-            >
-              Click here for more info about it!
-            </button>
+            {labelsToServices.get(category) ? (
+              <>
+                <h4> You can use the {labelsToServices.get(category)}. </h4>
+                <button
+                  className={style["image-recognition-button"]}
+                  type="button"
+                  onClick={(event) =>
+                    jumpToAccordion(event, labelsToServices.get(category)!)
+                  }
+                >
+                  Click here for more info about it!
+                </button>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
