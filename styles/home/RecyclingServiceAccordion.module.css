@@ -1,10 +1,10 @@
 .recycling-service-accordion-wrapper {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto auto;
   background-color: #ffffff;
   border-style: solid;
-  border-width: 3px;
-  border-radius: 15px;
+  border-width: 3.5px;
+  border-radius: 20px;
   border-color: blueviolet;
   cursor: pointer;
   margin: 0 100px;
