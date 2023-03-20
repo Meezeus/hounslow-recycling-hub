@@ -3,8 +3,8 @@
 }
 
 .header {
-  background: linear-gradient(#642f6c, #644494);
-  color: white;
+  background: linear-gradient(#642f6c, #8e43de);
+  color: linear-gradient(#ffffff, #5a2d8a);
   font-family: cursive;
   text-align: center;
   padding: 20px;
@@ -50,7 +50,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #b66565;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
