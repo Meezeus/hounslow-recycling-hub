@@ -29,7 +29,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify(req.body),
       headers: headers,
     });
-    res.status(resapi.status).json(req.body)
+    res.status(resapi.status).json(prodsecrets)
   }
 
   
