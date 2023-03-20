@@ -13,7 +13,6 @@ import RecyclingServiceAccordionGrid, {
 } from "@/components/home/RecyclingServiceAccordionGrid";
 import DumpedRubbishSection from "@/components/home/DumpedRubbishSection";
 import Footer from "@/components/Footer";
-import { api } from "@/config/api";
 
 // Data and Data Types
 import {
@@ -155,20 +154,20 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps = async () => {
-  /*  
-  FETCHING DATA FROM BACKEND
-  UNCOMMENT WHEN READY TO DEPLOY
+  
+  // FETCHING DATA FROM BACKEND
+  // UNCOMMENT WHEN READY TO DEPLOY
 
-  const resE = await fetch(`${api}/events`)
-  const events = await resE.json()
+  // const resE = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/events`)
+  // const events = await resE.json()
 
-  const resHRS = await fetch(`${api}/houserecyclingservices"`)
-  const houseRecyclingServices = await resHRS.json()
+  // const resHRS = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/houserecyclingservices"`)
+  // const houseRecyclingServices = await resHRS.json()
 
-  const resFRS = await fetch(`${api}/flatrecyclingservices`)
-  const flatRecyclingServices = await resFRS.json()
+  // const resFRS = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/flatrecyclingservices`)
+  // const flatRecyclingServices = await resFRS.json()
 
-  */
+  
 
   // Mock data from data folder
   const mockEvents = events;
