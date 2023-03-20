@@ -53,7 +53,7 @@ export default function FactCMS(props: FactCMSProps) {
           <TextField
             fullWidth
             multiline
-            id="fact-content"
+            id="fact-title"
             label="Fact Content"
             name="content"
             variant="outlined"
