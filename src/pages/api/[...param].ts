@@ -3,18 +3,20 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const api = "https://f6omof7w1e.execute-api.eu-west-1.amazonaws.com/prod"
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  // construct url
   const { param } = req.query
   const category = param!==undefined ? param[0] : ""
   const id = param!==undefined ? param[1] : ""
   const url = `${api}/${category}` + `${(id !== undefined) ? `/${id}` : ""}`
-  const prodsecrets = process.env.secrets
-  console.log(prodsecrets)
-  const prodkey = prodsecrets !== undefined ? JSON.parse(prodsecrets)["/amplify/mgprblack/prod/frontend-apikey"]: ""
+
+  // construct headers
   const headers = {
     "content-type": "application/json",
-    "x-api-key" : `${(process.env.NODE_ENV === "production") ? prodkey : process.env.FRONTEND_APIKEY}`
+    "x-api-key" : `${process.env.FRONTEND_APIKEY}`
   }
 
+  // handle requests
   if(req.method === "GET" || req.method === "DELETE"){
     const resapi = await fetch(url, {
       method: req.method,
@@ -29,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       body: JSON.stringify(req.body),
       headers: headers,
     });
-    res.status(resapi.status).json(prodsecrets)
+    res.status(resapi.status).json(req.body)
   }
 
   
