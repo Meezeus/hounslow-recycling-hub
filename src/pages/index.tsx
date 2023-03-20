@@ -122,8 +122,8 @@ export default function Home(props: Props) {
       <EngagingBox showFlatVersion={showFlatVersion!} />
 
       <Subheading title="Recycling Assistant" id="DecisionTree" />
-      <ImageRecognition 
-        showFlatVersion={showFlatVersion!} 
+      <ImageRecognition
+        showFlatVersion={showFlatVersion!}
         openAccordion={openAccordion}
       />
       <DecisionTree />
