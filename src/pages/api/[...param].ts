@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const id = param!==undefined ? param[1] : ""
   const url = `${api}/${category}` + `${(id !== undefined) ? `/${id}` : ""}`
   const prodsecrets = process.env.secrets
-  const prodkey = prodsecrets !== undefined ? JSON.parse(prodsecrets).FRONTEND_APIKEY : ""
+  const prodkey = prodsecrets !== undefined ? JSON.parse(prodsecrets)["/amplify/mgprblack/prod/frontend-apikey"]: ""
   const headers = {
     "content-type": "application/json",
     "x-api-key" : `${(process.env.NODE_ENV === "production") ? prodkey : process.env.FRONTEND_APIKEY}`
