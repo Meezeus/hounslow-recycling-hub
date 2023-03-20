@@ -121,7 +121,7 @@ export default function Home(props: Props) {
 
       <EngagingBox showFlatVersion={showFlatVersion!} />
 
-      <Subheading title="Recycling Assistant" id="DecisionTree" />
+      <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
       <ImageRecognition
         showFlatVersion={showFlatVersion!}
         openAccordion={openAccordion}
@@ -130,17 +130,14 @@ export default function Home(props: Props) {
 
       {props.events.length > 0 ? (
         <>
-          <Subheading title="Events" id="EventCardCarousel" />
+          <Subheading title="Events" id="Events" />
           <EventCardCarousel events={props.events} />
         </>
       ) : (
         ""
       )}
 
-      <Subheading
-        title="Recycling Services"
-        id="RecyclingServiceAccordionGrid"
-      />
+      <Subheading title="Recycling Services" id="RecyclingServices" />
       <RecyclingServiceAccordionGrid
         showFlatVersion={showFlatVersion!}
         houseRecyclingServices={props.houseRecyclingServices}
