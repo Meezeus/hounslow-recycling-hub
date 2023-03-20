@@ -6,12 +6,16 @@
   text-align: center;
   align-items: center;
   padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-.image-recognition-image-preview {
-  width: 30%;
-  height: 30%;
-  padding: 20px 20px 20px 20px;
+.image-recognition-preview {
+  max-width: 300px;
+  max-height: 300px;
   align-items: center;
 }
 
