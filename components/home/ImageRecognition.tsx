@@ -15,38 +15,35 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
   const [preview, setPreview] = useState<string>();
   const [category, setCategory] = useState<string>("");
 
-  let labelsToServices: Map<string, string>;
-  if (props.showFlatVersion) {
-    labelsToServices = new Map<string, string>([
-      ["plastic", "Plastic Recycling Service"],
-      ["metal", "Metal Recycling Service"],
-      ["cardboard", "Card Recycling Service"],
-      ["paper", "Paper Recycling Service"],
-      ["glass", "Glass Recycling Service"],
-      ["food", "Food Waste Recycling Service"],
-      ["rubbish", "General Waste Collection Service"],
-      ["textile", "Textiles Recycling"],
-      ["small electrical", "Small Electrical Items Recycling"],
-      ["bulky waste", "Bulky Waste Collection Service"],
-      ["clinical waste", "Clinical Waste Collection Service"],
-      ["garden wast", "General Waste Collection Service"],
-    ]);
-  } else {
-    labelsToServices = new Map<string, string>([
-      ["plastic", "Plastic and Metal Recycling Service"],
-      ["metal", "Plastic and Metal Recycling Service"],
-      ["cardboard", "Paper and Card Recycling Service"],
-      ["paper", "Paper and Card Recycling Service"],
-      ["glass", "Glass Recycling Service"],
-      ["food", "Food Waste Recycling Service"],
-      ["rubbish", "General Waste Collection Service"],
-      ["textile", "Textiles Recycling Service"],
-      ["small electrical", "Small Electrical Items Recycling Service"],
-      ["bulky waste", "Bulky Waste Collection Service"],
-      ["clinical waste", "Clinical Waste Collection Service"],
-      ["garden wast", "Garden Waste Recycling Service"],
-    ]);
-  }
+  let labelsToServices = props.showFlatVersion
+    ? new Map<string, string>([
+        ["plastic", "Plastic Recycling Service"],
+        ["metal", "Metal Recycling Service"],
+        ["cardboard", "Card Recycling Service"],
+        ["paper", "Paper Recycling Service"],
+        ["glass", "Glass Recycling Service"],
+        ["food", "Food Waste Recycling Service"],
+        ["rubbish", "General Waste Collection Service"],
+        ["textile", "Textiles Recycling"],
+        ["small electrical", "Small Electrical Items Recycling"],
+        ["bulky waste", "Bulky Waste Collection Service"],
+        ["clinical waste", "Clinical Waste Collection Service"],
+        ["garden waste", "Garden Waste Recycling Service"],
+      ])
+    : new Map<string, string>([
+        ["plastic", "Plastic and Metal Recycling Service"],
+        ["metal", "Plastic and Metal Recycling Service"],
+        ["cardboard", "Paper and Card Recycling Service"],
+        ["paper", "Paper and Card Recycling Service"],
+        ["glass", "Glass Recycling Service"],
+        ["food", "Food Waste Recycling Service"],
+        ["rubbish", "General Waste Collection Service"],
+        ["textile", "Textile Recycling Service"],
+        ["small electrical", "Small Electrical Items Recycling Service"],
+        ["bulky waste", "Bulky Waste Collection Service"],
+        ["clinical waste", "Clinical Waste Collection Service"],
+        ["garden waste", "Garden Waste Recycling Service"],
+      ]);
 
   useEffect(() => {
     if (!image) {
