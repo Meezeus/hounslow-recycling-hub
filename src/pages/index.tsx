@@ -6,6 +6,7 @@ import Popup from "reactjs-popup";
 import Header from "@/components/home/Header";
 import EngagingBox from "@/components/home/EngagingBox";
 import Subheading from "@/components/home/Subheading";
+import ImageRecognition from "@/components/home/ImageRecognition";
 import DecisionTree from "@/components/home/DecisionTree";
 import EventCardCarousel from "@/components/home/EventCardCarousel";
 import RecyclingServiceAccordionGrid, {
@@ -120,22 +121,23 @@ export default function Home(props: Props) {
 
       <EngagingBox showFlatVersion={showFlatVersion!} />
 
-      <Subheading title="Recycling Assistant" id="DecisionTree" />
+      <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+      <ImageRecognition
+        showFlatVersion={showFlatVersion!}
+        openAccordion={openAccordion}
+      />
       <DecisionTree />
 
       {props.events.length > 0 ? (
         <>
-          <Subheading title="Events" id="EventCardCarousel" />
+          <Subheading title="Events" id="Events" />
           <EventCardCarousel events={props.events} />
         </>
       ) : (
         ""
       )}
 
-      <Subheading
-        title="Recycling Services"
-        id="RecyclingServiceAccordionGrid"
-      />
+      <Subheading title="Recycling Services" id="RecyclingServices" />
       <RecyclingServiceAccordionGrid
         showFlatVersion={showFlatVersion!}
         houseRecyclingServices={props.houseRecyclingServices}

@@ -57,17 +57,17 @@ export default function Header(props: HeaderProps) {
         Hounslow!
       </div>
       <div className={style["header-anchors"]}>
-        <a href="#DecisionTree">Recycling Assistant</a>
+        <a href="#RecyclingAssistant">Recycling Assistant</a>
         <div className={style["header-dot"]}></div>
         {props.displayEvents ? (
           <>
-            <a href="#EventCardCarousel">Events</a>
+            <a href="#Events">Events</a>
             <div className={style["header-dot"]}></div>
           </>
         ) : (
           ""
         )}
-        <a href="#RecyclingServiceAccordionGrid">Recycling Services</a>
+        <a href="#RecyclingServices">Recycling Services</a>
         <div className="header-dot"></div>
         <a href="#DumpedRubbish">Report Dumped Rubbish</a>
       </div>
