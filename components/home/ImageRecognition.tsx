@@ -117,6 +117,7 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
           <img
             className={style["image-recognition-image-preview"]}
             src={preview}
+            alt=""
           />
         )}
         <input type="file" accept="image/*" onChange={handleImageUpload} />
