@@ -21,6 +21,7 @@
 
 .switch-with-labels {
   display: flex;
+  color: white;
   align-items: center;
   gap: 10px;
   position: absolute;
@@ -83,6 +84,7 @@ input:checked + .slider:before {
 
 .header-title {
   margin: auto;
+  color: white;
   font-size: 40px;
 }
 
@@ -103,6 +105,7 @@ input:checked + .slider:before {
 
 .header-description {
   font-size: 17px;
+  color: white;
   margin: 20px 0px;
 }
 
