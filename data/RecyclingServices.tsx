@@ -66,7 +66,7 @@ export const houseRecyclingServices = [
   },
   {
     itemImage: "./garden_items.png",
-    title: "Garden Waste Service",
+    title: "Garden Waste Recycling Service",
     binImage: "./brown_wheeled_bin.png",
     description: "Garden waste can be recycled using the brown wheeled bin.",
     content:

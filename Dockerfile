@@ -1,5 +1,5 @@
-# use node version 18.13.0 for this image
-FROM node:18.13.0
+# use node version 18.15.0 for this image
+FROM node:18.15.0
 
 # set working directory of container
 WORKDIR /app

@@ -28,7 +28,6 @@
   /* color: aliceblue; */
 }
 
-
 .subheading-text:hover::before {
   transform: scaleX(1);
 }

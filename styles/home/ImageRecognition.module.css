@@ -1,0 +1,33 @@
+.image-recognition-wrapper {
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  margin: 30px 300px;
+  text-align: center;
+  align-items: center;
+  padding: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.image-recognition-preview {
+  max-width: 300px;
+  max-height: 300px;
+  align-items: center;
+}
+
+.image-recognition-button {
+  width: 20%;
+  min-width: 200px;
+  margin: 20px 10px 0px 10px;
+  padding: 10px;
+  border-width: 0;
+  border-radius: 5px;
+  background-color: #c29ec7;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}

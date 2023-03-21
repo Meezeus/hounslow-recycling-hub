@@ -6,15 +6,19 @@ export default function Navbar() {
   const [navList] = useState([
     {
       label: "Recycling Assistant",
-      target: "DecisionTree",
+      target: "RecyclingAssistant",
     },
     {
       label: "Events",
-      target: "EventCardCarousel",
+      target: "Events",
     },
     {
       label: "Recycling Services",
-      target: "RecyclingServiceAccordionGrid",
+      target: "RecyclingServices",
+    },
+    {
+      label: "Report Dumped Rubbish",
+      target: "DumpedRubbish",
     },
   ]);
 

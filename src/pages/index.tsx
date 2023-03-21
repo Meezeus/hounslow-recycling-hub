@@ -7,12 +7,13 @@ import Navbar from "@/components/home/Navbar";
 import Header from "@/components/home/Header";
 import EngagingBox from "@/components/home/EngagingBox";
 import Subheading from "@/components/home/Subheading";
+import ImageRecognition from "@/components/home/ImageRecognition";
 import DecisionTree from "@/components/home/DecisionTree";
 import EventCardCarousel from "@/components/home/EventCardCarousel";
-import ItemTypeCardGrid from "@/components/home/ItemTypeCardGrid";
 import RecyclingServiceAccordionGrid, {
   RecyclingServiceAccordionGridRef,
 } from "@/components/home/RecyclingServiceAccordionGrid";
+import DumpedRubbishSection from "@/components/home/DumpedRubbishSection";
 import Footer from "@/components/Footer";
 
 // API URL
@@ -25,11 +26,13 @@ import {
   RecyclingServices,
 } from "@/data/RecyclingServices";
 import { events, Events } from "@/data/Events";
+import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
   events: Events[];
   houseRecyclingServices: RecyclingServices[];
   flatRecyclingServices: RecyclingServices[];
+  dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
 export default function Home(props: Props) {
@@ -161,13 +164,16 @@ export default function Home(props: Props) {
 
       <EngagingBox showFlatVersion={showFlatVersion!} />
 
-      <Subheading title="Recycling Assistant" id="DecisionTree" />
+      <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+      <ImageRecognition
+        showFlatVersion={showFlatVersion!}
+        openAccordion={openAccordion}
+      />
       <DecisionTree />
 
       {props.events.length > 0 ? (
         <>
-          <Subheading title="Events" id="EventCardCarousel" />
-
+          <Subheading title="Events" id="Events" />
           <EventCardCarousel events={props.events} />
         </>
       ) : (
@@ -175,10 +181,7 @@ export default function Home(props: Props) {
       )}
 
       <div className={t3 ? "animate__animated animate__fadeInLeft" : ""}>
-        <Subheading
-          title="Recycling Services"
-          id="RecyclingServiceAccordionGrid"
-        />
+        <Subheading title="Recycling Services" id="RecyclingServices" />
       </div>
 
       <RecyclingServiceAccordionGrid
@@ -187,11 +190,21 @@ export default function Home(props: Props) {
         flatRecyclingServices={props.flatRecyclingServices}
         ref={recyclingServiceAccordionGridRef}
       />
+
+      <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
+      <DumpedRubbishSection
+        content={props.dumpedRubbishInfo.content}
+        reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
+        reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
+        payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
+      />
+
       {top && (
         <a href="#">
           <button className="toTop">Top</button>
         </a>
       )}
+
       <Footer />
     </>
   );
@@ -217,12 +230,14 @@ export const getServerSideProps = async () => {
   const mockEvents = events;
   const mockHouseRecyclingServices = houseRecyclingServices;
   const mockFlatRecyclingServices = flatRecyclingServices;
+  const mockDumpedRubbishInfo = dumpedRubbishInfo;
 
   return {
     props: {
       events: mockEvents,
       houseRecyclingServices: mockHouseRecyclingServices,
       flatRecyclingServices: mockFlatRecyclingServices,
+      dumpedRubbishInfo: mockDumpedRubbishInfo,
     },
   };
 };
