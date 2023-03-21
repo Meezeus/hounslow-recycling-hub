@@ -18,7 +18,7 @@ type Props = {
   facts: Facts[];
 };
 
-export default function CMS(props: Props) {
+export default withAuthenticator(function CMS({signOut, user}, props: Props) {
   return (
     <>
       <Head>
@@ -31,20 +31,22 @@ export default function CMS(props: Props) {
 
       <Header />
 
+      <UserHeader signOut={signOut} user={user}/>
+
       <CMSTabs facts={props.facts} />
 
       <Footer />
     </>
   );
-}
+})
 
 export const getServerSideProps = async () => {
-  // const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`)
-  // const facts = await resFacts.json();
+  const resFacts = await fetch(`https://main.d3v5g6i9k7km27.amplifyapp.com//api/facts`)
+  const facts = await resFacts.json();
 
   return {
     props: {
-      facts: {},
+      facts: facts,
     },
   };
 };
