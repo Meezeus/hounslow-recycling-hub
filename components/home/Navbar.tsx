@@ -73,7 +73,9 @@ export default function Navbar(props: NavbarProps) {
             "animate__animated animate__fadeIn"
           }
         >
-          <h3>House</h3>
+          <div className={style["switch-label"]}>
+            <p>House</p>
+          </div>
           <div className={style["switch-wrapper"]}>
             <label className={style["switch"]}>
               <input
@@ -84,7 +86,9 @@ export default function Navbar(props: NavbarProps) {
               <span className={style["slider"] + " " + style["round"]}></span>
             </label>
           </div>
-          <h3>Flat</h3>
+          <div className={style["switch-label"]}>
+            <p>Flat</p>
+          </div>
         </div>
       </div>
     </div>
