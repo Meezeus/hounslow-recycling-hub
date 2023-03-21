@@ -9,6 +9,7 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type FactCMSProps = {
   facts: Facts[];
+  authToken: string;
 };
 
 export default function FactCMS(props: FactCMSProps) {
@@ -27,6 +28,7 @@ export default function FactCMS(props: FactCMSProps) {
       body: JSON.stringify(newFact),
       headers: {
         "content-type": "application/json",
+        "Authorization": props.authToken
       },
     });
 

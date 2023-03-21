@@ -19,6 +19,8 @@ type Props = {
 };
 
 export default withAuthenticator(function CMS({signOut, user}, props: Props) {
+  const token = user?.getSignInUserSession()?.getIdToken().getJwtToken()
+  const authToken = (token !== undefined) ? token : ""
   return (
     <>
       <Head>
@@ -33,7 +35,7 @@ export default withAuthenticator(function CMS({signOut, user}, props: Props) {
 
       <UserHeader signOut={signOut} user={user}/>
 
-      <CMSTabs facts={props.facts} />
+      <CMSTabs authToken={authToken} facts={props.facts} />
 
       <Footer />
     </>
