@@ -37,24 +37,6 @@
     "resourceName": "mgprblack",
     "sharedId": "d0e273aa",
     "serviceName": "Cognito",
-    "useDefault": "default",
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "useEnabledMfas": true,
-    "dependsOn": [],
-    "hostedUI": false,
-    "userPoolGroupList": [],
-    "authProviders": []
+    "useDefault": "manual"
   }
 }
