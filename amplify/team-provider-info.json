@@ -1,0 +1,39 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mgprblack-prod-05422-authRole",
+      "UnauthRoleArn": "arn:aws:iam::238983707433:role/amplify-mgprblack-prod-05422-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::238983707433:role/amplify-mgprblack-prod-05422-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-mgprblack-prod-05422-deployment",
+      "UnauthRoleName": "amplify-mgprblack-prod-05422-unauthRole",
+      "StackName": "amplify-mgprblack-prod-05422",
+      "StackId": "arn:aws:cloudformation:eu-west-1:238983707433:stack/amplify-mgprblack-prod-05422/1c5c0270-b570-11ed-9deb-06ddd540147f",
+      "AmplifyAppId": "d3v5g6i9k7km27",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-mgprblack-prod-05422-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "apihrhF": {
+          "deploymentBucketName": "amplify-mgprblack-prod-05422-deployment",
+          "s3Key": "amplify-builds/apihrhF-62613933327a7a7a7959-build.zip"
+        }
+      },
+      "auth": {
+        "mgprblack": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d3v5g6i9k7km27",
+          "type": "cicd"
+        }
+      },
+      "storage": {
+        "hrhDB": {}
+      },
+      "api": {
+        "apihrh": {}
+      }
+    }
+  }
+}

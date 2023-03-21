@@ -154,6 +154,7 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps = async () => {
+  
   // FETCHING DATA FROM BACKEND
   // UNCOMMENT WHEN READY TO DEPLOY
 
@@ -165,6 +166,8 @@ export const getServerSideProps = async () => {
 
   // const resFRS = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/flatrecyclingservices`)
   // const flatRecyclingServices = await resFRS.json()
+
+  
 
   // Mock data from data folder
   const mockEvents = events;

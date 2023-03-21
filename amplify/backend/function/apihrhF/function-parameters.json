@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "storage": {
+      "hrhDB": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}
