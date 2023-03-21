@@ -130,7 +130,11 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <Navbar
+        displayEvents={props.events.length > 0}
+        showFlatVersion={showFlatVersion!}
+        toggle={toggleVersion}
+      />
 
       {/* To reset local storage, type localStorage.clear() into your web browser console. */}
       <Popup modal open={showPopup} className="home-popup">
@@ -157,11 +161,7 @@ export default function Home(props: Props) {
         </button>
       </Popup>
 
-      <Header
-        displayEvents={props.events.length > 0}
-        showFlatVersion={showFlatVersion!}
-        toggle={toggleVersion}
-      />
+      <Header />
 
       <div className={style["page-content"]}>
         <EngagingBox showFlatVersion={showFlatVersion!} />

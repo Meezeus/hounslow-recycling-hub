@@ -2,15 +2,22 @@ import { useState } from "react";
 import style from "@/styles/home/Navbar.module.css";
 import Link from "next/link";
 
-export default function Navbar() {
-  const [navList] = useState([
+type NavbarProps = {
+  displayEvents: boolean;
+  showFlatVersion: boolean;
+  toggle(): void;
+};
+
+export default function Navbar(props: NavbarProps) {
+  const event_anchor = {
+    label: "Events",
+    target: "Events",
+  };
+
+  const anchors = [
     {
       label: "Recycling Assistant",
       target: "RecyclingAssistant",
-    },
-    {
-      label: "Events",
-      target: "Events",
     },
     {
       label: "Recycling Services",
@@ -20,7 +27,11 @@ export default function Navbar() {
       label: "Report Dumped Rubbish",
       target: "DumpedRubbish",
     },
-  ]);
+  ];
+
+  const [navList] = useState(
+    props.displayEvents ? [event_anchor].concat(anchors) : anchors
+  );
 
   return (
     <div
@@ -43,6 +54,20 @@ export default function Navbar() {
               </a>
             );
           })}
+        </div>
+        <div className={style["switch-with-labels"]}>
+          <h3>House</h3>
+          <div className={style["switch-wrapper"]}>
+            <label className={style["switch"]}>
+              <input
+                type="checkbox"
+                defaultChecked={props.showFlatVersion}
+                onClick={props.toggle}
+              />
+              <span className={style["slider"] + " " + style["round"]}></span>
+            </label>
+          </div>
+          <h3>Flat</h3>
         </div>
       </div>
     </div>
