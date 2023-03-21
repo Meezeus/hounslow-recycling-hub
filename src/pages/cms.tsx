@@ -2,6 +2,7 @@ import Head from "next/head";
 import Header from "@/components/cms/Header";
 import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
+import "@aws-amplify/ui-react/styles.css";
 
 import { Amplify } from "aws-amplify";
 import awsconfig from "../aws-exports";
