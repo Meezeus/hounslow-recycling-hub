@@ -100,28 +100,27 @@ export const questions = [
   },
   {
     id: 6,
-    question: "You can use the red recycling box!",
+    question: "You can use the Plastic and Metal Recycling Service!",
     options: [],
   },
   {
     id: 7,
-    question: "You can use the blue recycling box!",
+    question: "You can use the Paper and Card Recycling Service box!",
     options: [],
   },
   {
     id: 8,
-    question: "You can use the green recycling box!",
+    question: "You can use the Glass Recycling Service!",
     options: [],
   },
   {
     id: 9,
-    question:
-      "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
+    question: "You can use the Textile Recycling Service!",
     options: [],
   },
   {
     id: 10,
-    question: "You can use the food waste bin!",
+    question: "You can use the Food Waste Recycling Service!",
     options: [],
   },
 
@@ -143,12 +142,12 @@ export const questions = [
   },
   {
     id: 12,
-    question: "You can use the clinical waste collection service!",
+    question: "You can use the Clinical Waste Collection Service!",
     options: [],
   },
   {
     id: 13,
-    question: "You can use the brown wheeled bin!",
+    question: "You can use the Garden Waste Recycling Service!",
     options: [],
   },
   {
@@ -170,7 +169,7 @@ export const questions = [
   {
     id: 15,
     question:
-      "Sorry, this item is rubbish and cannot be recycled. Please, use the black wheeled bin!",
+      "Sorry, this item is rubbish and cannot be recycled. Please, use the General Waste Collection Service!",
     options: [],
   },
 ];

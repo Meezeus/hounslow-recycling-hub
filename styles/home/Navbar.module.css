@@ -1,11 +1,19 @@
 .navbar {
   height: 78px;
   background: #642f6c;
+  background-size: 200% 100%;
+  /*animation: gradient-bg 3s ease-in-out forwards;*/
   position: fixed;
   left: 0px;
   top: 0px;
   width: 100%;
   z-index: 100;
+}
+
+@keyframes gradient-bg {
+  to {
+    background-position: 100% 0%;
+  }
 }
 
 .navbar-contents {
@@ -72,6 +80,7 @@
 
 .switch-with-labels {
   display: flex;
+  color: white;
   align-items: center;
   gap: 10px;
   position: absolute;
@@ -101,7 +110,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #b66565;
+  background-color: #ffffff;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }

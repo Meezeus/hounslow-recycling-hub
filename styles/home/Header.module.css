@@ -4,8 +4,8 @@
 
 .header {
   background: linear-gradient(#642f6c, #8e43de);
-  color: linear-gradient(#ffffff, #5a2d8a);
-  font-family: cursive;
+  color: white;
+  font-family: cursive !important;
   text-align: center;
   padding: 20px;
   position: relative;
@@ -15,10 +15,12 @@
 
 .header-title {
   margin: auto;
+  color: white;
   font-size: 40px;
 }
 
 .header-description {
   font-size: 17px;
+  color: white;
   margin: 20px 0px;
 }

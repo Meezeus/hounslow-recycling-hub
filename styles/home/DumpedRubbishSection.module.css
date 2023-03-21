@@ -19,6 +19,7 @@
 
 .dumped-rubbish-text {
   font-size: 18px;
+  color: black;
   list-style-position: inside;
 }
 
@@ -29,11 +30,13 @@
 .dumped-rubbish-report {
   margin: 10px 0px;
   font-size: 18px;
+  color: black;
 }
 
 .dumped-rubbish-pay {
   margin: 10px 0px;
   font-size: 18px;
+  color: black;
 }
 
 .dumped-rubbish-button {

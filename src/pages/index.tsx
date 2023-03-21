@@ -39,11 +39,14 @@ type Props = {
 export default function Home(props: Props) {
   const [top, setTop] = useState(false);
   // Find the right
+  const [t0, setT0] = useState(false);
   const [t1, setT1] = useState(false);
   // EVENTS
   const [t2, setT2] = useState(false);
   // How to recycle...
   const [t3, setT3] = useState(false);
+  //rubbish section
+  const [t4, setT4] = useState(false);
 
   const [showFlatVersion, setShowFlatVersion] = useState<boolean>();
   const [showPopup, setShowPopup] = useState(false);
@@ -94,7 +97,14 @@ export default function Home(props: Props) {
       } else {
         setTop(false);
       }
-      if (scrollTop >= 100 && scrollTop <= 1150) {
+
+      if (scrollTop >= 0 && scrollTop <= 300) {
+        setT0(true);
+      } else {
+        setT0(false);
+      }
+
+      if (scrollTop >= 50 && scrollTop <= 1150) {
         setT1(true);
       } else {
         setT1(false);
@@ -110,6 +120,12 @@ export default function Home(props: Props) {
         setT3(true);
       } else {
         setT3(false);
+      }
+
+      if (scrollTop >= 3000) {
+        setT4(true);
+      } else {
+        setT4(false);
       }
     };
     return () => {
@@ -130,11 +146,13 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar
-        displayEvents={props.events.length > 0}
-        showFlatVersion={showFlatVersion!}
-        toggle={toggleVersion}
-      />
+      <div className={t0 ? "animate__animated animate__fadeInLeft" : ""}>
+        <Navbar
+          displayEvents={props.events.length > 0}
+          showFlatVersion={showFlatVersion!}
+          toggle={toggleVersion}
+        />
+      </div>
 
       {/* To reset local storage, type localStorage.clear() into your web browser console. */}
       <Popup modal open={showPopup} className="home-popup">
@@ -168,14 +186,18 @@ export default function Home(props: Props) {
 
         {props.events.length > 0 ? (
           <>
-            <Subheading title="Events" id="Events" />
+            <div className={t1 ? "animate__animated animate__fadeInLeft" : ""}>
+              <Subheading title="Events" id="Events" />
+            </div>
             <EventCardCarousel events={props.events} />
           </>
         ) : (
           ""
         )}
 
-        <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+        <div className={t2 ? "animate__animated animate__fadeInLeft" : ""}>
+          <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+        </div>
         <ImageRecognition
           showFlatVersion={showFlatVersion!}
           openAccordion={openAccordion}
@@ -185,7 +207,6 @@ export default function Home(props: Props) {
         <div className={t3 ? "animate__animated animate__fadeInLeft" : ""}>
           <Subheading title="Recycling Services" id="RecyclingServices" />
         </div>
-
         <RecyclingServiceAccordionGrid
           showFlatVersion={showFlatVersion!}
           houseRecyclingServices={props.houseRecyclingServices}
@@ -193,7 +214,9 @@ export default function Home(props: Props) {
           ref={recyclingServiceAccordionGridRef}
         />
 
-        <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
+        <div className={t4 ? "animate__animated animate__fadeInLeft" : ""}>
+          <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
+        </div>
         <DumpedRubbishSection
           content={props.dumpedRubbishInfo.content}
           reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
