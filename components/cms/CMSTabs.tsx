@@ -7,6 +7,7 @@ import { Facts } from "@/data/Facts";
 
 type CMSTabsProps = {
   facts: Facts[];
+  authToken: string
 };
 
 export default function CMSTabs(props: CMSTabsProps) {
@@ -42,7 +43,7 @@ export default function CMSTabs(props: CMSTabsProps) {
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <FactCMS facts={props.facts} />
+        <FactCMS authToken={props.authToken} facts={props.facts} />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
