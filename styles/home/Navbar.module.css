@@ -1,12 +1,21 @@
 .navbar {
   height: 78px;
   background: #642f6c;
+  background-size: 200% 100%;
+  /*animation: gradient-bg 3s ease-in-out forwards;*/
   position: fixed;
   left: 0px;
   top: 0px;
   width: 100%;
   z-index: 100;
 }
+
+@keyframes gradient-bg {
+  to {
+    background-position: 100% 0%;
+  }
+}
+
 
 .navbar-contents {
   padding: 0px 36px;

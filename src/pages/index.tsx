@@ -38,6 +38,7 @@ type Props = {
 export default function Home(props: Props) {
   const [top, setTop] = useState(false);
   // Find the right
+  const [t0, setT0] = useState(false);
   const [t1, setT1] = useState(false);
   // EVENTS
   const [t2, setT2] = useState(false);
@@ -95,6 +96,13 @@ export default function Home(props: Props) {
       } else {
         setTop(false);
       }
+      
+      if (scrollTop >= 0 && scrollTop <= 300) {
+        setT0(true);
+      } else {
+        setT0(false);
+      }
+
       if (scrollTop >= 50 && scrollTop <= 1150) {
         setT1(true);
       } else {
@@ -137,7 +145,8 @@ export default function Home(props: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      <div className={t0 ? "animate__animated animate__fadeInLeft" : ""}><Navbar /></div>
+      
 
       {/* To reset local storage, type localStorage.clear() into your web browser console. */}
       <Popup modal open={showPopup} className="home-popup">
