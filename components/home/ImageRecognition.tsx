@@ -145,7 +145,8 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
       <div>
-        <Button onClick={classifyImage}>Submit</Button>
+        <Button className={style["submit-button"]}
+          onClick={classifyImage}>Submit</Button>
       </div>
       {imageCategory && (
         <div>
