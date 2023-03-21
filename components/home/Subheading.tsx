@@ -12,10 +12,10 @@ export default function Subheading(props: SubheadingProps) {
   return (
     <div
       className={style["subheading-container-wrapper"]}
-      id={props.id}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      <a className={style["subheading-anchor"]} id={props.id}></a>
       <div className={style["subheading-container"]}>
         <div className={style["subheading-anchors"]}></div>
         <h3
