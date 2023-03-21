@@ -164,7 +164,10 @@ export default function Home(props: Props) {
 
       <EngagingBox showFlatVersion={showFlatVersion!} />
 
+      <div className={t1 ? "animate__animated animate__fadeInLeft" : ""}>
       <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+      </div>
+
       <ImageRecognition
         showFlatVersion={showFlatVersion!}
         openAccordion={openAccordion}
