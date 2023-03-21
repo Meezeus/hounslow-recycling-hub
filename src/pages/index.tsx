@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import style from "@/styles/home/Home.module.css";
 
 // Components
 import Head from "next/head";
@@ -162,42 +163,44 @@ export default function Home(props: Props) {
         toggle={toggleVersion}
       />
 
-      <EngagingBox showFlatVersion={showFlatVersion!} />
+      <div className={style["page-content"]}>
+        <EngagingBox showFlatVersion={showFlatVersion!} />
 
-      <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
-      <ImageRecognition
-        showFlatVersion={showFlatVersion!}
-        openAccordion={openAccordion}
-      />
-      <DecisionTree />
+        {props.events.length > 0 ? (
+          <>
+            <Subheading title="Events" id="Events" />
+            <EventCardCarousel events={props.events} />
+          </>
+        ) : (
+          ""
+        )}
 
-      {props.events.length > 0 ? (
-        <>
-          <Subheading title="Events" id="Events" />
-          <EventCardCarousel events={props.events} />
-        </>
-      ) : (
-        ""
-      )}
+        <Subheading title="Recycling Assistant" id="RecyclingAssistant" />
+        <ImageRecognition
+          showFlatVersion={showFlatVersion!}
+          openAccordion={openAccordion}
+        />
+        <DecisionTree />
 
-      <div className={t3 ? "animate__animated animate__fadeInLeft" : ""}>
-        <Subheading title="Recycling Services" id="RecyclingServices" />
+        <div className={t3 ? "animate__animated animate__fadeInLeft" : ""}>
+          <Subheading title="Recycling Services" id="RecyclingServices" />
+        </div>
+
+        <RecyclingServiceAccordionGrid
+          showFlatVersion={showFlatVersion!}
+          houseRecyclingServices={props.houseRecyclingServices}
+          flatRecyclingServices={props.flatRecyclingServices}
+          ref={recyclingServiceAccordionGridRef}
+        />
+
+        <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
+        <DumpedRubbishSection
+          content={props.dumpedRubbishInfo.content}
+          reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
+          reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
+          payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
+        />
       </div>
-
-      <RecyclingServiceAccordionGrid
-        showFlatVersion={showFlatVersion!}
-        houseRecyclingServices={props.houseRecyclingServices}
-        flatRecyclingServices={props.flatRecyclingServices}
-        ref={recyclingServiceAccordionGridRef}
-      />
-
-      <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
-      <DumpedRubbishSection
-        content={props.dumpedRubbishInfo.content}
-        reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
-        reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
-        payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
-      />
 
       {top && (
         <a href="#">

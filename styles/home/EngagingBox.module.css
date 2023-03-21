@@ -1,9 +1,10 @@
 .engaging-box-wrapper {
+  margin-top: 50px;
+  margin-bottom: -50px;
   background-color: #bda0c3;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
   border-width: 3px;
-  margin: 150px 150px;
   padding: 10px;
   text-align: center;
   justify-content: center;
