@@ -18,7 +18,7 @@ type Props = {
   facts: Facts[];
 };
 
-export default withAuthenticator(function CMS({signOut, user}, props: Props) {
+export default function CMS(props: Props) {
   return (
     <>
       <Head>
@@ -31,14 +31,12 @@ export default withAuthenticator(function CMS({signOut, user}, props: Props) {
 
       <Header />
 
-      <UserHeader signOut={signOut} user={user}/>
-
       <CMSTabs facts={props.facts} />
 
       <Footer />
     </>
   );
-})
+}
 
 export const getServerSideProps = async () => {
   const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`)
