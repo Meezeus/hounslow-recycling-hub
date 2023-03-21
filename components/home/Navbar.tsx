@@ -34,15 +34,26 @@ export default function Navbar(props: NavbarProps) {
   );
 
   return (
-    <div
-      className={style["navbar"] + " " + "animate__animated animate__fadeIn"}
-    >
+    <div className={style["navbar"]}>
       <div className={style["navbar-contents"]}>
-        <Link href="/" className={style["navbar-logo-title-box"]}>
+        <Link
+          href="/"
+          className={
+            style["navbar-logo-title-box"] +
+            " " +
+            "animate__animated animate__fadeIn"
+          }
+        >
           <img className={style["navbar-logo"]} src="/logo.svg" alt="" />
           <div className={style["navbar-title"]}>Hounslow Recycling Hub</div>
         </Link>
-        <div className={style["navbar-anchor-box"]}>
+        <div
+          className={
+            style["navbar-anchor-box"] +
+            " " +
+            "animate__animated animate__fadeIn"
+          }
+        >
           {navList.map((navItem, navItemIndex) => {
             return (
               <a
@@ -55,7 +66,13 @@ export default function Navbar(props: NavbarProps) {
             );
           })}
         </div>
-        <div className={style["switch-with-labels"]}>
+        <div
+          className={
+            style["switch-with-labels"] +
+            " " +
+            "animate__animated animate__fadeIn"
+          }
+        >
           <h3>House</h3>
           <div className={style["switch-wrapper"]}>
             <label className={style["switch"]}>
