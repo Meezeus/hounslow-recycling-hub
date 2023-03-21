@@ -6,6 +6,7 @@ import {
 } from "@/data/DecisionTreeQuestions";
 import { Button } from "antd";
 import style from "@/styles/home/DecisionTree.module.css";
+import buttonStyle from "@/styles/home/Button.module.css"
 
 type DecisionTreeProps = {
   showFlatVersion: boolean;
@@ -42,7 +43,7 @@ export default function DecisionTree(props: DecisionTreeProps) {
         <div>
           {currentQuestion.options.map((option) => (
             <button
-              className={style["decision-tree-option"]}
+              className={buttonStyle["button"]}
               key={option.id}
               onClick={() => handleOptionClick(option)}
             >

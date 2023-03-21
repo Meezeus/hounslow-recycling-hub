@@ -1,7 +1,5 @@
 .decision-tree-wrapper {
   background-color: white;
-  border-style: solid;
-  border-width: 10px;
   text-align: center;
   padding: 25px 0px;
   border-radius: 8px;
@@ -12,10 +10,10 @@
 .decision-tree-wrapper::before {
   content: "";
   position: absolute;
-  top: -30px;
-  left: -30px;
-  right: -30px;
-  bottom: -30px;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
   background: linear-gradient(to right, #d860f9 0%, #6656c0 100%);
   border-radius: 20px;
   z-index: -1;
