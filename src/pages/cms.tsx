@@ -41,7 +41,7 @@ export default withAuthenticator(function CMS({signOut, user}, props: Props) {
 })
 
 export const getServerSideProps = async () => {
-  const resFacts = await fetch(`https://main.d3v5g6i9k7km27.amplifyapp.com//api/facts`)
+  const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`)
   const facts = await resFacts.json();
 
   return {
