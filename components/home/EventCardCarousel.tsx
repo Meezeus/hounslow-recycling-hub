@@ -34,7 +34,7 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
           className={style["event-card-carousel-button"]}
           type="button"
           disabled={isDisabledPrevious}
-          onClick={() => setRange(range.map((x) => x - 3))}
+          onClick={() => setRange(range.map((x) => x - 1))}
         >
           Previous
         </button>
@@ -55,7 +55,7 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
           className={style["event-card-carousel-button"]}
           type="button"
           disabled={isDisabledNext}
-          onClick={() => setRange(range.map((x) => x + 3))}
+          onClick={() => setRange(range.map((x) => x + 1))}
         >
           Next
         </button>
