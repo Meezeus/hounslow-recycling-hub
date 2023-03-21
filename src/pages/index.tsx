@@ -43,6 +43,8 @@ export default function Home(props: Props) {
   const [t2, setT2] = useState(false);
   // How to recycle...
   const [t3, setT3] = useState(false);
+  //rubbish section
+  const [t4, setT4] = useState(false);
 
   const [showFlatVersion, setShowFlatVersion] = useState<boolean>();
   const [showPopup, setShowPopup] = useState(false);
@@ -93,7 +95,7 @@ export default function Home(props: Props) {
       } else {
         setTop(false);
       }
-      if (scrollTop >= 100 && scrollTop <= 1150) {
+      if (scrollTop >= 50 && scrollTop <= 1150) {
         setT1(true);
       } else {
         setT1(false);
@@ -109,6 +111,12 @@ export default function Home(props: Props) {
         setT3(true);
       } else {
         setT3(false);
+      }
+
+      if (scrollTop >= 3000) {
+        setT4(true);
+      } else {
+        setT4(false);
       }
     };
     return () => {
@@ -176,7 +184,10 @@ export default function Home(props: Props) {
 
       {props.events.length > 0 ? (
         <>
-          <Subheading title="Events" id="Events" />
+          <div className={t2 ? "animate__animated animate__fadeInLeft" : ""}>
+            <Subheading title="Events" id="Events" />
+          </div>
+          
           <EventCardCarousel events={props.events} />
         </>
       ) : (
@@ -194,7 +205,10 @@ export default function Home(props: Props) {
         ref={recyclingServiceAccordionGridRef}
       />
 
+      <div className={t4 ? "animate__animated animate__fadeInLeft" : ""}>
       <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
+      </div>
+
       <DumpedRubbishSection
         content={props.dumpedRubbishInfo.content}
         reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
