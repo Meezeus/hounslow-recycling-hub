@@ -5,7 +5,7 @@
 .header {
   background: linear-gradient(#642f6c, #8e43de);
   color: white;
-  font-family: cursive;
+  font-family: cursive!important;
   text-align: center;
   padding: 20px;
   position: relative;
