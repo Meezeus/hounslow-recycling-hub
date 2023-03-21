@@ -38,11 +38,13 @@
   opacity: 1;
 }
 
+/*
 .subheading-container:hover {
   border: 6px solid #7b3eb4;
   padding: 0.5rem;
   transition: border 0.2s ease-in-out;
 }
+*/
 
 /*
 .wave {
