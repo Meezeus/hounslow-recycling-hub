@@ -6,7 +6,7 @@ import {
 } from "@/data/DecisionTreeQuestions";
 import { Button } from "antd";
 import style from "@/styles/home/DecisionTree.module.css";
-import buttonStyle from "@/styles/home/Button.module.css"
+import buttonStyle from "@/styles/home/Button.module.css";
 
 type DecisionTreeProps = {
   showFlatVersion: boolean;

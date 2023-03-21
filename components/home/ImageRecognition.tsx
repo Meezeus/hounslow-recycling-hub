@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import style from "@/styles/home/ImageRecognition.module.css";
-import buttonStyle from "@/styles/home/Button.module.css"
+import buttonStyle from "@/styles/home/Button.module.css";
 
 const ML_ENDPOINT =
   "https://ijtiasa89d.execute-api.eu-west-2.amazonaws.com/default/ML_model";
@@ -146,8 +146,9 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
       <div>
-        <Button className={style["submit-button"]}
-          onClick={classifyImage}>Submit</Button>
+        <Button className={style["submit-button"]} onClick={classifyImage}>
+          Submit
+        </Button>
       </div>
       {imageCategory && (
         <div>

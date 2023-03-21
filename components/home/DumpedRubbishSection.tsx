@@ -3,7 +3,7 @@ import { Button } from "antd";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 import style from "@/styles/home/DumpedRubbishSection.module.css";
-import buttonStyle from "@/styles/home/Button.module.css"
+import buttonStyle from "@/styles/home/Button.module.css";
 
 export default function dumpedRubbishSection(props: DumpedRubbishInfo) {
   return (
