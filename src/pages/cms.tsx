@@ -13,7 +13,6 @@ import { Facts } from "@/data/Facts";
 import UserHeader from "@/components/cms/UserHeader";
 
 
-
 type Props = {
   facts: Facts[];
 };
@@ -32,6 +31,7 @@ export default withAuthenticator(function CMS({signOut, user}, props: Props) {
       </Head>
 
       <Header />
+      
 
       <UserHeader signOut={signOut} user={user}/>
 
