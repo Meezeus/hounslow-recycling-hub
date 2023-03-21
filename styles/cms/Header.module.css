@@ -7,6 +7,17 @@
   position: relative;
 }
 
+.user-info-bar-header {
+  background: white;
+  color: black;
+  font-family: "Lato";
+  text-align: right;
+  padding: 30px;
+  position: relative;
+  height: min-content;
+  
+}
+
 .header-title {
   margin: auto;
   font-size: 40px;
@@ -15,3 +26,4 @@
 .header-description {
   font-size: 17px;
 }
+
