@@ -3,14 +3,20 @@ import Header from "@/components/cms/Header";
 import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
 
+import { Amplify } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+Amplify.configure(awsconfig);
+import { withAuthenticator } from "@aws-amplify/ui-react";
+
 // Data Types
 import { Facts } from "@/data/Facts";
+import UserHeader from "@/components/cms/UserHeader";
 
 type Props = {
   facts: Facts[];
 };
 
-export default function CMS(props: Props) {
+export default withAuthenticator(function CMS({signOut, user}, props: Props) {
   return (
     <>
       <Head>
@@ -23,12 +29,14 @@ export default function CMS(props: Props) {
 
       <Header />
 
+      <UserHeader signOut={signOut} user={user}/>
+
       <CMSTabs facts={props.facts} />
 
       <Footer />
     </>
   );
-}
+})
 
 export const getServerSideProps = async () => {
   const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`)
