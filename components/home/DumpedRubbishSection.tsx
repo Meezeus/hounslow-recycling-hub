@@ -7,13 +7,6 @@ import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 export default function dumpedRubbishSection(props: DumpedRubbishInfo) {
   return (
     <div className={style["dumped-rubbish-container"]}>
-      <div className={style["dumped-rubbish-image-div"]}>
-        <img
-          className={style["dumped-rubbish-image"]}
-          src="./dumped_rubbish.png"
-          alt=""
-        />
-      </div>
       <div>
         <div className={style["dumped-rubbish-text"]}>
           <ReactMarkdown>{props.content}</ReactMarkdown>
@@ -40,6 +33,13 @@ export default function dumpedRubbishSection(props: DumpedRubbishInfo) {
             </Button>
           </a>
         </div>
+      </div>
+      <div className={style["dumped-rubbish-image-div"]}>
+        <img
+          className={style["dumped-rubbish-image"]}
+          src="./dumped_rubbish.png"
+          alt=""
+        />
       </div>
     </div>
   );
