@@ -12,6 +12,8 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Facts } from "@/data/Facts";
 import UserHeader from "@/components/cms/UserHeader";
 
+
+
 type Props = {
   facts: Facts[];
 };
