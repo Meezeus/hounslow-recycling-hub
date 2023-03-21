@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import style from "@/styles/home/ImageRecognition.module.css";
+import buttonStyle from "@/styles/home/Button.module.css"
 
 const ML_ENDPOINT =
   "https://ijtiasa89d.execute-api.eu-west-2.amazonaws.com/default/ML_model";
@@ -154,7 +155,7 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
             <>
               <h4> You can use the {labelsToServices.get(imageCategory)}. </h4>
               <button
-                className={style["image-recognition-button"]}
+                className={buttonStyle["button"]}
                 type="button"
                 onClick={(event) =>
                   jumpToAccordion(event, labelsToServices.get(imageCategory)!)

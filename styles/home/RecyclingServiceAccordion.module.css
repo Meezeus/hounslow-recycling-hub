@@ -3,10 +3,12 @@
   grid-template-rows: auto auto;
   background-color: #ffffff;
   border-style: solid;
-  border-width: 3.5px;
+  border-width: 5px;
   border-radius: 20px;
-  border-color: blueviolet;
+  border-color: #642f6c;
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(79, 40, 110, 0.2),
+    0 6px 20px 0 rgba(107, 58, 144, 0.3);
 }
 
 .recycling-service-accordion-wrapper:hover {
