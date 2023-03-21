@@ -40,11 +40,11 @@ export default function CMS(props: Props) {
 
 export const getServerSideProps = async () => {
   // const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`)
-  const facts = await resFacts.json();
+  // const facts = await resFacts.json();
 
   return {
     props: {
-      facts: facts,
+      facts: {},
     },
   };
 };
