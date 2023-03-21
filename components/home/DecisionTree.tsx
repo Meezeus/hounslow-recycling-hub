@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import { questions } from "@/data/DecisionTreeQuestions";
+import React, { useEffect, useState } from "react";
+import {
+  Option,
+  houseQuestions,
+  flatQuestions,
+} from "@/data/DecisionTreeQuestions";
 import { Button } from "antd";
 import style from "@/styles/home/DecisionTree.module.css";
 
-type Option = {
-  id: string;
-  value: string;
-  followUpQuestion: number;
+type DecisionTreeProps = {
+  showFlatVersion: boolean;
 };
 
-// type Question = {
-//   id: number;
-//   question: string;
-//   options: Array<Option>;
-// };
-
-export default function DecisionTree() {
+export default function DecisionTree(props: DecisionTreeProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  // This hook is called when the page version changes. It resets the recycling
+  // assistant.
+  useEffect(() => {
+    setCurrentQuestionIndex(0);
+  }, [props.showFlatVersion]);
 
   const handleOptionClick = (option: Option) => {
     setCurrentQuestionIndex(option.followUpQuestion);
@@ -26,7 +28,9 @@ export default function DecisionTree() {
     setCurrentQuestionIndex(0);
   };
 
-  const currentQuestion = questions[currentQuestionIndex];
+  const currentQuestion = props.showFlatVersion
+    ? flatQuestions[currentQuestionIndex]
+    : houseQuestions[currentQuestionIndex];
 
   return (
     <div className={style["decision-tree-wrapper"]}>

@@ -165,7 +165,7 @@ export default function Home(props: Props) {
           showFlatVersion={showFlatVersion!}
           openAccordion={openAccordion}
         />
-        <DecisionTree />
+        <DecisionTree showFlatVersion={showFlatVersion!} />
 
         <div
           className={
