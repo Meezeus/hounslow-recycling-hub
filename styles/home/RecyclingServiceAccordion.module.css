@@ -1,6 +1,4 @@
 .recycling-service-accordion-wrapper {
-  display: grid;
-  grid-template-rows: auto auto;
   background-color: #ffffff;
   border-style: solid;
   border-width: 5px;
@@ -17,8 +15,8 @@
 
 .recycling-service-accordion {
   display: grid;
-  grid-template-rows: auto 1fr;
-  padding: 10px 20px;
+  grid-template-rows: auto 1fr auto;
+  padding: 20px;
   text-align: center;
 }
 

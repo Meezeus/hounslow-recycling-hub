@@ -12,4 +12,6 @@
   position: relative;
   top: -85px;
   visibility: hidden;
+  height: 0px;
+  width: 0px;
 }
