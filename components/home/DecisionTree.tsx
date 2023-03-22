@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Option,
+  Answer,
   houseQuestions,
   flatQuestions,
 } from "@/data/DecisionTreeQuestions";
@@ -10,10 +10,12 @@ import buttonStyle from "@/styles/home/Button.module.css";
 
 type DecisionTreeProps = {
   showFlatVersion: boolean;
+  openAccordion(id: string): void;
 };
 
 export default function DecisionTree(props: DecisionTreeProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const questions = props.showFlatVersion ? flatQuestions : houseQuestions;
 
   // This hook is called when the page version changes. It resets the recycling
   // assistant.
@@ -21,38 +23,56 @@ export default function DecisionTree(props: DecisionTreeProps) {
     setCurrentQuestionIndex(0);
   }, [props.showFlatVersion]);
 
-  const handleOptionClick = (option: Option) => {
-    setCurrentQuestionIndex(option.followUpQuestion);
+  const handleAnswerClick = (answer: Answer) => {
+    setCurrentQuestionIndex(answer.followUpQuestion);
   };
 
   const handleReset = () => {
     setCurrentQuestionIndex(0);
   };
 
-  const currentQuestion = props.showFlatVersion
-    ? flatQuestions[currentQuestionIndex]
-    : houseQuestions[currentQuestionIndex];
+  async function jumpToAccordion(
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ) {
+    event.stopPropagation();
+    props.openAccordion(id);
+    await new Promise((r) => setTimeout(r, 200));
+    document.getElementById(id)?.scrollIntoView();
+  }
 
   return (
     <div className={style["decision-tree-wrapper"]}>
       <div className={style["decision-tree-title"]}>
-        <h2>Find the right recycling service for your item here!</h2>
+        <h2>Find out how to recycle your item here!</h2>
       </div>
       <div className={style["decision-tree"]}>
-        <h3>{currentQuestion.question}</h3>
+        <h3>{questions[currentQuestionIndex].question}</h3>
         <div>
-          {currentQuestion.options.map((option) => (
+          {questions[currentQuestionIndex].answers.map((answer) => (
             <button
               className={
-                buttonStyle["button"] + " " + style["decision-tree-option"]
+                buttonStyle["button"] + " " + style["decision-tree-button"]
               }
-              key={option.id}
-              onClick={() => handleOptionClick(option)}
+              key={answer.id}
+              onClick={() => handleAnswerClick(answer)}
             >
-              {option.value}
+              {answer.answer}
             </button>
           ))}
         </div>
+        <button
+          className={
+            buttonStyle["button"] + " " + style["decision-tree-button"]
+          }
+          type="button"
+          onClick={(event) =>
+            jumpToAccordion(event, questions[currentQuestionIndex].ref)
+          }
+          hidden={questions[currentQuestionIndex].ref == ""}
+        >
+          Click here for more info!
+        </button>
       </div>
       <Button onClick={handleReset}>Restart</Button>
     </div>

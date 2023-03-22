@@ -1,12 +1,13 @@
 export type Question = {
   id: number;
   question: string;
-  options: Array<Option>;
+  answers: Array<Answer>;
+  ref: string;
 };
 
-export type Option = {
+export type Answer = {
   id: string;
-  value: string;
+  answer: string;
   followUpQuestion: number;
 };
 
@@ -14,138 +15,158 @@ export const houseQuestions = [
   {
     id: 0,
     question: "Is the item too big to fit in an empty bin?",
-    options: [
+    answers: [
       {
         id: "a",
-        value: "Yes",
+        answer: "Yes",
         followUpQuestion: 1,
       },
       {
         id: "b",
-        value: "No",
+        answer: "No",
         followUpQuestion: 2,
       },
     ],
+    ref: "",
   },
   {
     id: 1,
     question: "You can use the bulky waste collection service!",
-    options: [],
+    answers: [],
+    ref: "Bulky Waste Collection Service",
   },
   {
     id: 2,
     question: "What material is it made of?",
-    options: [
+    answers: [
       {
         id: "c",
-        value: "Plastic / Metal",
+        answer: "Plastic / Metal",
         followUpQuestion: 3,
       },
       {
         id: "d",
-        value: "Cardboard / Paper",
+        answer: "Cardboard / Paper",
         followUpQuestion: 4,
       },
       {
         id: "e",
-        value: "Glass",
+        answer: "Glass",
         followUpQuestion: 5,
       },
       {
         id: "f",
-        value: "Textiles",
+        answer: "Textiles",
         followUpQuestion: 6,
       },
       {
         id: "g",
-        value: "Food",
+        answer: "Food",
         followUpQuestion: 7,
       },
       {
         id: "h",
-        value: "Natural / Organic",
+        answer: "Natural / Organic",
         followUpQuestion: 8,
       },
       {
         id: "i",
-        value: "Other",
+        answer: "Other",
         followUpQuestion: 9,
       },
     ],
+    ref: "",
   },
   {
     id: 3,
     question: "You can use the red recycling box!",
-    options: [],
+    answers: [],
+    ref: "Plastic and Metal Recycling Service",
   },
   {
     id: 4,
     question: "You can use the blue recycling box!",
-    options: [],
+    answers: [],
+    ref: "Paper and Card Recycling Service",
   },
   {
     id: 5,
     question: "You can use the green recycling box!",
-    options: [],
+    answers: [],
+    ref: "Glass Recycling Service",
   },
   {
     id: 6,
     question:
       "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
-    options: [],
+    answers: [],
+    ref: "Textile Recycling Service",
   },
   {
     id: 7,
     question: "You can use the food waste bin!",
-    options: [],
+    answers: [],
+    ref: "Food Waste Recycling Service",
   },
   {
     id: 8,
     question: "Is it infectious (blood / tissue)?",
-    options: [
+    answers: [
       {
         id: "j",
-        value: "Yes",
+        answer: "Yes",
         followUpQuestion: 10,
       },
       {
         id: "k",
-        value: "No",
+        answer: "No",
         followUpQuestion: 11,
       },
     ],
+    ref: "",
   },
   {
     id: 9,
     question: "Is it an electrical appliance?",
-    options: [
+    answers: [
       {
         id: "l",
-        value: "Yes",
-        followUpQuestion: 6,
+        answer: "Yes",
+        followUpQuestion: 12,
       },
       {
         id: "m",
-        value: "No",
-        followUpQuestion: 12,
+        answer: "No",
+        followUpQuestion: 13,
       },
     ],
+    ref: "",
   },
   {
     id: 10,
     question: "You can use the clinical waste collection service!",
-    options: [],
+    answers: [],
+    ref: "Clinical Waste Collection Service",
   },
   {
     id: 11,
     question: "You can use the brown wheeled bin!",
-    options: [],
+    answers: [],
+    ref: "Garden Waste Recycling Service",
   },
   {
     id: 12,
     question:
+      "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
+    answers: [],
+    ref: "Small Electrical Items Recycling Service",
+  },
+  {
+    id: 13,
+    question:
       "Sorry, this item is rubbish and cannot be recycled. Please use the black wheeled bin!",
-    options: [],
+    answers: [],
+    ref: "General Waste Collection Service",
   },
 ];
 
@@ -153,161 +174,176 @@ export const flatQuestions = [
   {
     id: 0,
     question: "Is the item too big to fit in an empty bin?",
-    options: [
+    answers: [
       {
         id: "a",
-        value: "Yes",
+        answer: "Yes",
         followUpQuestion: 1,
       },
       {
         id: "b",
-        value: "No",
+        answer: "No",
         followUpQuestion: 2,
       },
     ],
+    ref: "",
   },
   {
     id: 1,
     question: "You can use the bulky waste collection service!",
-    options: [],
+    answers: [],
+    ref: "Bulky Waste Collection Service",
   },
   {
     id: 2,
     question: "What material is it made of?",
-    options: [
+    answers: [
       {
         id: "c",
-        value: "Plastic",
+        answer: "Plastic",
         followUpQuestion: 3,
       },
       {
         id: "d",
-        value: "Metal",
+        answer: "Metal",
         followUpQuestion: 4,
       },
       {
         id: "e",
-        value: "Cardboard",
+        answer: "Cardboard",
         followUpQuestion: 5,
       },
       {
         id: "f",
-        value: "Paper",
+        answer: "Paper",
         followUpQuestion: 6,
       },
       {
         id: "g",
-        value: "Glass",
+        answer: "Glass",
         followUpQuestion: 7,
       },
       {
         id: "h",
-        value: "Textiles",
+        answer: "Textiles",
         followUpQuestion: 8,
       },
       {
         id: "i",
-        value: "Food",
+        answer: "Food",
         followUpQuestion: 9,
       },
       {
         id: "j",
-        value: "Natural / Organic",
+        answer: "Natural / Organic",
         followUpQuestion: 10,
       },
       {
         id: "k",
-        value: "Other",
+        answer: "Other",
         followUpQuestion: 11,
       },
     ],
+    ref: "",
   },
   {
     id: 3,
     question:
       "You can use a communal bin with a red 'household plastic packaging' label!",
-    options: [],
+    answers: [],
+    ref: "Plastic Recycling Service",
   },
   {
     id: 4,
     question:
       "You can use a communal bin with a grey 'tins, cans & aerosols' label!",
-    options: [],
+    answers: [],
+    ref: "Metal Recycling Service",
   },
   {
     id: 5,
     question: "You can use a communal bin with a blue 'cardboard' label!",
-    options: [],
+    answers: [],
+    ref: "Card Recycling Service",
   },
   {
     id: 6,
     question: "You can use a communal bin with a blue 'paper' label!",
-    options: [],
+    answers: [],
+    ref: "Paper Recycling Service",
   },
   {
     id: 7,
     question: "You can use a communal bin with a teal 'mixed glass' label!",
-    options: [],
+    answers: [],
+    ref: "Glass Recycling Service",
   },
   {
     id: 8,
     question:
       "You can utilise TRAID charity and Salvation Army Textile Banks to get your textiles recycled!",
-    options: [],
+    answers: [],
+    ref: "Textiles Recycling",
   },
   {
     id: 9,
     question: "You can use a communal bin with a green 'food waste' label!",
-    options: [],
+    answers: [],
+    ref: "Food Waste Recycling Service",
   },
 
   {
     id: 10,
     question: "Is it infectious (blood / tissue)?",
-    options: [
+    answers: [
       {
         id: "l",
-        value: "Yes",
+        answer: "Yes",
         followUpQuestion: 12,
       },
       {
         id: "m",
-        value: "No",
+        answer: "No",
         followUpQuestion: 13,
       },
     ],
+    ref: "",
   },
   {
     id: 11,
     question: "Is it an electrical appliance?",
-    options: [
+    answers: [
       {
         id: "n",
-        value: "Yes",
+        answer: "Yes",
         followUpQuestion: 14,
       },
       {
         id: "o",
-        value: "No",
+        answer: "No",
         followUpQuestion: 13,
       },
     ],
+    ref: "",
   },
   {
     id: 12,
     question: "You can use the clinical waste collection service!",
-    options: [],
+    answers: [],
+    ref: "Clinical Waste Collection Service",
   },
   {
     id: 13,
     question:
       "Sorry, this item is rubbish and cannot be recycled. Please use a general waste communal bin!",
-    options: [],
+    answers: [],
+    ref: "General Waste Collection Service",
   },
   {
     id: 14,
     question:
       "You can utilise TRAID charity as an opportunity to get your small electrical appliances recycled!",
-    options: [],
+    answers: [],
+    ref: "Small Electrical Items Recycling",
   },
 ];
