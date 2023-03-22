@@ -1,23 +1,28 @@
 .image-recognition-wrapper {
-  margin-bottom: 50px;
-  background-color: transparent;
-  border: 20px solid #c18ae5;
-  border-image: linear-gradient(to right, #d860f9 0%, #6656c0 100%) 1;
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box;
-  box-shadow: 0px 5px 25px -10px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  align-items: center;
-  padding: 15px;
+  margin-bottom: 75px;
   display: flex;
-  color: #333;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 10px;
-  /*background-image: linear-gradient(to right, #d3aced, #f6f6f6);*/
-  border-radius: 20px !important;
+  position: relative;
+  background-color: white;
+  padding: 25px 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.19);
+}
+
+.image-recognition-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
+  background: linear-gradient(to right, #d860f9 0%, #6656c0 100%);
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .image-recognition-preview {
