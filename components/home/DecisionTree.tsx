@@ -43,7 +43,9 @@ export default function DecisionTree(props: DecisionTreeProps) {
         <div>
           {currentQuestion.options.map((option) => (
             <button
-              className={buttonStyle["button"]}
+              className={
+                buttonStyle["button"] + " " + style["decision-tree-option"]
+              }
               key={option.id}
               onClick={() => handleOptionClick(option)}
             >

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "antd";
 import style from "@/styles/home/ImageRecognition.module.css";
 import buttonStyle from "@/styles/home/Button.module.css";
 
@@ -146,9 +145,9 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         <input type="file" accept="image/*" onChange={handleImageUpload} />
       </div>
       <div>
-        <Button className={style["submit-button"]} onClick={classifyImage}>
+        <button className={buttonStyle["button"]} onClick={classifyImage}>
           Submit
-        </Button>
+        </button>
       </div>
       {imageCategory && (
         <div>
