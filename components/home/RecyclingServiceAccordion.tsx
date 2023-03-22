@@ -2,6 +2,7 @@ import { RecyclingServices } from "@/data/RecyclingServices";
 import React, { Ref } from "react";
 import ReactMarkdown from "react-markdown";
 import style from "@/styles/home/RecyclingServiceAccordion.module.css";
+import homeStyle from "@/styles/home/Home.module.css";
 
 export type RecyclingServiceAccordionProps = RecyclingServices & {
   id: string;
@@ -18,6 +19,7 @@ export default React.forwardRef<HTMLDivElement, RecyclingServiceAccordionProps>(
         className={style["recycling-service-accordion-wrapper"]}
         onClick={() => props.handleClick(props.id)}
       >
+        <a className={homeStyle["anchor"]} id={props.id + "-anchor"}></a>
         <div className={style["recycling-service-accordion"]}>
           <div>
             <img

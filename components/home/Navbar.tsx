@@ -11,21 +11,21 @@ type NavbarProps = {
 export default function Navbar(props: NavbarProps) {
   const event_anchor = {
     label: "Events",
-    target: "Events",
+    target: "events-anchor",
   };
 
   const anchors = [
     {
       label: "Recycling Assistant",
-      target: "RecyclingAssistant",
+      target: "recycling-assistant-anchor",
     },
     {
       label: "Recycling Services",
-      target: "RecyclingServices",
+      target: "recycling-services-anchor",
     },
     {
       label: "Report Dumped Rubbish",
-      target: "DumpedRubbish",
+      target: "report-dumped-rubbish-anchor",
     },
   ];
 

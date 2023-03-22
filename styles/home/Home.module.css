@@ -5,3 +5,11 @@
   padding: 1px 50px 1px 50px;
   background-color: white;
 }
+
+/* This is to stop the navbar from covering anchors. */
+.anchor {
+  display: block;
+  position: relative;
+  top: -85px;
+  visibility: hidden;
+}

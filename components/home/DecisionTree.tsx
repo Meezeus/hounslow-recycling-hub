@@ -10,7 +10,7 @@ import buttonStyle from "@/styles/home/Button.module.css";
 
 type DecisionTreeProps = {
   showFlatVersion: boolean;
-  openAccordion(id: string): void;
+  jumpToAccordion(event: React.MouseEvent<HTMLButtonElement>, id: string): void;
 };
 
 export default function DecisionTree(props: DecisionTreeProps) {
@@ -23,22 +23,19 @@ export default function DecisionTree(props: DecisionTreeProps) {
     setCurrentQuestionIndex(0);
   }, [props.showFlatVersion]);
 
-  const handleAnswerClick = (answer: Answer) => {
+  function handleAnswerClick(answer: Answer) {
     setCurrentQuestionIndex(answer.followUpQuestion);
-  };
+  }
 
-  const handleReset = () => {
+  function handleResetClick() {
     setCurrentQuestionIndex(0);
-  };
+  }
 
-  async function jumpToAccordion(
+  function handleMoreInfoClick(
     event: React.MouseEvent<HTMLButtonElement>,
-    id: string
+    serviceID: string
   ) {
-    event.stopPropagation();
-    props.openAccordion(id);
-    await new Promise((r) => setTimeout(r, 200));
-    document.getElementById(id)?.scrollIntoView();
+    props.jumpToAccordion(event, serviceID);
   }
 
   return (
@@ -67,14 +64,17 @@ export default function DecisionTree(props: DecisionTreeProps) {
           }
           type="button"
           onClick={(event) =>
-            jumpToAccordion(event, questions[currentQuestionIndex].ref)
+            handleMoreInfoClick(
+              event,
+              questions[currentQuestionIndex].serviceID
+            )
           }
-          hidden={questions[currentQuestionIndex].ref == ""}
+          hidden={questions[currentQuestionIndex].serviceID == ""}
         >
           Click here for more info!
         </button>
       </div>
-      <Button onClick={handleReset}>Restart</Button>
+      <Button onClick={() => handleResetClick()}>Restart</Button>
     </div>
   );
 }

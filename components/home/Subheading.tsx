@@ -1,5 +1,6 @@
-import style from "@/styles/home/Subheading.module.css";
 import React, { Ref, useState } from "react";
+import style from "@/styles/home/Subheading.module.css";
+import homeStyle from "@/styles/home/Home.module.css";
 
 type SubheadingProps = {
   title: string;
@@ -18,7 +19,7 @@ export default React.forwardRef<HTMLDivElement, SubheadingProps>(
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <a className={style["subheading-anchor"]} id={props.id}></a>
+        <a className={homeStyle["anchor"]} id={props.id + "-anchor"}></a>
         <div className={style["subheading-container"]}>
           <div className={style["subheading-anchors"]}></div>
           <h3

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import style from "@/styles/home/ImageRecognition.module.css";
 import buttonStyle from "@/styles/home/Button.module.css";
 
@@ -10,7 +10,7 @@ const MAX_IMAGE_FILE_SIZE = 4000000;
 
 type ImageRecognitionProps = {
   showFlatVersion: boolean;
-  openAccordion(id: string): void;
+  jumpToAccordion(event: React.MouseEvent<HTMLButtonElement>, id: string): void;
 };
 
 export default function ImageRecognition(props: ImageRecognitionProps) {
@@ -18,34 +18,181 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
   const [imageURL, setImageURL] = useState("");
   const [imageCategory, setImageCategory] = useState("");
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   const labelsToServices = props.showFlatVersion
-    ? new Map<string, string>([
-        ["plastic", "Plastic Recycling Service"],
-        ["metal", "Metal Recycling Service"],
-        ["cardboard", "Card Recycling Service"],
-        ["paper", "Paper Recycling Service"],
-        ["glass", "Glass Recycling Service"],
-        ["food", "Food Waste Recycling Service"],
-        ["rubbish", "General Waste Collection Service"],
-        ["textile", "Textiles Recycling"],
-        ["small electrical", "Small Electrical Items Recycling"],
-        ["bulky waste", "Bulky Waste Collection Service"],
-        ["clinical waste", "Clinical Waste Collection Service"],
+    ? new Map<string, { name: string; id: string }>([
+        [
+          "plastic",
+          {
+            name: "You can use a communal bin with a red 'household plastic packaging' label!",
+            id: "plastic-recycling-service",
+          },
+        ],
+        [
+          "metal",
+          {
+            name: "You can use a communal bin with a grey 'tins, cans & aerosols' label!",
+            id: "metal-recycling-service",
+          },
+        ],
+        [
+          "cardboard",
+          {
+            name: "You can use a communal bin with a blue 'cardboard' label!",
+            id: "card-recycling-service",
+          },
+        ],
+        [
+          "paper",
+          {
+            name: "You can use a communal bin with a blue 'paper' label!",
+            id: "paper-recycling-service",
+          },
+        ],
+        [
+          "glass",
+          {
+            name: "You can use a communal bin with a teal 'mixed glass' label!",
+            id: "glass-recycling-service",
+          },
+        ],
+        [
+          "food",
+          {
+            name: "You can use a communal bin with a green 'food waste' label!",
+            id: "food-waste-recycling-service",
+          },
+        ],
+        [
+          "rubbish",
+          {
+            name: "This item cannot be recycled. Please use a general waste communal bin!",
+            id: "general-waste-collection-service",
+          },
+        ],
+        [
+          "textile",
+          {
+            name: "You can utilise TRAID charity and Salvation Army Textile Banks to get your textiles recycled!",
+            id: "textiles-recycling",
+          },
+        ],
+        [
+          "small electrical",
+          {
+            name: "You can utilise TRAID charity as an opportunity to get your small electrical appliances recycled!",
+            id: "small-electrical-items-recycling",
+          },
+        ],
+        [
+          "bulky waste",
+          {
+            name: "You can use the bulky waste collection service!",
+            id: "bulky-waste-collection-service",
+          },
+        ],
+        [
+          "clinical waste",
+          {
+            name: "You can use the clinical waste collection service!",
+            id: "clinical-waste-collection-service",
+          },
+        ],
       ])
-    : new Map<string, string>([
-        ["plastic", "Plastic and Metal Recycling Service"],
-        ["metal", "Plastic and Metal Recycling Service"],
-        ["cardboard", "Paper and Card Recycling Service"],
-        ["paper", "Paper and Card Recycling Service"],
-        ["glass", "Glass Recycling Service"],
-        ["food", "Food Waste Recycling Service"],
-        ["rubbish", "General Waste Collection Service"],
-        ["textile", "Textile Recycling Service"],
-        ["small electrical", "Small Electrical Items Recycling Service"],
-        ["bulky waste", "Bulky Waste Collection Service"],
-        ["clinical waste", "Clinical Waste Collection Service"],
-        ["garden waste", "Garden Waste Recycling Service"],
+    : new Map<string, { name: string; id: string }>([
+        [
+          "plastic",
+          {
+            name: "You can use the red recycling box!",
+            id: "plastic-and-metal-recycling-service",
+          },
+        ],
+        [
+          "metal",
+          {
+            name: "You can use the red recycling box!",
+            id: "plastic-and-metal-recycling-service",
+          },
+        ],
+        [
+          "cardboard",
+          {
+            name: "You can use the blue recycling box!",
+            id: "paper-and-card-recycling-service",
+          },
+        ],
+        [
+          "paper",
+          {
+            name: "You can use the blue recycling box!",
+            id: "paper-and-card-recycling-service",
+          },
+        ],
+        [
+          "glass",
+          {
+            name: "You can use the green recycling box!",
+            id: "glass-recycling-service",
+          },
+        ],
+        [
+          "food",
+          {
+            name: "You can use the food waste bin!",
+            id: "food-waste-recycling-service",
+          },
+        ],
+        [
+          "rubbish",
+          {
+            name: "This item cannot be recycled. Please use the black wheeled bin!",
+            id: "general-waste-collection-service",
+          },
+        ],
+        [
+          "textile",
+          {
+            name: "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
+            id: "textile-recycling-service",
+          },
+        ],
+        [
+          "small electrical",
+          {
+            name: "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
+            id: "small-electrical-items-recycling-service",
+          },
+        ],
+        [
+          "bulky waste",
+          {
+            name: "You can use the bulky waste collection service!",
+            id: "bulky-waste-collection-service",
+          },
+        ],
+        [
+          "clinical waste",
+          {
+            name: "You can use the clinical waste collection service!",
+            id: "clinical-waste-collection-service",
+          },
+        ],
+        [
+          "garden waste",
+          {
+            name: "You can use the brown wheeled bin!",
+            id: "garden-waste-recycling-service",
+          },
+        ],
       ]);
+
+  // This hook is called when the page version changes. It resets the image recognition.
+  useEffect(() => {
+    setImageFile(undefined);
+    setImageCategory("");
+    formRef.current?.reset();
+  }, [props.showFlatVersion]);
 
   // This hook is called whenever the image file changes. It creates the preview
   // for the image.
@@ -115,16 +262,6 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
     };
   };
 
-  async function jumpToAccordion(
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: string
-  ) {
-    event.stopPropagation();
-    props.openAccordion(id);
-    await new Promise((r) => setTimeout(r, 200));
-    document.getElementById(id)?.scrollIntoView();
-  }
-
   return (
     <div className={style["image-recognition-wrapper"]}>
       <h2>Upload an image here:</h2>
@@ -142,7 +279,9 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         </div>
       )}
       <div>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        <form ref={formRef}>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+        </form>
       </div>
       <div>
         <button className={buttonStyle["button"]} onClick={classifyImage}>
@@ -154,12 +293,15 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
           <h4> This item was categorized as {imageCategory}. </h4>
           {labelsToServices.get(imageCategory) ? (
             <>
-              <h4> You can use the {labelsToServices.get(imageCategory)}. </h4>
+              <h4>{labelsToServices.get(imageCategory)?.name}</h4>
               <button
                 className={buttonStyle["button"]}
                 type="button"
                 onClick={(event) =>
-                  jumpToAccordion(event, labelsToServices.get(imageCategory)!)
+                  props.jumpToAccordion(
+                    event,
+                    labelsToServices.get(imageCategory)!.id
+                  )
                 }
               >
                 Click here for more info!

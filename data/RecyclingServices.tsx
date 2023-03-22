@@ -1,6 +1,7 @@
 export type RecyclingServices = {
   itemImage: string;
   title: string;
+  id: string;
   binImage: string;
   description: string;
   content: string;
@@ -12,6 +13,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./plastic_metal_items.png",
     title: "Plastic and Metal Recycling Service",
+    id: "plastic-and-metal-recycling-service",
     binImage: "./red_recycling_box.png",
     description:
       "Plastic and metal can be recycled using the red recycling box.",
@@ -24,6 +26,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./paper_card_item.png",
     title: "Paper and Card Recycling Service",
+    id: "paper-and-card-recycling-service",
     binImage: "./blue_recycling_box.png",
     description:
       "Paper and cardboard can be recycled using the blue recycling box.",
@@ -37,6 +40,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./glass_items.png",
     title: "Glass Recycling Service",
+    id: "glass-recycling-service",
     binImage: "./green_recycling_box.png",
     description: "Glass can be recycled using the green recycling box.",
     content:
@@ -48,6 +52,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./food_items.png",
     title: "Food Waste Recycling Service",
+    id: "food-waste-recycling-service",
     binImage: "./food_waste_bin.png",
     description: "Food can be recycled using the green food waste bin.",
     content:
@@ -67,6 +72,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./garden_items.png",
     title: "Garden Waste Recycling Service",
+    id: "garden-waste-recycling-service",
     binImage: "./brown_wheeled_bin.png",
     description: "Garden waste can be recycled using the brown wheeled bin.",
     content:
@@ -84,6 +90,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./general_items.png",
     title: "General Waste Collection Service",
+    id: "general-waste-collection-service",
     binImage: "./black_wheeled_bin.png",
     description:
       "Rubbish that cannot be recycled can be disposed of using the black wheeled bin.",
@@ -103,6 +110,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./textiles_items.png",
     title: "Textile Recycling Service",
+    id: "textile-recycling-service",
     binImage: "./tied_carrier_bag_1.png",
     description:
       "Textiles and clothing can be recycled using a tied carrier bag.",
@@ -123,6 +131,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./small_electricals_items.png",
     title: "Small Electrical Items Recycling Service",
+    id: "small-electrical-items-recycling-service",
     binImage: "./tied_carrier_bag_2.png",
     description:
       "Small electrical items can be recycled using a tied carrier bag.",
@@ -143,6 +152,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./bulky_waste_items.png",
     title: "Bulky Waste Collection Service",
+    id: "bulky-waste-collection-service",
     description:
       "Large electrical items, furniture and any items too large to fit in a regular bin can be recycled using the Bulky Waste Collection Service.",
     content:
@@ -167,6 +177,7 @@ export const houseRecyclingServices = [
   /*{
     itemImage: "./large_electrical_items.png",
     title: "Hounslow Furniture Recycling Project",
+    id: "hounslow-furniture-recyling-project",
     binImage:"./large_electrical_items.png",
     description:
       "The Hounslow Furniture Recycling Project is dedicated to redistributing reusable furniture and electrical household appliances to those who may otherwise struggle to afford such items.",
@@ -186,6 +197,7 @@ export const houseRecyclingServices = [
   {
     itemImage: "./clinical_waste_items.png",
     title: "Clinical Waste Collection Service",
+    id: "clinical-waste-collection-service",
     description:
       "Waste that is considered hazardous and can be infectious to others can be disposed of using the Clinical Waste Collection Service.",
     content:
@@ -213,6 +225,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./plastic_items.png",
     title: "Plastic Recycling Service",
+    id: "plastic-recycling-service",
     binImage: "./plastic_communal_bin.png",
     description:
       "Plastic can be recycled using a communal bin with a red 'household plastic packaging' label.",
@@ -225,6 +238,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./metal_items.png",
     title: "Metal Recycling Service",
+    id: "metal-recycling-service",
     binImage: "./metal_communal_bin.png",
     description:
       "Metal can be recycled using a communal bin with a grey 'tins, cans & aerosols' label.",
@@ -237,6 +251,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./cardboard_item.png",
     title: "Card Recycling Service",
+    id: "card-recycling-service",
     binImage: "./card_communal_bin.png",
     description:
       "Cardboard can be recycled using a communal bin with a blue 'cardboard' label.",
@@ -249,6 +264,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./paper_item.png",
     title: "Paper Recycling Service",
+    id: "paper-recycling-service",
     binImage: "./paper_communal_bin.png",
     description:
       "Paper can be recycled using a communal bin with a blue 'paper' label.",
@@ -261,6 +277,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./glass_item.png",
     title: "Glass Recycling Service",
+    id: "glass-recycling-service",
     binImage: "./glass_communal_bin.png",
     description:
       "Glass can be recycled using a communal bin with a teal 'mixed glass' label.",
@@ -273,6 +290,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./food_item.png",
     title: "Food Waste Recycling Service",
+    id: "food-waste-recycling-service",
     binImage: "./food_communal_bin.png",
     description:
       "Food waste can be recycled using a communal bin with a green 'food waste' label.",
@@ -295,6 +313,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./general_item3.png",
     title: "General Waste Collection Service",
+    id: "general-waste-collection-service",
     description:
       "Rubbish that cannot be recycled can be disposed of using the general waste communal bin.",
     content:
@@ -307,6 +326,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./textiles_item.png",
     title: "Textiles Recycling",
+    id: "textiles-recycling",
     description: "Textiles and clothing can be donated to charity.",
     content:
       "**What can be donated:** Bags, clothes, curtains, paired shoes, and others in good condition.  \n" +
@@ -318,6 +338,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./small_electricals_item2.png",
     title: "Small Electrical Items Recycling",
+    id: "small-electrical-items-recycling",
     description: "Small electrical items can be donated to charity.",
     content:
       "**What can be donated:** Telephones, cameras, CD/DVD players, hairdryers, and others in good condition.  \n" +
@@ -329,6 +350,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./bulky_waste_item2.png",
     title: "Bulky Waste Collection Service",
+    id: "bulky-waste-collection-service",
     description:
       "Large electrical items, furniture and any items too large to fit in a regular bin can be recycled using the Bulky Waste Collection Service.",
     content:
@@ -355,6 +377,7 @@ export const flatRecyclingServices = [
   /*{
     itemImage:"",
     title: "Hounslow Furniture Recycling Project",
+    id: "hounslow-furniture-recycling-project",
     binImage:"",
     description:
       "The Hounslow Furniture Recycling Project is dedicated to redistributing reusable furniture and electrical household appliances to those who may otherwise struggle to afford such items.",
@@ -374,6 +397,7 @@ export const flatRecyclingServices = [
   {
     itemImage: "./clinical_waste_items.png",
     title: "Clinical Waste Collection Service",
+    id: "clinical-waste-collection-service",
     description:
       "Waste that is considered hazardous and can be infectious to others can be disposed of using the Clinical Waste Collection Service.",
     content:

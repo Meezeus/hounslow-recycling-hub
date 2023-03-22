@@ -80,8 +80,14 @@ export default function Home(props: Props) {
     setShowFlatVersion(!showFlatVersion);
   }
 
-  function openAccordion(id: string) {
+  async function jumpToAccordion(
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ) {
+    event.stopPropagation();
     recyclingServiceAccordionGridRef.current?.openAccordion(id);
+    await new Promise((r) => setTimeout(r, 250));
+    document.getElementById(id + "-anchor")?.scrollIntoView();
   }
 
   return (
@@ -140,7 +146,7 @@ export default function Home(props: Props) {
                 eventsInView ? "animate__animated animate__fadeInLeft" : ""
               }
             >
-              <Subheading title="Events" id="Events" ref={eventsRef} />
+              <Subheading title="Events" id="events" ref={eventsRef} />
             </div>
             <EventCardCarousel events={props.events} />
           </>
@@ -157,17 +163,17 @@ export default function Home(props: Props) {
         >
           <Subheading
             title="Recycling Assistant"
-            id="RecyclingAssistant"
+            id="recycling-assistant"
             ref={recyclingAssistantRef}
           />
         </div>
         <ImageRecognition
           showFlatVersion={showFlatVersion!}
-          openAccordion={openAccordion}
+          jumpToAccordion={jumpToAccordion}
         />
         <DecisionTree
           showFlatVersion={showFlatVersion!}
-          openAccordion={openAccordion}
+          jumpToAccordion={jumpToAccordion}
         />
 
         <div
@@ -179,7 +185,7 @@ export default function Home(props: Props) {
         >
           <Subheading
             title="Recycling Services"
-            id="RecyclingServices"
+            id="recycling-services"
             ref={recyclingServicesRef}
           />
         </div>
@@ -199,7 +205,7 @@ export default function Home(props: Props) {
         >
           <Subheading
             title="Report Dumped Rubbish"
-            id="DumpedRubbish"
+            id="report-dumped-rubbish"
             ref={reportDumpedRubbishRef}
           />
         </div>
