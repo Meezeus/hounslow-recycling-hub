@@ -67,7 +67,7 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         [
           "rubbish",
           {
-            name: "This item cannot be recycled. Please use a general waste communal bin!",
+            name: "This item cannot be recycled. Please use a communal bin with a black 'general waste' label!",
             id: "general-waste-collection-service",
           },
         ],

@@ -335,7 +335,7 @@ export const flatQuestions = [
   {
     id: 13,
     question:
-      "Sorry, this item is rubbish and cannot be recycled. Please use a general waste communal bin!",
+      "Sorry, this item is rubbish and cannot be recycled. Please use a communal bin with a black 'general waste' label!",
     answers: [],
     serviceID: "general-waste-collection-service",
   },
