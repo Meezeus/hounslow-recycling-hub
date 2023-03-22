@@ -20,11 +20,17 @@
 }
 
 .event-card-carousel-button:disabled {
-  background: grey;
+  --btn-bg-1: rgb(138, 138, 138);
+  --btn-bg-2: rgb(87, 87, 87);
+  background-image: linear-gradient(
+    325deg,
+    var(--btn-bg-2) 0%,
+    var(--btn-bg-1) 55%,
+    var(--btn-bg-2) 90%
+  );
+  box-shadow: 0px 0px 20px rgba(92, 92, 92, 0.5),
+    0px 5px 5px -1px rgba(90, 90, 90, 0.5),
+    inset 4px 4px 8px rgba(143, 143, 143, 0.5),
+    inset -4px -4px 8px rgba(75, 75, 75, 0.5);
   cursor: not-allowed;
-  box-shadow: none;
-}
-
-.event-card-carousel-button:disabled:hover {
-  background: grey;
 }
