@@ -10,7 +10,7 @@ import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className="page-content">
+    <div className="page">
       <Component {...pageProps} />
     </div>
   );

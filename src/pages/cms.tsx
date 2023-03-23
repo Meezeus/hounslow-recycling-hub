@@ -8,6 +8,7 @@ import Header from "@/components/cms/Header";
 import UserHeader from "@/components/cms/UserHeader";
 import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
+import style from "@/styles/cms/CMS.module.css";
 
 // Data Types
 import { facts, Facts } from "@/data/Facts";
@@ -35,7 +36,9 @@ export default /*withAuthenticator(*/ function CMS(
 
       {/* <UserHeader signOut={signOut} user={user} /> */}
 
-      <CMSTabs /*authToken={authToken}*/ facts={props.facts} />
+      <div className={style["page-content"]}>
+        <CMSTabs /*authToken={authToken}*/ facts={props.facts} />
+      </div>
 
       <Footer />
     </>
