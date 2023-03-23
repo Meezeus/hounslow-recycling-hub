@@ -20,20 +20,19 @@ export default function CMSTabs(props: CMSTabsProps) {
   return (
     <Box
       sx={{
-        flexGrow: 1,
+        width: "100%",
         bgcolor: "background.paper",
-        display: "flex",
       }}
     >
       <Tabs
-        orientation="vertical"
+        centered
         variant="standard"
         value={value}
         onChange={handleChange}
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="Category Tabs"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={{ borderBottom: 1, borderColor: "divider" }}
       >
         <Tab label="Facts" {...a11yProps(0)} />
         <Tab label="Questions" {...a11yProps(1)} />
