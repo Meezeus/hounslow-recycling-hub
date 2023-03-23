@@ -3,9 +3,9 @@ import { Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Facts } from "@/data/Facts";
 import style from "@/styles/cms/FactCMS.module.css";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type FactCMSProps = {
   facts: Facts[];
