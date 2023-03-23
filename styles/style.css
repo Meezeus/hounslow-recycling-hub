@@ -90,7 +90,7 @@ a:hover {
 .toTop {
   position: fixed;
   right: 50px;
-  bottom: 50px;
+  bottom: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
