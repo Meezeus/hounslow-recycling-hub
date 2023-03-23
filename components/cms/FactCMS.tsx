@@ -28,7 +28,7 @@ export default function FactCMS(props: FactCMSProps) {
       body: JSON.stringify(newFact),
       headers: {
         "content-type": "application/json",
-        "Authorization": props.authToken
+        Authorization: props.authToken,
       },
     });
 

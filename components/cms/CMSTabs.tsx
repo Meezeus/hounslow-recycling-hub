@@ -7,7 +7,7 @@ import { Facts } from "@/data/Facts";
 
 type CMSTabsProps = {
   facts: Facts[];
-  authToken: string
+  authToken: string;
 };
 
 export default function CMSTabs(props: CMSTabsProps) {

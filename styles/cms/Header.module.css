@@ -15,7 +15,6 @@
   padding: 30px;
   position: relative;
   height: min-content;
-  
 }
 
 .header-title {
@@ -26,4 +25,3 @@
 .header-description {
   font-size: 17px;
 }
-
