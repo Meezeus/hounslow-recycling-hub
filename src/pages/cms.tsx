@@ -5,20 +5,22 @@ import Footer from "@/components/Footer";
 
 import { Amplify } from "aws-amplify";
 import awsconfig from "../aws-exports";
-Amplify.configure(awsconfig);
+// Amplify.configure(awsconfig);
 import { withAuthenticator } from "@aws-amplify/ui-react";
 
 // Data Types
-import { Facts } from "@/data/Facts";
+import { facts, Facts } from "@/data/Facts";
 import UserHeader from "@/components/cms/UserHeader";
 
 type Props = {
   facts: Facts[];
 };
 
-export default withAuthenticator(function CMS({ signOut, user }, props: Props) {
-  const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
-  const authToken = token !== undefined ? token : "";
+export default /*withAuthenticator(*/ function CMS(
+  /*{ signOut, user }, */ props: Props
+) {
+  // const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
+  // const authToken = token !== undefined ? token : "";
   return (
     <>
       <Head>
@@ -31,22 +33,24 @@ export default withAuthenticator(function CMS({ signOut, user }, props: Props) {
 
       <Header />
 
-      <UserHeader signOut={signOut} user={user} />
+      {/* <UserHeader signOut={signOut} user={user} /> */}
 
-      <CMSTabs authToken={authToken} facts={props.facts} />
+      <CMSTabs /*authToken={authToken}*/ facts={props.facts} />
 
       <Footer />
     </>
   );
-});
+} /*)*/
 
 export const getServerSideProps = async () => {
-  const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`);
-  const facts = await resFacts.json();
+  // const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`);
+  // const facts = await resFacts.json();
+
+  const mockFacts = facts;
 
   return {
     props: {
-      facts: facts,
+      facts: mockFacts,
     },
   };
 };
