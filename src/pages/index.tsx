@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import style from "@/styles/home/Home.module.css";
+import buttonStyle from "@/styles/home/Button.module.css";
 
 // Components
 import Head from "next/head";
@@ -112,16 +113,17 @@ export default function Home(props: Props) {
           &times;
         </button>
         <h1>What best describes your living situation?</h1>
+        <br />
         <button
           type="button"
-          className="home-popup-button"
+          className={buttonStyle["button"]}
           onClick={() => handlePopupSelection(false)}
         >
           House
         </button>
         <button
           type="button"
-          className="home-popup-button"
+          className={buttonStyle["button"]}
           onClick={() => handlePopupSelection(true)}
         >
           Flat

@@ -40,7 +40,8 @@ a:hover {
 
 .home-popup-content {
   margin: auto;
-  background: #af63bb;
+  background: #8e43de;
+  color: white;
   width: 50%;
   min-width: 200px;
   padding: 20px;
@@ -83,23 +84,6 @@ a:hover {
 }
 
 .home-popup-close:hover {
-  filter: brightness(80%);
-}
-
-.home-popup-button {
-  width: 100px;
-  height: 50px;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  margin: 20px;
-  cursor: pointer;
-  border: 2px solid black;
-  border-radius: 5px;
-}
-
-.home-popup-button:hover {
   filter: brightness(80%);
 }
 
