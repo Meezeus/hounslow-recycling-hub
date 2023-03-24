@@ -84,7 +84,6 @@ export default function FactCMS(props: FactCMSProps) {
           <TextField
             required
             fullWidth
-            id="fact-title"
             label="Fact Title"
             name="title"
             variant="outlined"
@@ -98,7 +97,6 @@ export default function FactCMS(props: FactCMSProps) {
             required
             fullWidth
             multiline
-            id="fact-content"
             label="Fact Content"
             name="content"
             variant="outlined"
@@ -110,7 +108,6 @@ export default function FactCMS(props: FactCMSProps) {
         <div className={style["form-text-field"]}>
           <TextField
             fullWidth
-            id="fact-id"
             label="Fact ID (leave blank unless updating an existing fact)"
             name="id"
             variant="outlined"

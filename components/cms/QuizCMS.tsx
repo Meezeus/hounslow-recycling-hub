@@ -183,7 +183,6 @@ export default function QuizCMS(props: QuizCMSProps) {
           <TextField
             required
             fullWidth
-            id="question"
             label="Question"
             name="question"
             variant="outlined"
@@ -195,7 +194,6 @@ export default function QuizCMS(props: QuizCMSProps) {
         <FormControl fullWidth>
           <InputLabel>Number of Answers</InputLabel>
           <Select
-            id="number-of-answers"
             label="Number of Answers"
             name="number-of-answers"
             defaultValue={4}
@@ -219,7 +217,6 @@ export default function QuizCMS(props: QuizCMSProps) {
         <div className={style["form-text-field"]}>
           <TextField
             fullWidth
-            id="id"
             label="Question ID (leave blank unless updating an existing question)"
             name="id"
             variant="outlined"
