@@ -24,18 +24,15 @@ export default function EventCMS(props: EventCMSProps) {
   });
 
   const [imageFile, setImageFile] = useState<File>();
-  const [imageURL, setImageURL] = useState("");
 
   // This hook is called whenever the image file changes. It creates the URL for
   // the image.
   useEffect(() => {
     if (imageFile) {
       const objectUrl = URL.createObjectURL(imageFile);
-      setImageURL(objectUrl);
       setNewEvent({ ...newEvent, image: objectUrl });
       return () => URL.revokeObjectURL(objectUrl);
     } else {
-      setImageURL("");
       setNewEvent({ ...newEvent, image: "" });
       return;
     }
