@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Question, quiz } from "@/data/Quiz";
+import { Question } from "@/data/Quiz";
 import style from "@/styles/home/Question.module.css";
 
-export default function Quiz() {
+type QuizBoxProps = {
+  quiz: Question[];
+};
+
+export default function QuizBox(props: QuizBoxProps) {
   const [currentQuestion, setCurrentQuestion] = useState<Question>(
-    quiz[Math.floor(Math.random() * quiz.length)]
+    props.quiz[Math.floor(Math.random() * props.quiz.length)]
   );
   const [isAnswerSelected, setAnswerSelected] = useState(false);
 
@@ -13,7 +17,9 @@ export default function Quiz() {
       setAnswerSelected(true);
       await new Promise((r) => setTimeout(r, 10000));
       setAnswerSelected(false);
-      setCurrentQuestion(quiz[Math.floor(Math.random() * quiz.length)]);
+      setCurrentQuestion(
+        props.quiz[Math.floor(Math.random() * props.quiz.length)]
+      );
     }
   };
 

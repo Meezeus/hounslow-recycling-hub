@@ -15,15 +15,19 @@ import DumpedRubbishSection from "@/components/home/DumpedRubbishSection";
 import Footer from "@/components/Footer";
 
 // Data and Data Types
+import { facts, Fact } from "@/data/Facts";
+import { quiz, Question } from "@/data/Quiz";
+import { events, Event } from "@/data/Events";
 import {
   houseRecyclingServices,
   flatRecyclingServices,
   RecyclingServices,
 } from "@/data/RecyclingServices";
-import { events, Event } from "@/data/Events";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
+  facts: Fact[];
+  quiz: Question[];
   events: Event[];
   houseRecyclingServices: RecyclingServices[];
   flatRecyclingServices: RecyclingServices[];
@@ -115,7 +119,11 @@ export default function Home(props: Props) {
         toggle={toggleVersion}
       />
 
-      <EngagingBox showFlatVersion={showFlatVersion!} />
+      <EngagingBox
+        showFlatVersion={showFlatVersion!}
+        facts={props.facts}
+        quiz={props.quiz}
+      />
 
       <Subheading title="Recycling Assistant" id="DecisionTree" />
       <DecisionTree />
@@ -167,6 +175,8 @@ export const getServerSideProps = async () => {
   // const flatRecyclingServices = await resFRS.json()
 
   // Mock data from data folder
+  const mockFacts = facts;
+  const mockQuiz = quiz;
   const mockEvents = events;
   const mockHouseRecyclingServices = houseRecyclingServices;
   const mockFlatRecyclingServices = flatRecyclingServices;
@@ -174,6 +184,8 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
+      facts: mockFacts,
+      quiz: mockQuiz,
       events: mockEvents,
       houseRecyclingServices: mockHouseRecyclingServices,
       flatRecyclingServices: mockFlatRecyclingServices,
