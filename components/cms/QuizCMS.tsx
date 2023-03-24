@@ -27,10 +27,9 @@ export default function QuizCMS(props: QuizCMSProps) {
   const [newQuestion, setNewQuestion] = useState<Question>({
     question: "",
     answers: getEmptyAnswers(4),
-    // id: "",
+    id: "",
   });
   const [numberOfAnswers, setNumberOfAnswers] = useState(4);
-  const [answers, setAnswers] = useState([]);
 
   function handleQuestionOnChange(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,7 +43,11 @@ export default function QuizCMS(props: QuizCMSProps) {
   function getEmptyAnswers(num: number) {
     const answers = [];
     for (let i = 0; i < num; i++) {
-      answers.push({ answer: "", correct: false });
+      answers.push({
+        answer: "",
+        correct: false,
+        id: String.fromCharCode(97 + i),
+      });
     }
     return answers;
   }
@@ -65,11 +68,16 @@ export default function QuizCMS(props: QuizCMSProps) {
       ...newQuestion,
       answers: newQuestion.answers.map((currentAnswer, currentAnswerIndex) => {
         if (currentAnswerIndex == index) {
-          return { answer: event.target.value, correct: currentAnswer.correct };
+          return {
+            answer: event.target.value,
+            correct: currentAnswer.correct,
+            id: currentAnswer.id,
+          };
         } else {
           return {
             answer: currentAnswer.answer,
             correct: currentAnswer.correct,
+            id: currentAnswer.id,
           };
         }
       }),
@@ -87,14 +95,23 @@ export default function QuizCMS(props: QuizCMSProps) {
           return {
             answer: currentAnswer.answer,
             correct: event.target.checked,
+            id: currentAnswer.id,
           };
         } else {
           return {
             answer: currentAnswer.answer,
             correct: currentAnswer.correct,
+            id: currentAnswer.id,
           };
         }
       }),
+    });
+  }
+
+  function handleIDOnChange(event: ChangeEvent<HTMLInputElement>) {
+    setNewQuestion({
+      ...newQuestion,
+      id: event.target.value,
     });
   }
 
@@ -116,15 +133,16 @@ export default function QuizCMS(props: QuizCMSProps) {
     }
   }
 
-  //   function handleEditClick(question: string, answers: Answer[], id: string) {
-  //     setNewQuestion({ question: question, answers: answers, id: id });
-  //     document.getElementById("create-new-question")?.scrollIntoView();
-  //   }
+  function handleEditClick(question: string, answers: Answer[], id: string) {
+    setNumberOfAnswers(answers.length);
+    setNewQuestion({ question: question, answers: answers, id: id });
+    document.getElementById("create-new-question")?.scrollIntoView();
+  }
 
-  //   async function handleDeleteClick(id: string) {
-  //     // <update database here>
-  //     props.setQuiz(props.quiz.filter((question) => question.id != id));
-  //   }
+  async function handleDeleteClick(id: string) {
+    // <update database here>
+    props.setQuiz(props.quiz.filter((question) => question.id != id));
+  }
 
   const answerComponents = [];
   for (let i = 0; i < numberOfAnswers; i++) {
@@ -198,6 +216,18 @@ export default function QuizCMS(props: QuizCMSProps) {
 
         {answerComponents}
 
+        <div className={style["form-text-field"]}>
+          <TextField
+            fullWidth
+            id="id"
+            label="Question ID (leave blank unless updating an existing question)"
+            name="id"
+            variant="outlined"
+            value={newQuestion.id}
+            onChange={handleIDOnChange}
+          />
+        </div>
+
         <div className={style["form-submit-button"]}>
           <Button
             variant="contained"
@@ -210,7 +240,65 @@ export default function QuizCMS(props: QuizCMSProps) {
       </form>
 
       <div className={style["subheading"]}>
-        <h1>Edit Existing Quiz Questions</h1>
+        <h1>Edit Existing Questions</h1>
+      </div>
+
+      <div className={style["question-list"]}>
+        {props.quiz.map((question) => (
+          <div className={style["question-list-item"]} key={question.id}>
+            <div className={style["question-list-question"]}>
+              <h2>{question.question}</h2>
+              <div className={style["answers"]}>
+                {question.answers.map((answer) => (
+                  <div
+                    className={
+                      style["answer"] +
+                      " " +
+                      (answer.correct
+                        ? style["answer-correct"]
+                        : style["answer-incorrect"])
+                    }
+                    key={answer.id}
+                  >
+                    {answer.answer}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={style["question-list-buttons-div"]}>
+              <Button
+                className={style["question-list-button"]}
+                variant="outlined"
+                color="primary"
+                endIcon={<EditIcon />}
+                type="button"
+                onClick={() =>
+                  handleEditClick(
+                    question.question,
+                    question.answers,
+                    question.id
+                  )
+                }
+              >
+                Edit
+              </Button>
+
+              <div className={style["question-list-id"]}>ID: {question.id}</div>
+
+              <Button
+                className={style["question-list-button"]}
+                variant="outlined"
+                color="primary"
+                endIcon={<ClearIcon />}
+                type="button"
+                onClick={() => handleDeleteClick(question.id)}
+              >
+                Delete
+              </Button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
