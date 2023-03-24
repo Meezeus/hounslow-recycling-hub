@@ -20,11 +20,11 @@ import {
   flatRecyclingServices,
   RecyclingServices,
 } from "@/data/RecyclingServices";
-import { events, Events } from "@/data/Events";
+import { events, Event } from "@/data/Events";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
-  events: Events[];
+  events: Event[];
   houseRecyclingServices: RecyclingServices[];
   flatRecyclingServices: RecyclingServices[];
   dumpedRubbishInfo: DumpedRubbishInfo;
