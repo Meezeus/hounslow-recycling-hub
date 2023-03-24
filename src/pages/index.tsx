@@ -21,7 +21,7 @@ import { events, Event } from "@/data/Events";
 import {
   houseRecyclingServices,
   flatRecyclingServices,
-  RecyclingServices,
+  RecyclingService,
 } from "@/data/RecyclingServices";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
@@ -29,8 +29,8 @@ type Props = {
   facts: Fact[];
   quiz: Question[];
   events: Event[];
-  houseRecyclingServices: RecyclingServices[];
-  flatRecyclingServices: RecyclingServices[];
+  houseRecyclingServices: RecyclingService[];
+  flatRecyclingServices: RecyclingService[];
   dumpedRubbishInfo: DumpedRubbishInfo;
 };
 

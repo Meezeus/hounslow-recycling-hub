@@ -1,9 +1,9 @@
-import { RecyclingServices } from "@/data/RecyclingServices";
+import { RecyclingService } from "@/data/RecyclingServices";
 import React, { Ref } from "react";
 import ReactMarkdown from "react-markdown";
 import style from "@/styles/home/RecyclingServiceAccordion.module.css";
 
-export type RecyclingServiceAccordionProps = RecyclingServices & {
+export type RecyclingServiceAccordionProps = RecyclingService & {
   id: string;
   isOpen: boolean;
   handleClick: (id: string) => void;

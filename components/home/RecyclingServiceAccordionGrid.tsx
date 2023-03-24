@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from "react";
 import RecyclingServiceAccordion from "@/components/home/RecyclingServiceAccordion";
-import { RecyclingServices } from "@/data/RecyclingServices";
+import { RecyclingService } from "@/data/RecyclingServices";
 import style from "@/styles/home/RecyclingServiceAccordionGrid.module.css";
 
 export type RecyclingServiceAccordionGridRef = {
@@ -15,8 +15,8 @@ export type RecyclingServiceAccordionGridRef = {
 
 type RecyclingServiceAccordionGridProps = {
   showFlatVersion: boolean;
-  houseRecyclingServices: RecyclingServices[];
-  flatRecyclingServices: RecyclingServices[];
+  houseRecyclingServices: RecyclingService[];
+  flatRecyclingServices: RecyclingService[];
 };
 
 export default React.forwardRef<
