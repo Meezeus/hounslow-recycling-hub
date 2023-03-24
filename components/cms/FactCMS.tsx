@@ -20,7 +20,7 @@ export default function FactCMS(props: FactCMSProps) {
     setNewFact({ ...newFact, [event.target.name]: event.target.value });
   }
 
-  async function submitFacts() {
+  async function submitFact() {
     if (newFact.title != "" && newFact.content != "") {
       // const res = await fetch("/api/facts", {
       //   method: "POST",
@@ -120,7 +120,7 @@ export default function FactCMS(props: FactCMSProps) {
           <Button
             variant="contained"
             endIcon={<SendIcon />}
-            onClick={submitFacts}
+            onClick={submitFact}
           >
             Submit
           </Button>
