@@ -192,6 +192,10 @@ export default function QuizCMS(props: QuizCMSProps) {
           </Select>
         </FormControl>
 
+        <div className={style["information-text"]}>
+          <p>At least one answer must be marked as correct!</p>
+        </div>
+
         {answerComponents}
 
         <div className={style["form-submit-button"]}>
