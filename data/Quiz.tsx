@@ -1,6 +1,6 @@
 export type Question = {
   question: string;
-  answers: Array<Answer>;
+  answers: Answer[];
   id: string;
 };
 

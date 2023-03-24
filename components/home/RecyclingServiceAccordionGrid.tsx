@@ -15,8 +15,8 @@ export type RecyclingServiceAccordionGridRef = {
 
 type RecyclingServiceAccordionGridProps = {
   showFlatVersion: boolean;
-  houseRecyclingServices: Array<RecyclingServices>;
-  flatRecyclingServices: Array<RecyclingServices>;
+  houseRecyclingServices: RecyclingServices[];
+  flatRecyclingServices: RecyclingServices[];
 };
 
 export default React.forwardRef<
@@ -27,7 +27,7 @@ export default React.forwardRef<
   const previousOpenAccordionID = useRef("");
   const accordionsMaxHeight = useRef(0); // This is the (closed) height of the tallest accordion.
   const [windowWidth, setWindowWidth] = useState(0);
-  let refs: Array<React.RefObject<HTMLDivElement>> = [];
+  let refs: React.RefObject<HTMLDivElement>[] = [];
 
   // This hook runs when the page version changes. It updates the variable
   // keeping track of the max height of the accordions.
