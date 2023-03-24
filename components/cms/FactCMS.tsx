@@ -21,17 +21,19 @@ export default function FactCMS(props: FactCMSProps) {
   }
 
   async function submitFacts() {
-    // const res = await fetch("/api/facts", {
-    //   method: "POST",
-    //   body: JSON.stringify(newFact),
-    //   headers: {
-    //     "content-type": "application/json",
-    //     // Authorization: props.authToken,
-    //   },
-    // });
-    // const status = await res.status;
-    // console.log(status);
-    window.location.reload();
+    if (newFact.title != "" && newFact.content != "") {
+      // const res = await fetch("/api/facts", {
+      //   method: "POST",
+      //   body: JSON.stringify(newFact),
+      //   headers: {
+      //     "content-type": "application/json",
+      //     // Authorization: props.authToken,
+      //   },
+      // });
+      // const status = await res.status;
+      // console.log(status);
+      window.location.reload();
+    }
   }
 
   function handleEditClick(title: string, content: string, id: string) {
