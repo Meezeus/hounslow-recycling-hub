@@ -36,8 +36,8 @@ export default function FactCMS(props: FactCMSProps) {
     }
   }
 
-  function handleEditClick(title: string, content: string, id: string) {
-    setNewFact({ title: title, content: content, id: id });
+  function handleEditClick(fact: Fact) {
+    setNewFact({ title: fact.title, content: fact.content, id: fact.id });
     document.getElementById("create-new-fact")?.scrollIntoView();
   }
 
@@ -156,9 +156,7 @@ export default function FactCMS(props: FactCMSProps) {
                 color="primary"
                 endIcon={<EditIcon />}
                 type="button"
-                onClick={() =>
-                  handleEditClick(fact.title, fact.content, fact.id)
-                }
+                onClick={() => handleEditClick(fact)}
               >
                 Edit
               </Button>

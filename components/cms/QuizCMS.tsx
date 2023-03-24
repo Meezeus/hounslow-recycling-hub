@@ -133,9 +133,13 @@ export default function QuizCMS(props: QuizCMSProps) {
     }
   }
 
-  function handleEditClick(question: string, answers: Answer[], id: string) {
-    setNumberOfAnswers(answers.length);
-    setNewQuestion({ question: question, answers: answers, id: id });
+  function handleEditClick(question: Question) {
+    setNumberOfAnswers(question.answers.length);
+    setNewQuestion({
+      question: question.question,
+      answers: question.answers,
+      id: question.id,
+    });
     document.getElementById("create-new-question")?.scrollIntoView();
   }
 
@@ -270,13 +274,7 @@ export default function QuizCMS(props: QuizCMSProps) {
                 color="primary"
                 endIcon={<EditIcon />}
                 type="button"
-                onClick={() =>
-                  handleEditClick(
-                    question.question,
-                    question.answers,
-                    question.id
-                  )
-                }
+                onClick={() => handleEditClick(question)}
               >
                 Edit
               </Button>
