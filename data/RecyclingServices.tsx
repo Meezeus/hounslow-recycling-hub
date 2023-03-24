@@ -19,7 +19,7 @@ export const houseRecyclingServices = [
       "Plastic and metal can be recycled using the red recycling box.",
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
-      "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been washed, squashed and with lids included for plastics.  \n",
+      "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been washed, squashed and with lids included for plastics. ",
     infographicImage: "/red_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1597/plastic_recycling_in_your_red_box",
   },
@@ -32,8 +32,7 @@ export const houseRecyclingServices = [
       "Paper and cardboard can be recycled using the blue recycling box.",
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
-      "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been loosely placed inside.  \n" +
-      "&nbsp;  \n",
+      "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been loosely placed inside. ",
     infographicImage: "/blue_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1598/paper_and_card_recycling_in_your_blue_box",
   },
@@ -45,7 +44,7 @@ export const houseRecyclingServices = [
     description: "Glass can be recycled using the green recycling box.",
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
-      "You should place the box at the front edge of your property by 7am on the collection day.  \n",
+      "You should place the box at the front edge of your property by 7am on the collection day. ",
     infographicImage: "/green_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1599/glass_recycling_in_your_green_box",
   },
@@ -65,7 +64,7 @@ export const houseRecyclingServices = [
       "or completely forward and down) and placed at the front edge of your property by 7am on the collection day to be collected.  \n" +
       "&nbsp;  \n" +
       "Both bins should be lined with a biodegradable food waste bag. " +
-      "Do not use plastic bags in either of the bins.  \n",
+      "Do not use plastic bags in either of the bins. ",
     infographicImage: "/food_waste_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1602/food_waste_recycling",
   },
@@ -104,7 +103,7 @@ export const houseRecyclingServices = [
       "&nbsp;  \n" +
       "The bin should be placed at the front edge of your property by 7am on the collection day.  \n" +
       "&nbsp;  \n" +
-      "**What cannot be collected:** It is not recommended to put any recyclable items into this bin.  \n",
+      "**What cannot be collected:** It is not recommended to put any recyclable items into this bin. ",
     link: "https://www.hounslow.gov.uk/info/20002/recycling_and_rubbish/1603/household_waste",
   },
   {
@@ -125,7 +124,7 @@ export const houseRecyclingServices = [
       "&nbsp;  \n" +
       "**Alternatives:** There are additional opportunities to get your textile waste recycled, which are " +
       "[TRAID charity](https://www.traid.org.uk/book-a-collection/) and " +
-      "[Salvation Army Textile Banks](https://www.salvationarmydonationcentre.org/bank-finder).  \n",
+      "[Salvation Army Textile Banks](https://www.salvationarmydonationcentre.org/bank-finder). ",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1600/clothing_textiles_and_shoe_recycling",
   },
   {
@@ -146,7 +145,7 @@ export const houseRecyclingServices = [
       "**What cannot be recycled:** Any items that cannot fit in a standard carrier bag or include batteries.  \n" +
       "&nbsp;  \n" +
       "**Alternatives:** You can also utilise [TRAID charity](https://www.traid.org.uk/book-a-collection/) " +
-      "as an alternative opportunity to get your small electrical appliances recycled.  \n",
+      "as an alternative opportunity to get your small electrical appliances recycled. ",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1601/small_electrical_and_electronic_appliance_recycling",
   },
   {
@@ -216,7 +215,7 @@ export const houseRecyclingServices = [
       "They are predominantly non-infectious, hence do not require treatment.  \n" +
       "&nbsp;  \n" +
       "These items should be securely tied in a black sack and placed with your household rubbish on the morning of your rubbish collection day. " +
-      "Please ensure this type of waste is properly wrapped and free from excess liquid.  \n",
+      "Please ensure this type of waste is properly wrapped and free from excess liquid. ",
     link: "https://www.hounslow.gov.uk/info/20002/recycling_and_rubbish/1527/clinical_waste",
   },
 ];
@@ -231,7 +230,7 @@ export const flatRecyclingServices = [
       "Plastic can be recycled using a communal bin with a red 'household plastic packaging' label.",
     content:
       "**How:** The recycling process takes place weekly. " +
-      "Please ensure that all items have been washed, squashed, with lids included, and loosely placed inside the bin.  \n",
+      "Please ensure that all items have been washed, squashed, with lids included, and loosely placed inside the bin. ",
     infographicImage: "./plastic_communal_bin_infographics.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
@@ -244,7 +243,7 @@ export const flatRecyclingServices = [
       "Metal can be recycled using a communal bin with a grey 'tins, cans & aerosols' label.",
     content:
       "**How:** The recycling process takes place weekly. " +
-      "Please ensure that all items have been loosely placed inside the bin.  \n",
+      "Please ensure that all items have been loosely placed inside the bin. ",
     infographicImage: "/metal_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
@@ -257,7 +256,7 @@ export const flatRecyclingServices = [
       "Cardboard can be recycled using a communal bin with a blue 'cardboard' label.",
     content:
       "**How:** The recycling process takes place weekly. " +
-      "Please ensure that all items have been flattened and loosely placed inside the bin.  \n",
+      "Please ensure that all items have been flattened and loosely placed inside the bin. ",
     infographicImage: "./card_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
@@ -270,7 +269,7 @@ export const flatRecyclingServices = [
       "Paper can be recycled using a communal bin with a blue 'paper' label.",
     content:
       "**How:** The recycling process takes place weekly. " +
-      "Please ensure that all items have been loosely placed inside the bin.  \n",
+      "Please ensure that all items have been loosely placed inside the bin. ",
     infographicImage: "/paper_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
@@ -283,7 +282,7 @@ export const flatRecyclingServices = [
       "Glass can be recycled using a communal bin with a teal 'mixed glass' label.",
     content:
       "**How:** The recycling process takes place weekly. " +
-      "Please ensure that all items have been loosely placed inside the bin.  \n",
+      "Please ensure that all items have been loosely placed inside the bin. ",
     infographicImage: "/glass_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
@@ -332,7 +331,7 @@ export const flatRecyclingServices = [
       "**What can be donated:** Bags, clothes, curtains, paired shoes, and others in good condition.  \n" +
       "&nbsp;  \n" +
       "**How:** You can utilise [TRAID charity](https://www.traid.org.uk/book-a-collection/) and " +
-      "[Salvation Army Textile Banks](https://www.salvationarmydonationcentre.org/bank-finder) to get your textiles recycled.  \n",
+      "[Salvation Army Textile Banks](https://www.salvationarmydonationcentre.org/bank-finder) to get your textiles recycled. ",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat/2",
   },
   {
@@ -344,7 +343,7 @@ export const flatRecyclingServices = [
       "**What can be donated:** Telephones, cameras, CD/DVD players, hairdryers, and others in good condition.  \n" +
       "&nbsp;  \n" +
       "**How:** You can utilise [TRAID charity](https://www.traid.org.uk/book-a-collection/) as an opportunity " +
-      "to get your small electrical appliances recycled.  \n",
+      "to get your small electrical appliances recycled. ",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat/2",
   },
   {
@@ -416,7 +415,7 @@ export const flatRecyclingServices = [
       "They are predominantly non-infectious, hence do not require treatment.  \n" +
       "&nbsp;  \n" +
       "These items should be securely tied in a black sack and placed with your household rubbish on the morning of your rubbish collection day. " +
-      "Please ensure this type of waste is properly wrapped and free from excess liquid.  \n",
+      "Please ensure this type of waste is properly wrapped and free from excess liquid. ",
     link: "https://www.hounslow.gov.uk/info/20002/recycling_and_rubbish/1527/clinical_waste",
   },
 ];
