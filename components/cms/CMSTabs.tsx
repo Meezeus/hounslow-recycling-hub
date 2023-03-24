@@ -6,6 +6,8 @@ import FactCMS from "./FactCMS";
 import { Fact } from "@/data/Facts";
 import QuizCMS from "./QuizCMS";
 import { Question } from "@/data/Quiz";
+import DumpedRubbishCMS from "./DumpedRubbishCMS";
+import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type CMSTabsProps = {
   // authToken: string;
@@ -13,6 +15,8 @@ type CMSTabsProps = {
   setFacts(facts: Fact[]): void;
   quiz: Question[];
   setQuiz(quiz: Question[]): void;
+  dumpedRubbishInfo: DumpedRubbishInfo;
+  setDumpedRubbishInfo(dumpedRubbishInfo: DumpedRubbishInfo): void;
 };
 
 export default function CMSTabs(props: CMSTabsProps) {
@@ -44,19 +48,21 @@ export default function CMSTabs(props: CMSTabsProps) {
         <Tab label="Events" {...a11yProps(2)} />
         <Tab label="Recycling Services (House)" {...a11yProps(3)} />
         <Tab label="Recycling Services (Flat)" {...a11yProps(4)} />
-        <Tab label="RReport Dumped Rubbish" {...a11yProps(5)} />
+        <Tab label="Report Dumped Rubbish" {...a11yProps(5)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
         <FactCMS
-          /*authToken={props.authToken}*/ facts={props.facts}
+          /*authToken={props.authToken}*/
+          facts={props.facts}
           setFacts={props.setFacts}
         />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
         <QuizCMS
-          /*authToken={props.authToken}*/ quiz={props.quiz}
+          /*authToken={props.authToken}*/
+          quiz={props.quiz}
           setQuiz={props.setQuiz}
         />
       </TabPanel>
@@ -74,7 +80,11 @@ export default function CMSTabs(props: CMSTabsProps) {
       </TabPanel>
 
       <TabPanel value={value} index={5}>
-        Item Six
+        <DumpedRubbishCMS
+          /*authToken={props.authToken}*/
+          dumpedRubbishInfo={props.dumpedRubbishInfo}
+          setDumpedRubbishInfo={props.setDumpedRubbishInfo}
+        />
       </TabPanel>
     </Box>
   );

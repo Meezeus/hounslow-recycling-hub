@@ -14,10 +14,12 @@ import style from "@/styles/cms/CMS.module.css";
 // Data Types
 import { facts, Fact } from "@/data/Facts";
 import { quiz, Question } from "@/data/Quiz";
+import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
   facts: Fact[];
   quiz: Question[];
+  dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
 export default /*withAuthenticator(*/ function CMS(
@@ -25,6 +27,9 @@ export default /*withAuthenticator(*/ function CMS(
 ) {
   const [facts, setFacts] = useState(props.facts);
   const [quiz, setQuiz] = useState(props.quiz);
+  const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
+    props.dumpedRubbishInfo
+  );
 
   // const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
   // const authToken = token !== undefined ? token : "";
@@ -45,10 +50,13 @@ export default /*withAuthenticator(*/ function CMS(
 
       <div className={style["page-content"]}>
         <CMSTabs
-          /*authToken={authToken}*/ facts={facts}
+          /*authToken={authToken}*/
+          facts={facts}
           setFacts={setFacts}
           quiz={quiz}
           setQuiz={setQuiz}
+          dumpedRubbishInfo={dumpedRubbishInfo}
+          setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
       </div>
 
@@ -63,11 +71,13 @@ export const getServerSideProps = async () => {
 
   const mockFacts = facts;
   const mockQuiz = quiz;
+  const mockDumpedRubbishInfo = dumpedRubbishInfo;
 
   return {
     props: {
       facts: mockFacts,
       quiz: mockQuiz,
+      dumpedRubbishInfo: mockDumpedRubbishInfo,
     },
   };
 };
