@@ -201,6 +201,17 @@ export default function EventCMS(props: EventCMSProps) {
           />
         </div>
 
+        <div className={style["form-text-field"]}>
+          <TextField
+            fullWidth
+            label="Event ID (leave blank unless updating an existing event)"
+            name="id"
+            variant="outlined"
+            value={newEvent.id}
+            onChange={handleChange}
+          />
+        </div>
+
         <div className={style["form-submit-button"]}>
           <Button
             variant="contained"
