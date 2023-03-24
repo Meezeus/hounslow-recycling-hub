@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, MouseEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
