@@ -10,6 +10,8 @@ import QuizCMS from "./QuizCMS";
 import { Question } from "@/data/Quiz";
 import EventCMS from "./EventCMS";
 import { Event } from "@/data/Events";
+import RecyclingServiceCMS from "./RecyclingServiceCMS";
+import { RecyclingService } from "@/data/RecyclingServices";
 import DumpedRubbishCMS from "./DumpedRubbishCMS";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
@@ -21,6 +23,10 @@ type CMSTabsProps = {
   setQuiz(quiz: Question[]): void;
   events: Event[];
   setEvents(events: Event[]): void;
+  houseRecyclingServices: RecyclingService[];
+  setHouseRecyclingServices(houseRecyclingServices: RecyclingService[]): void;
+  flatRecyclingServices: RecyclingService[];
+  setFlatRecyclingServices(flatRecyclingServices: RecyclingService[]): void;
   dumpedRubbishInfo: DumpedRubbishInfo;
   setDumpedRubbishInfo(dumpedRubbishInfo: DumpedRubbishInfo): void;
 };
@@ -82,11 +88,19 @@ export default function CMSTabs(props: CMSTabsProps) {
       </TabPanel>
 
       <TabPanel value={value} index={3}>
-        Item Four
+        <RecyclingServiceCMS
+          /*authToken={props.authToken}*/
+          recyclingServices={props.houseRecyclingServices}
+          setRecyclingServices={props.setHouseRecyclingServices}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={4}>
-        Item Five
+        <RecyclingServiceCMS
+          /*authToken={props.authToken}*/
+          recyclingServices={props.flatRecyclingServices}
+          setRecyclingServices={props.setFlatRecyclingServices}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={5}>

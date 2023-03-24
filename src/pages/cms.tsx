@@ -15,12 +15,19 @@ import style from "@/styles/cms/CMS.module.css";
 import { facts, Fact } from "@/data/Facts";
 import { quiz, Question } from "@/data/Quiz";
 import { events, Event } from "@/data/Events";
+import {
+  houseRecyclingServices,
+  flatRecyclingServices,
+  RecyclingService,
+} from "@/data/RecyclingServices";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
   facts: Fact[];
   quiz: Question[];
   events: Event[];
+  houseRecyclingServices: RecyclingService[];
+  flatRecyclingServices: RecyclingService[];
   dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
@@ -30,6 +37,12 @@ export default /*withAuthenticator(*/ function CMS(
   const [facts, setFacts] = useState(props.facts);
   const [quiz, setQuiz] = useState(props.quiz);
   const [events, setEvents] = useState(props.events);
+  const [houseRecyclingServices, setHouseRecyclingServices] = useState(
+    props.houseRecyclingServices
+  );
+  const [flatRecyclingServices, setFlatRecyclingServices] = useState(
+    props.flatRecyclingServices
+  );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
     props.dumpedRubbishInfo
   );
@@ -60,6 +73,10 @@ export default /*withAuthenticator(*/ function CMS(
           setQuiz={setQuiz}
           events={events}
           setEvents={setEvents}
+          houseRecyclingServices={houseRecyclingServices}
+          setHouseRecyclingServices={setHouseRecyclingServices}
+          flatRecyclingServices={flatRecyclingServices}
+          setFlatRecyclingServices={setFlatRecyclingServices}
           dumpedRubbishInfo={dumpedRubbishInfo}
           setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
@@ -77,6 +94,8 @@ export const getServerSideProps = async () => {
   const mockFacts = facts;
   const mockQuiz = quiz;
   const mockEvents = events;
+  const mockHouseRecyclingServices = houseRecyclingServices;
+  const mockFlatRecyclingServices = flatRecyclingServices;
   const mockDumpedRubbishInfo = dumpedRubbishInfo;
 
   return {
@@ -84,6 +103,8 @@ export const getServerSideProps = async () => {
       facts: mockFacts,
       quiz: mockQuiz,
       events: mockEvents,
+      houseRecyclingServices: mockHouseRecyclingServices,
+      flatRecyclingServices: mockFlatRecyclingServices,
       dumpedRubbishInfo: mockDumpedRubbishInfo,
     },
   };
