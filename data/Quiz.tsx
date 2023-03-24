@@ -1,4 +1,14 @@
-export const quizQuestions = [
+export type Question = {
+  question: string;
+  answers: Array<Answer>;
+};
+
+export type Answer = {
+  answer: string;
+  correct: boolean;
+};
+
+export const quiz = [
   {
     question: "What kind of item can you recycle using you red recycling box?",
     answers: [

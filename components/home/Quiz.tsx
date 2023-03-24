@@ -1,20 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { quizQuestions } from "@/data/Quiz";
+import { Question, quiz } from "@/data/Quiz";
 import style from "@/styles/home/Question.module.css";
 
-type QuizQuestion = {
-  question: string;
-  answers: Array<Option>;
-};
-
-type Option = {
-  answer: string;
-  correct: boolean;
-};
-
-export default function Question() {
-  const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>(
-    quizQuestions[Math.floor(Math.random() * quizQuestions.length)]
+export default function Quiz() {
+  const [currentQuestion, setCurrentQuestion] = useState<Question>(
+    quiz[Math.floor(Math.random() * quiz.length)]
   );
   const [isAnswerSelected, setAnswerSelected] = useState(false);
 
@@ -23,9 +13,7 @@ export default function Question() {
       setAnswerSelected(true);
       await new Promise((r) => setTimeout(r, 10000));
       setAnswerSelected(false);
-      setCurrentQuestion(
-        quizQuestions[Math.floor(Math.random() * quizQuestions.length)]
-      );
+      setCurrentQuestion(quiz[Math.floor(Math.random() * quiz.length)]);
     }
   };
 
@@ -33,20 +21,20 @@ export default function Question() {
     <div className={style["question-box"]}>
       <h2>{currentQuestion.question}</h2>
       <div className={style["question-box-answers"]}>
-        {currentQuestion.answers.map((option) => (
+        {currentQuestion.answers.map((answer) => (
           <button
-            key={currentQuestion.answers.indexOf(option)}
+            key={currentQuestion.answers.indexOf(answer)}
             className={
               style["answer-button"] +
               (isAnswerSelected
-                ? option.correct
+                ? answer.correct
                   ? " " + style["border-correct"]
                   : " " + style["border-incorrect"]
                 : "")
             }
             onClick={() => handleAnswerClick()}
           >
-            {option.answer}
+            {answer.answer}
           </button>
         ))}
       </div>

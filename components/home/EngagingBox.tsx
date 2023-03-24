@@ -1,7 +1,7 @@
 // This file contains the box which displays either a quiz question or a fun fact
 import React, { useState, useEffect } from "react";
 import Fact from "./Fact";
-import Question from "./Question";
+import Quiz from "./Quiz";
 import style from "@/styles/home/EngagingBox.module.css";
 
 type EngagingBoxProps = {
@@ -22,7 +22,7 @@ export default function EngagingBox(props: EngagingBoxProps) {
   return (
     <div className={style["engaging-box-wrapper"]}>
       {randNum == 0 && <Fact />}
-      {randNum == 1 && <Question />}
+      {randNum == 1 && <Quiz />}
     </div>
   );
 }
