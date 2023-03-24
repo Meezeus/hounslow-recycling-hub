@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Amplify } from "aws-amplify";
 import awsconfig from "../aws-exports";
 // Amplify.configure(awsconfig);
@@ -20,8 +21,10 @@ type Props = {
 export default /*withAuthenticator(*/ function CMS(
   /*{ signOut, user }, */ props: Props
 ) {
+  const [facts, setFacts] = useState(props.facts);
   // const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
   // const authToken = token !== undefined ? token : "";
+
   return (
     <>
       <Head>
@@ -37,7 +40,7 @@ export default /*withAuthenticator(*/ function CMS(
       {/* <UserHeader signOut={signOut} user={user} /> */}
 
       <div className={style["page-content"]}>
-        <CMSTabs /*authToken={authToken}*/ facts={props.facts} />
+        <CMSTabs /*authToken={authToken}*/ facts={facts} setFacts={setFacts} />
       </div>
 
       <Footer />

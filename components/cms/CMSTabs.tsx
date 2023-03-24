@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -7,13 +7,14 @@ import { Facts } from "@/data/Facts";
 
 type CMSTabsProps = {
   facts: Facts[];
+  setFacts(facts: Facts[]): void;
   // authToken: string;
 };
 
 export default function CMSTabs(props: CMSTabsProps) {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event: SyntheticEvent, newValue: number) => {
+  const handleChange = (newValue: number) => {
     setValue(newValue);
   };
 
@@ -28,7 +29,7 @@ export default function CMSTabs(props: CMSTabsProps) {
         centered
         variant="standard"
         value={value}
-        onChange={handleChange}
+        onChange={(event, value) => handleChange(value)}
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="Category Tabs"
@@ -39,10 +40,14 @@ export default function CMSTabs(props: CMSTabsProps) {
         <Tab label="Events" {...a11yProps(2)} />
         <Tab label="Recycling Services (House)" {...a11yProps(3)} />
         <Tab label="Recycling Services (Flat)" {...a11yProps(4)} />
+        <Tab label="RReport Dumped Rubbish" {...a11yProps(5)} />
       </Tabs>
 
       <TabPanel value={value} index={0}>
-        <FactCMS /*authToken={props.authToken}*/ facts={props.facts} />
+        <FactCMS
+          /*authToken={props.authToken}*/ facts={props.facts}
+          setFacts={props.setFacts}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
@@ -59,6 +64,10 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={4}>
         Item Five
+      </TabPanel>
+
+      <TabPanel value={value} index={5}>
+        Item Six
       </TabPanel>
     </Box>
   );
