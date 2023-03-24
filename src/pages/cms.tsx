@@ -13,15 +13,19 @@ import style from "@/styles/cms/CMS.module.css";
 
 // Data Types
 import { facts, Fact } from "@/data/Facts";
+import { quiz, Question } from "@/data/Quiz";
 
 type Props = {
   facts: Fact[];
+  quiz: Question[];
 };
 
 export default /*withAuthenticator(*/ function CMS(
   /*{ signOut, user }, */ props: Props
 ) {
   const [facts, setFacts] = useState(props.facts);
+  const [quiz, setQuiz] = useState(props.quiz);
+
   // const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
   // const authToken = token !== undefined ? token : "";
 
@@ -40,7 +44,12 @@ export default /*withAuthenticator(*/ function CMS(
       {/* <UserHeader signOut={signOut} user={user} /> */}
 
       <div className={style["page-content"]}>
-        <CMSTabs /*authToken={authToken}*/ facts={facts} setFacts={setFacts} />
+        <CMSTabs
+          /*authToken={authToken}*/ facts={facts}
+          setFacts={setFacts}
+          quiz={quiz}
+          setQuiz={setQuiz}
+        />
       </div>
 
       <Footer />
@@ -53,10 +62,12 @@ export const getServerSideProps = async () => {
   // const facts = await resFacts.json();
 
   const mockFacts = facts;
+  const mockQuiz = quiz;
 
   return {
     props: {
       facts: mockFacts,
+      quiz: mockQuiz,
     },
   };
 };

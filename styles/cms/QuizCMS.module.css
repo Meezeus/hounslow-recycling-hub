@@ -1,0 +1,23 @@
+.subheading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0px 20px 0px;
+  color: black;
+}
+
+.form-field {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+  color: black;
+}
+
+.form-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px;
+}

@@ -4,11 +4,15 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import FactCMS from "./FactCMS";
 import { Fact } from "@/data/Facts";
+import QuizCMS from "./QuizCMS";
+import { Question } from "@/data/Quiz";
 
 type CMSTabsProps = {
+  // authToken: string;
   facts: Fact[];
   setFacts(facts: Fact[]): void;
-  // authToken: string;
+  quiz: Question[];
+  setQuiz(quiz: Question[]): void;
 };
 
 export default function CMSTabs(props: CMSTabsProps) {
@@ -51,7 +55,10 @@ export default function CMSTabs(props: CMSTabsProps) {
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        Item Two
+        <QuizCMS
+          /*authToken={props.authToken}*/ quiz={props.quiz}
+          setQuiz={props.setQuiz}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
