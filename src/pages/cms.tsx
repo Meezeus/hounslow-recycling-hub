@@ -14,11 +14,13 @@ import style from "@/styles/cms/CMS.module.css";
 // Data Types
 import { facts, Fact } from "@/data/Facts";
 import { quiz, Question } from "@/data/Quiz";
+import { events, Event } from "@/data/Events";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
   facts: Fact[];
   quiz: Question[];
+  events: Event[];
   dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
@@ -27,6 +29,7 @@ export default /*withAuthenticator(*/ function CMS(
 ) {
   const [facts, setFacts] = useState(props.facts);
   const [quiz, setQuiz] = useState(props.quiz);
+  const [events, setEvents] = useState(props.events);
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
     props.dumpedRubbishInfo
   );
@@ -55,6 +58,8 @@ export default /*withAuthenticator(*/ function CMS(
           setFacts={setFacts}
           quiz={quiz}
           setQuiz={setQuiz}
+          events={events}
+          setEvents={setEvents}
           dumpedRubbishInfo={dumpedRubbishInfo}
           setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
@@ -71,12 +76,14 @@ export const getServerSideProps = async () => {
 
   const mockFacts = facts;
   const mockQuiz = quiz;
+  const mockEvents = events;
   const mockDumpedRubbishInfo = dumpedRubbishInfo;
 
   return {
     props: {
       facts: mockFacts,
       quiz: mockQuiz,
+      events: mockEvents,
       dumpedRubbishInfo: mockDumpedRubbishInfo,
     },
   };

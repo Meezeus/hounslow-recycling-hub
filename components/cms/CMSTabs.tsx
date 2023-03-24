@@ -1,11 +1,15 @@
 import { useState } from "react";
+
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+
 import FactCMS from "./FactCMS";
 import { Fact } from "@/data/Facts";
 import QuizCMS from "./QuizCMS";
 import { Question } from "@/data/Quiz";
+import EventCMS from "./EventCMS";
+import { Event } from "@/data/Events";
 import DumpedRubbishCMS from "./DumpedRubbishCMS";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
@@ -15,6 +19,8 @@ type CMSTabsProps = {
   setFacts(facts: Fact[]): void;
   quiz: Question[];
   setQuiz(quiz: Question[]): void;
+  events: Event[];
+  setEvents(events: Event[]): void;
   dumpedRubbishInfo: DumpedRubbishInfo;
   setDumpedRubbishInfo(dumpedRubbishInfo: DumpedRubbishInfo): void;
 };
@@ -68,7 +74,11 @@ export default function CMSTabs(props: CMSTabsProps) {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        Item Three
+        <EventCMS
+          /*authToken={props.authToken}*/
+          events={props.events}
+          setEvents={props.setEvents}
+        />
       </TabPanel>
 
       <TabPanel value={value} index={3}>
