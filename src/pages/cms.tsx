@@ -12,10 +12,10 @@ import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
 
 // Data Types
-import { facts, Facts } from "@/data/Facts";
+import { facts, Fact } from "@/data/Facts";
 
 type Props = {
-  facts: Facts[];
+  facts: Fact[];
 };
 
 export default /*withAuthenticator(*/ function CMS(

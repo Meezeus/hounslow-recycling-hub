@@ -4,12 +4,12 @@ import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { Facts } from "@/data/Facts";
+import { Fact } from "@/data/Facts";
 import style from "@/styles/cms/FactCMS.module.css";
 
 type FactCMSProps = {
-  facts: Facts[];
-  setFacts(facts: Facts[]): void;
+  facts: Fact[];
+  setFacts(facts: Fact[]): void;
   // authToken: string;
 };
 

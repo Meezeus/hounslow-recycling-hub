@@ -3,11 +3,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import FactCMS from "./FactCMS";
-import { Facts } from "@/data/Facts";
+import { Fact } from "@/data/Facts";
 
 type CMSTabsProps = {
-  facts: Facts[];
-  setFacts(facts: Facts[]): void;
+  facts: Fact[];
+  setFacts(facts: Fact[]): void;
   // authToken: string;
 };
 
