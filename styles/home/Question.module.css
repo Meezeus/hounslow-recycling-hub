@@ -25,7 +25,9 @@
   font-weight: bold;
   padding: 10px;
   cursor: pointer;
-  border: 5px solid transparent;
+  /*border: 5px solid transparent;*/
+  background: white;
+  border: 1px solid #642f6c;
   border-radius: 15px;
 }
 
