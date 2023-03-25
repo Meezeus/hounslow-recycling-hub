@@ -18,6 +18,12 @@
   justify-content: center;
 }
 
+.event-card-carousel-button {
+  min-width: 100px;
+  padding: 10px;
+  margin: 0px;
+}
+
 .event-card-carousel-button:disabled {
   --btn-bg-1: rgb(138, 138, 138);
   --btn-bg-2: rgb(87, 87, 87);
