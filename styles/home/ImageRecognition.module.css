@@ -1,33 +1,32 @@
 .image-recognition-wrapper {
-  background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  margin: 30px 300px;
-  text-align: center;
-  align-items: center;
-  padding: 25px 0px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   gap: 10px;
+  position: relative;
+  background-color: white;
+  padding: 25px 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.19);
+}
+
+.image-recognition-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
+  background: linear-gradient(to top, #642f6c 0%, transparent 100%);
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .image-recognition-preview {
-  max-width: 300px;
+  max-width: 100%;
   max-height: 300px;
   align-items: center;
-}
-
-.image-recognition-button {
-  width: 20%;
-  min-width: 200px;
-  margin: 20px 10px 0px 10px;
-  padding: 10px;
-  border-width: 0;
-  border-radius: 5px;
-  background-color: #c29ec7;
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
 }

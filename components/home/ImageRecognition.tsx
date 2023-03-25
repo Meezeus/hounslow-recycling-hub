@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "antd";
+import React, { useState, useEffect, useRef } from "react";
 import style from "@/styles/home/ImageRecognition.module.css";
+import buttonStyle from "@/styles/home/Button.module.css";
+import {
+  labelToFlatServices,
+  labelToHouseServices,
+} from "@/data/ImageRecognitionMapping";
 
 const ML_ENDPOINT =
   "https://ijtiasa89d.execute-api.eu-west-2.amazonaws.com/default/ML_model";
@@ -10,7 +14,7 @@ const MAX_IMAGE_FILE_SIZE = 4000000;
 
 type ImageRecognitionProps = {
   showFlatVersion: boolean;
-  openAccordion(id: string): void;
+  jumpToAccordion(event: React.MouseEvent<HTMLButtonElement>, id: string): void;
 };
 
 export default function ImageRecognition(props: ImageRecognitionProps) {
@@ -18,34 +22,18 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
   const [imageURL, setImageURL] = useState("");
   const [imageCategory, setImageCategory] = useState("");
 
+  const formRef = useRef<HTMLFormElement>(null);
+
   const labelsToServices = props.showFlatVersion
-    ? new Map<string, string>([
-        ["plastic", "Plastic Recycling Service"],
-        ["metal", "Metal Recycling Service"],
-        ["cardboard", "Card Recycling Service"],
-        ["paper", "Paper Recycling Service"],
-        ["glass", "Glass Recycling Service"],
-        ["food", "Food Waste Recycling Service"],
-        ["rubbish", "General Waste Collection Service"],
-        ["textile", "Textiles Recycling"],
-        ["small electrical", "Small Electrical Items Recycling"],
-        ["bulky waste", "Bulky Waste Collection Service"],
-        ["clinical waste", "Clinical Waste Collection Service"],
-      ])
-    : new Map<string, string>([
-        ["plastic", "Plastic and Metal Recycling Service"],
-        ["metal", "Plastic and Metal Recycling Service"],
-        ["cardboard", "Paper and Card Recycling Service"],
-        ["paper", "Paper and Card Recycling Service"],
-        ["glass", "Glass Recycling Service"],
-        ["food", "Food Waste Recycling Service"],
-        ["rubbish", "General Waste Collection Service"],
-        ["textile", "Textile Recycling Service"],
-        ["small electrical", "Small Electrical Items Recycling Service"],
-        ["bulky waste", "Bulky Waste Collection Service"],
-        ["clinical waste", "Clinical Waste Collection Service"],
-        ["garden waste", "Garden Waste Recycling Service"],
-      ]);
+    ? labelToFlatServices
+    : labelToHouseServices;
+
+  // This hook is called when the page version changes. It resets the image recognition.
+  useEffect(() => {
+    setImageFile(undefined);
+    setImageCategory("");
+    formRef.current?.reset();
+  }, [props.showFlatVersion]);
 
   // This hook is called whenever the image file changes. It creates the preview
   // for the image.
@@ -115,19 +103,9 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
     };
   };
 
-  async function jumpToAccordion(
-    event: React.MouseEvent<HTMLButtonElement>,
-    id: string
-  ) {
-    event.stopPropagation();
-    props.openAccordion(id);
-    await new Promise((r) => setTimeout(r, 200));
-    document.getElementById(id)?.scrollIntoView();
-  }
-
   return (
     <div className={style["image-recognition-wrapper"]}>
-      <h2>Upload an image here:</h2>
+      <h2>Or upload an image of your item here!</h2>
       <p>
         {`Image must be less than 4 MB, smaller than 4096x4096, 
         and one of the following types: ${ACCEPTABLE_IMAGE_TYPES.join(", ")}.`}
@@ -142,22 +120,29 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
         </div>
       )}
       <div>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        <form ref={formRef}>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+        </form>
       </div>
       <div>
-        <Button onClick={classifyImage}>Submit</Button>
+        <button className={buttonStyle["button"]} onClick={classifyImage}>
+          Submit
+        </button>
       </div>
       {imageCategory && (
         <div>
           <h4> This item was categorized as {imageCategory}. </h4>
           {labelsToServices.get(imageCategory) ? (
             <>
-              <h4> You can use the {labelsToServices.get(imageCategory)}. </h4>
+              <h4>{labelsToServices.get(imageCategory)?.name}</h4>
               <button
-                className={style["image-recognition-button"]}
+                className={buttonStyle["button"]}
                 type="button"
                 onClick={(event) =>
-                  jumpToAccordion(event, labelsToServices.get(imageCategory)!)
+                  props.jumpToAccordion(
+                    event,
+                    labelsToServices.get(imageCategory)!.id
+                  )
                 }
               >
                 Click here for more info!

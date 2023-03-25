@@ -1,7 +1,6 @@
 .recycling-service-accordion-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 20px 40px;
   grid-gap: 20px;
 }
 

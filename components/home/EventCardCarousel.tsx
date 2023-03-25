@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import EventCard from "./EventCard";
 import { Events } from "@/data/Events";
 import style from "@/styles/home/EventCardCarousel.module.css";
+import buttonStyle from "@/styles/home/Button.module.css";
 
 type EventCardCarouselProps = {
   events: Array<Events>;
@@ -31,10 +31,12 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
     <div className={style["event-card-carousel-container"]}>
       <div className={style["event-card-carousel-button-div"]}>
         <button
-          className={style["event-card-carousel-button"]}
+          className={
+            buttonStyle["button"] + " " + style["event-card-carousel-button"]
+          }
           type="button"
           disabled={isDisabledPrevious}
-          onClick={() => setRange(range.map((x) => x - 3))}
+          onClick={() => setRange(range.map((x) => x - 1))}
         >
           Previous
         </button>
@@ -42,7 +44,7 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
       <div className={style["event-card-carousel"]}>
         {displayedEvents.map((event) => (
           <EventCard
-            key={uuidv4()}
+            key={props.events.indexOf(event)}
             image={event.image}
             title={event.title}
             date={event.date}
@@ -52,10 +54,12 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
       </div>
       <div className={style["event-card-carousel-button-div"]}>
         <button
-          className={style["event-card-carousel-button"]}
+          className={
+            buttonStyle["button"] + " " + style["event-card-carousel-button"]
+          }
           type="button"
           disabled={isDisabledNext}
-          onClick={() => setRange(range.map((x) => x + 3))}
+          onClick={() => setRange(range.map((x) => x + 1))}
         >
           Next
         </button>

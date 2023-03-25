@@ -1,21 +1,22 @@
 .recycling-service-accordion-wrapper {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  background-color: #af63bb;
+  background-color: #ffffff;
   border-style: solid;
-  border-width: 3px;
-  border-radius: 15px;
+  border-width: 5px;
+  border-radius: 20px;
+  border-color: #642f6c;
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(79, 40, 110, 0.2),
+    0 6px 20px 0 rgba(107, 58, 144, 0.3);
 }
 
 .recycling-service-accordion-wrapper:hover {
-  filter: brightness(80%);
+  filter: brightness(95%);
 }
 
 .recycling-service-accordion {
   display: grid;
-  grid-template-rows: auto 1fr;
-  padding: 10px 20px;
+  grid-template-rows: auto 1fr auto;
+  padding: 20px;
   text-align: center;
 }
 

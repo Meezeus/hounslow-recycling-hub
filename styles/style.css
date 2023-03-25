@@ -3,7 +3,7 @@
 ========================================*/
 
 * {
-  font-family: "Lato";
+  font-family: Georgia, serif;
 }
 
 /*========================================
@@ -24,7 +24,7 @@ a:hover {
     PAGE CONTENT
 ========================================*/
 
-.page-content {
+.page {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
@@ -40,7 +40,8 @@ a:hover {
 
 .home-popup-content {
   margin: auto;
-  background: #af63bb;
+  background: #8e43de;
+  color: white;
   width: 50%;
   min-width: 200px;
   padding: 20px;
@@ -83,22 +84,51 @@ a:hover {
 }
 
 .home-popup-close:hover {
-  filter: brightness(80%);
+  filter: brightness(90%);
 }
 
-.home-popup-button {
-  width: 100px;
-  height: 50px;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  margin: 20px;
+.toTop {
+  position: fixed;
+  right: 50px;
+  bottom: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
   cursor: pointer;
-  border: 2px solid black;
-  border-radius: 5px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #4f1d4b;
+  color: #e5e5e5;
+  font-weight: 500;
+  box-shadow: inset 20px 20px 39px #593056, inset -20px -20px 39px #571d54;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 100;
 }
 
-.home-popup-button:hover {
-  filter: brightness(80%);
+.toTop::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -10px;
+  top: -10px;
+  border-radius: 50%;
+  width: calc(100% + 20px);
+  height: calc(100% + 20px);
+  background: linear-gradient(
+    35deg,
+    rgb(104, 47, 97),
+    rgb(218, 57, 143),
+    rgb(23, 135, 255)
+  );
+  filter: blur(10px);
+  animation: rotcirclegr 1s linear infinite;
+}
+
+@keyframes rotcirclegr {
+  to {
+    transform: rotate(360deg);
+  }
 }
