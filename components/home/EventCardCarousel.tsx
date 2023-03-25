@@ -42,9 +42,9 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
         </button>
       </div>
       <div className={style["event-card-carousel"]}>
-        {displayedEvents.map((event, index) => (
+        {displayedEvents.map((event) => (
           <EventCard
-            key={index}
+            key={props.events.indexOf(event)}
             image={event.image}
             title={event.title}
             date={event.date}
