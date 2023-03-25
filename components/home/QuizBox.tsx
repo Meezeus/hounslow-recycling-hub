@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Question } from "@/data/Quiz";
-import style from "@/styles/home/Question.module.css";
+import style from "@/styles/home/QuizBox.module.css";
 
 type QuizBoxProps = {
   quiz: Question[];

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Fact } from "@/data/Facts";
-import style from "@/styles/home/Fact.module.css";
+import style from "@/styles/home/FactBox.module.css";
 
 type FactBoxProps = {
   facts: Fact[];
