@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import EventCard from "./EventCard";
 import { Events } from "@/data/Events";
 import style from "@/styles/home/EventCardCarousel.module.css";
@@ -43,9 +42,9 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
         </button>
       </div>
       <div className={style["event-card-carousel"]}>
-        {displayedEvents.map((event) => (
+        {displayedEvents.map((event, index) => (
           <EventCard
-            key={uuidv4()}
+            key={index}
             image={event.image}
             title={event.title}
             date={event.date}
