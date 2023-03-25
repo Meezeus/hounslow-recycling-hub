@@ -169,11 +169,11 @@ export default function Home(props: Props) {
             ref={recyclingAssistantRef}
           />
         </div>
-        <ImageRecognition
+        <DecisionTree
           showFlatVersion={showFlatVersion!}
           jumpToAccordion={jumpToAccordion}
         />
-        <DecisionTree
+        <ImageRecognition
           showFlatVersion={showFlatVersion!}
           jumpToAccordion={jumpToAccordion}
         />
