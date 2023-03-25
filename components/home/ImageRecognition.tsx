@@ -105,7 +105,7 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
 
   return (
     <div className={style["image-recognition-wrapper"]}>
-      <h2>Upload an image of your item here:</h2>
+      <h2>Or upload an image of your item here!</h2>
       <p>
         {`Image must be less than 4 MB, smaller than 4096x4096, 
         and one of the following types: ${ACCEPTABLE_IMAGE_TYPES.join(", ")}.`}

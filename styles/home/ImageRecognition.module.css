@@ -1,5 +1,5 @@
 .image-recognition-wrapper {
-  margin-top: 75px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +20,7 @@
   left: -25px;
   right: -25px;
   bottom: -25px;
-  /*background: linear-gradient(to right, #d860f9 0%, #6656c0 100%);*/
-  background: #642f6c;
+  background: linear-gradient(to top, #642f6c 0%, transparent 100%);
   border-radius: 20px;
   z-index: -1;
 }
@@ -31,18 +30,3 @@
   max-height: 300px;
   align-items: center;
 }
-
-/*
-.image-recognition-button {
-  width: 30%;
-  min-width: 200px;
-  margin: 20px 10px 0px 10px;
-  padding: 10px;
-  border-width: 0;
-  border-radius: 5px;
-  background-color: #8e43de;
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
-}
-*/
