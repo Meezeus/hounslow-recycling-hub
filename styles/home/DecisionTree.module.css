@@ -14,7 +14,8 @@
   left: -25px;
   right: -25px;
   bottom: -25px;
-  background: linear-gradient(to right, #d860f9 0%, #6656c0 100%);
+  /*background: linear-gradient(to right, #d860f9 0%, #6656c0 100%);*/
+  background: #642f6c;
   border-radius: 20px;
   z-index: -1;
 }
