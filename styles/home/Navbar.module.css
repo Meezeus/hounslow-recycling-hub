@@ -69,12 +69,12 @@
 
 .navbar-anchor:hover {
   color: white;
-  background: #a516cc;
+  background: #665b6a;
   text-decoration: none;
 }
 
 .navbar-anchor:hover::before {
-  background: #a516cc;
+  background: #97879c;
 }
 
 .switch-with-labels {
