@@ -58,11 +58,18 @@ export default React.forwardRef<HTMLDivElement, RecyclingServiceAccordionProps>(
                 alt=""
               />
             ) : (
-              <br />
+              ""
             )}
-            <ReactMarkdown>
-              {`[Link for more details.](${props.link})`}
-            </ReactMarkdown>
+            {props.link != null ? (
+              <>
+                <br />
+                <ReactMarkdown>
+                  {`[Link for more details.](${props.link})`}
+                </ReactMarkdown>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
