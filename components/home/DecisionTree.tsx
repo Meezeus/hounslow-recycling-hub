@@ -12,7 +12,7 @@ type Option = {
 // type Question = {
 //   id: number;
 //   question: string;
-//   options: Array<Option>;
+//   options: Option[];
 // };
 
 export default function DecisionTree() {

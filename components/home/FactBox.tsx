@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { facts } from "@/data/Facts";
-import style from "@/styles/home/Fact.module.css";
+import { Fact } from "@/data/Facts";
+import style from "@/styles/home/FactBox.module.css";
 
-type Fact = {
-  title: string;
-  content: string;
+type FactBoxProps = {
+  facts: Fact[];
 };
 
-export default function Fact() {
+export default function FactBox(props: FactBoxProps) {
   const [currentFact, setCurrentFact] = useState<Fact>(
-    facts[Math.floor(Math.random() * facts.length)]
+    props.facts[Math.floor(Math.random() * props.facts.length)]
   );
 
   return (

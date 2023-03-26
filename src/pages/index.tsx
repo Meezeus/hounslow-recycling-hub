@@ -15,18 +15,22 @@ import DumpedRubbishSection from "@/components/home/DumpedRubbishSection";
 import Footer from "@/components/Footer";
 
 // Data and Data Types
+import { facts, Fact } from "@/data/Facts";
+import { quiz, Question } from "@/data/Quiz";
+import { events, Event } from "@/data/Events";
 import {
   houseRecyclingServices,
   flatRecyclingServices,
-  RecyclingServices,
+  RecyclingService,
 } from "@/data/RecyclingServices";
-import { events, Events } from "@/data/Events";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
-  events: Events[];
-  houseRecyclingServices: RecyclingServices[];
-  flatRecyclingServices: RecyclingServices[];
+  facts: Fact[];
+  quiz: Question[];
+  events: Event[];
+  houseRecyclingServices: RecyclingService[];
+  flatRecyclingServices: RecyclingService[];
   dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
@@ -115,7 +119,11 @@ export default function Home(props: Props) {
         toggle={toggleVersion}
       />
 
-      <EngagingBox showFlatVersion={showFlatVersion!} />
+      <EngagingBox
+        showFlatVersion={showFlatVersion!}
+        facts={props.facts}
+        quiz={props.quiz}
+      />
 
       <Subheading title="Recycling Assistant" id="DecisionTree" />
       <DecisionTree />
@@ -154,7 +162,6 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps = async () => {
-  
   // FETCHING DATA FROM BACKEND
   // UNCOMMENT WHEN READY TO DEPLOY
 
@@ -167,9 +174,9 @@ export const getServerSideProps = async () => {
   // const resFRS = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/flatrecyclingservices`)
   // const flatRecyclingServices = await resFRS.json()
 
-  
-
   // Mock data from data folder
+  const mockFacts = facts;
+  const mockQuiz = quiz;
   const mockEvents = events;
   const mockHouseRecyclingServices = houseRecyclingServices;
   const mockFlatRecyclingServices = flatRecyclingServices;
@@ -177,6 +184,8 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
+      facts: mockFacts,
+      quiz: mockQuiz,
       events: mockEvents,
       houseRecyclingServices: mockHouseRecyclingServices,
       flatRecyclingServices: mockFlatRecyclingServices,
