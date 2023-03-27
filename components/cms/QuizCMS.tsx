@@ -20,7 +20,7 @@ import style from "@/styles/cms/QuizCMS.module.css";
 type QuizCMSProps = {
   quiz: Question[];
   setQuiz(quiz: Question[]): void;
-  // authToken: string;
+  authToken: string;
 };
 
 export default function QuizCMS(props: QuizCMSProps) {
@@ -128,7 +128,17 @@ export default function QuizCMS(props: QuizCMSProps) {
       (answer) => (correct = correct && answer.answer != "")
     );
     if (correct) {
-      // <update database here>
+      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}` 
+      const res = await fetch(`/api/quiz${updateurl}`, {
+        method: "POST",
+        body: JSON.stringify(newQuestion),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      console.log(status);
       window.location.reload();
     }
   }
@@ -144,7 +154,15 @@ export default function QuizCMS(props: QuizCMSProps) {
   }
 
   async function handleDeleteClick(id: string) {
-    // <update database here>
+    const res = await fetch(`/api/quiz/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Authorization: props.authToken,
+      },
+    });
+    const status = await res.status;
+    console.log(status);
     props.setQuiz(props.quiz.filter((question) => question.id != id));
   }
 
@@ -176,11 +194,13 @@ export default function QuizCMS(props: QuizCMSProps) {
     );
   }
 
+  const cmsformtitle = newQuestion.id === "" ? "Create new Question" : `Editing question with ID:: ${newQuestion.id}` 
+
   return (
     <div>
       <form>
         <div id="create-new-question" className={style["subheading"]}>
-          <h1>Create New Question</h1>
+          <h1>{ cmsformtitle }</h1>
         </div>
 
         <div className={style["form-field"]}>
@@ -217,17 +237,6 @@ export default function QuizCMS(props: QuizCMSProps) {
         </div>
 
         {answerComponents}
-
-        <div className={style["form-text-field"]}>
-          <TextField
-            fullWidth
-            label="Question ID (leave blank unless updating an existing question)"
-            name="id"
-            variant="outlined"
-            value={newQuestion.id}
-            onChange={handleIDOnChange}
-          />
-        </div>
 
         <div className={style["form-submit-button"]}>
           <Button

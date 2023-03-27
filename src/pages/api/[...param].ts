@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const api = "https://f6omof7w1e.execute-api.eu-west-1.amazonaws.com/prod";
+const api = process.env.API_URL;
 
 export default async function handler(
   req: NextApiRequest,
@@ -28,7 +28,8 @@ export default async function handler(
       mode: "cors",
       headers: headers,
     });
-    res.status(resapi.status).json(resapi.body);
+    const body = await resapi.json()
+    res.status(resapi.status).json(body);
   } else if (req.method === "PATCH" || req.method === "POST") {
     const resapi = await fetch(url, {
       method: req.method,

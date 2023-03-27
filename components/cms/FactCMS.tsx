@@ -10,7 +10,7 @@ import style from "@/styles/cms/FactCMS.module.css";
 type FactCMSProps = {
   facts: Fact[];
   setFacts(facts: Fact[]): void;
-  // authToken: string;
+  authToken: string;
 };
 
 export default function FactCMS(props: FactCMSProps) {
@@ -22,16 +22,17 @@ export default function FactCMS(props: FactCMSProps) {
 
   async function submitFact() {
     if (newFact.title != "" && newFact.content != "") {
-      // const res = await fetch("/api/facts", {
-      //   method: "POST",
-      //   body: JSON.stringify(newFact),
-      //   headers: {
-      //     "content-type": "application/json",
-      //     // Authorization: props.authToken,
-      //   },
-      // });
-      // const status = await res.status;
-      // console.log(status);
+      const updateurl = newFact.id === "" ? "" : `/${newFact.id}` 
+      const res = await fetch(`/api/facts${updateurl}`, {
+        method: "POST",
+        body: JSON.stringify(newFact),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      console.log(status);
       window.location.reload();
     }
   }
@@ -42,15 +43,25 @@ export default function FactCMS(props: FactCMSProps) {
   }
 
   async function handleDeleteClick(id: string) {
-    // <update database here>
+    const res = await fetch(`/api/facts/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Authorization: props.authToken,
+      },
+    });
+    const status = await res.status;
+    console.log(status);
     props.setFacts(props.facts.filter((fact) => fact.id != id));
   }
+
+  const cmsformtitle = newFact.id === "" ? "Create new Fact" : `Editing fact with ID: ${newFact.id}` 
 
   return (
     <div>
       <form>
         <div id="create-new-fact" className={style["subheading"]}>
-          <h1>Create New Fact</h1>
+          <h1>{ cmsformtitle }</h1>
         </div>
 
         <div className={style["markdown-guide"]}>
@@ -101,17 +112,6 @@ export default function FactCMS(props: FactCMSProps) {
             name="content"
             variant="outlined"
             value={newFact.content}
-            onChange={handleChange}
-          />
-        </div>
-
-        <div className={style["form-text-field"]}>
-          <TextField
-            fullWidth
-            label="Fact ID (leave blank unless updating an existing fact)"
-            name="id"
-            variant="outlined"
-            value={newFact.id}
             onChange={handleChange}
           />
         </div>

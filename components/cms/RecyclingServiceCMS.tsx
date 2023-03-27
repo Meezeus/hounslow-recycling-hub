@@ -16,7 +16,7 @@ import style from "@/styles/cms/RecyclingServiceCMS.module.css";
 type RecyclingServiceCMSProps = {
   recyclingServices: RecyclingService[];
   setRecyclingServices(recyclingServices: RecyclingService[]): void;
-  // authToken: string;
+  authToken: string;
 };
 
 export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
@@ -133,12 +133,12 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
       recyclingService.content != "" &&
       recyclingService.link != ""
     ) {
-      // const res = await fetch("/api/facts", {
+      // const res = await fetch("/api/f", {
       //   method: "POST",
-      //   body: JSON.stringify(newFact),
+      //   body: JSON.stringify(recyclingService),
       //   headers: {
       //     "content-type": "application/json",
-      //     // Authorization: props.authToken,
+      //     Authorization: props.authToken,
       //   },
       // });
       // const status = await res.status;
