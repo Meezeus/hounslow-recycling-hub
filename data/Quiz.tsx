@@ -1,6 +1,6 @@
 export const quizQuestions = [
   {
-    question: "What kind of item can you recycle using you red recycling box?",
+    question: "What kind of item can you recycle using your red recycling box?",
     answers: [
       {
         answer: "Plastic",
@@ -21,7 +21,7 @@ export const quizQuestions = [
     ],
   },
   {
-    question: "What kind of item can you recycle using you red recycling box?",
+    question: "What kind of item can you recycle using your red recycling box?",
     answers: [
       {
         answer: "Metal",
@@ -42,7 +42,8 @@ export const quizQuestions = [
     ],
   },
   {
-    question: "What kind of item can you recycle using you blue recycling box?",
+    question:
+      "What kind of item can you recycle using your blue recycling box?",
     answers: [
       {
         answer: "Plastic",
@@ -63,7 +64,8 @@ export const quizQuestions = [
     ],
   },
   {
-    question: "What kind of item can you recycle using you blue recycling box?",
+    question:
+      "What kind of item can you recycle using your blue recycling box?",
     answers: [
       {
         answer: "Plastic",
@@ -85,7 +87,7 @@ export const quizQuestions = [
   },
   {
     question:
-      "What kind of item can you recycle using you green recycling box?",
+      "What kind of item can you recycle using your green recycling box?",
     answers: [
       {
         answer: "Plastic",
