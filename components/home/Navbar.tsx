@@ -66,11 +66,11 @@ export default function Navbar(props: NavbarProps) {
             );
           })}
           <a
-                className={style["navbar-anchor"]}
-                href="https://www.hounslow.gov.uk/homepage/86/recycling_and_waste_collection_day_finder"
-              >
-                Find Your Collection Day
-              </a>
+            className={style["navbar-anchor"]}
+            href="https://www.hounslow.gov.uk/homepage/86/recycling_and_waste_collection_day_finder"
+          >
+            Find Your Collection Day
+          </a>
         </div>
         <div
           className={
