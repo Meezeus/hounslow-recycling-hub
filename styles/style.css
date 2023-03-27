@@ -40,8 +40,8 @@ a:hover {
 
 .home-popup-content {
   margin: auto;
-  background: #8e43de;
-  color: white;
+  background: white;
+  color: black;
   width: 50%;
   min-width: 200px;
   padding: 20px;
