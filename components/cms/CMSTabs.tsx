@@ -16,7 +16,7 @@ import DumpedRubbishCMS from "./DumpedRubbishCMS";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type CMSTabsProps = {
-  // authToken: string;
+  authToken: string;
   facts: Fact[];
   setFacts(facts: Fact[]): void;
   quiz: Question[];
@@ -65,7 +65,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={0}>
         <FactCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           facts={props.facts}
           setFacts={props.setFacts}
         />
@@ -73,7 +73,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={1}>
         <QuizCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           quiz={props.quiz}
           setQuiz={props.setQuiz}
         />
@@ -81,7 +81,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={2}>
         <EventCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           events={props.events}
           setEvents={props.setEvents}
         />
@@ -89,7 +89,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={3}>
         <RecyclingServiceCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           recyclingServices={props.houseRecyclingServices}
           setRecyclingServices={props.setHouseRecyclingServices}
         />
@@ -97,7 +97,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={4}>
         <RecyclingServiceCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           recyclingServices={props.flatRecyclingServices}
           setRecyclingServices={props.setFlatRecyclingServices}
         />
@@ -105,7 +105,7 @@ export default function CMSTabs(props: CMSTabsProps) {
 
       <TabPanel value={value} index={5}>
         <DumpedRubbishCMS
-          /*authToken={props.authToken}*/
+          authToken={props.authToken}
           dumpedRubbishInfo={props.dumpedRubbishInfo}
           setDumpedRubbishInfo={props.setDumpedRubbishInfo}
         />

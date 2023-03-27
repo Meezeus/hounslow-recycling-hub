@@ -10,7 +10,7 @@ import style from "@/styles/cms/EventCMS.module.css";
 type EventCMSProps = {
   events: Event[];
   setEvents(events: Event[]): void;
-  // authToken: string;
+  authToken: string;
 };
 
 export default function EventCMS(props: EventCMSProps) {
@@ -60,16 +60,17 @@ export default function EventCMS(props: EventCMSProps) {
       newEvent.startDate != "" &&
       newEvent.endDate != ""
     ) {
-      // const res = await fetch("/api/facts", {
-      //   method: "POST",
-      //   body: JSON.stringify(newFact),
-      //   headers: {
-      //     "content-type": "application/json",
-      //     // Authorization: props.authToken,
-      //   },
-      // });
-      // const status = await res.status;
-      // console.log(status);
+      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}` 
+      const res = await fetch(`/api/events${updateurl}`, {
+        method: "POST",
+        body: JSON.stringify(newEvent),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      console.log(status);
       window.location.reload();
     }
   }
@@ -87,15 +88,27 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function handleDeleteClick(id: string) {
-    // <update database here>
+    const res = await fetch(`/api/events/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Authorization: props.authToken,
+      },
+    });
+    const status = await res.status;
+    console.log(status);
     props.setEvents(props.events.filter((event) => event.id != id));
+
+    
   }
+
+  const cmsformtitle = newEvent.id === "" ? "Create new Event" : `Editing event with ID: ${newEvent.id}` 
 
   return (
     <div>
       <form>
         <div id="create-new-event" className={style["subheading"]}>
-          <h1>Create New Event</h1>
+          <h1>{cmsformtitle}</h1>
         </div>
 
         <div className={style["markdown-guide"]}>
@@ -198,16 +211,6 @@ export default function EventCMS(props: EventCMSProps) {
           />
         </div>
 
-        <div className={style["form-text-field"]}>
-          <TextField
-            fullWidth
-            label="Event ID (leave blank unless updating an existing event)"
-            name="id"
-            variant="outlined"
-            value={newEvent.id}
-            onChange={handleChange}
-          />
-        </div>
 
         <div className={style["form-submit-button"]}>
           <Button

@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { Amplify } from "aws-amplify";
-import awsconfig from "../aws-exports";
-// Amplify.configure(awsconfig);
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Amplify } from 'aws-amplify';
 
 import Head from "next/head";
 import Header from "@/components/cms/Header";
@@ -10,6 +7,13 @@ import UserHeader from "@/components/cms/UserHeader";
 import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
+
+import { withAuthenticator,
+  WithAuthenticatorProps, } from '@aws-amplify/ui-react';
+
+
+import awsExports from '../aws-exports';
+Amplify.configure(awsExports);
 
 // Data Types
 import { facts, Fact } from "@/data/Facts";
@@ -22,33 +26,33 @@ import {
 } from "@/data/RecyclingServices";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
-type Props = {
-  facts: Fact[];
-  quiz: Question[];
-  events: Event[];
-  houseRecyclingServices: RecyclingService[];
-  flatRecyclingServices: RecyclingService[];
-  dumpedRubbishInfo: DumpedRubbishInfo;
+interface Props extends WithAuthenticatorProps {
+  data: {
+    facts: Fact[];
+    quiz: Question[];
+    events: Event[];
+    houseRecyclingServices: RecyclingService[];
+    flatRecyclingServices: RecyclingService[];
+    dumpedRubbishInfo: DumpedRubbishInfo[];
+  }
 };
 
-export default /*withAuthenticator(*/ function CMS(
-  /*{ signOut, user }, */ props: Props
-) {
-  const [facts, setFacts] = useState(props.facts);
-  const [quiz, setQuiz] = useState(props.quiz);
-  const [events, setEvents] = useState(props.events);
+export default withAuthenticator( function CMS({data, signOut, user} :Props) {
+  const [facts, setFacts] = useState(data.facts);
+  const [quiz, setQuiz] = useState(data.quiz);
+  const [events, setEvents] = useState(data.events);
   const [houseRecyclingServices, setHouseRecyclingServices] = useState(
-    props.houseRecyclingServices
+    data.houseRecyclingServices
   );
   const [flatRecyclingServices, setFlatRecyclingServices] = useState(
-    props.flatRecyclingServices
+    data.flatRecyclingServices
   );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
-    props.dumpedRubbishInfo
+    data.dumpedRubbishInfo[0]
   );
 
-  // const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
-  // const authToken = token !== undefined ? token : "";
+  const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
+  const authToken = token !== undefined ? token : "";
 
   return (
     <>
@@ -62,11 +66,11 @@ export default /*withAuthenticator(*/ function CMS(
 
       <Header />
 
-      {/* <UserHeader signOut={signOut} user={user} /> */}
+      <UserHeader signOut={signOut} user={user} /> 
 
       <div className={style["page-content"]}>
         <CMSTabs
-          /*authToken={authToken}*/
+          authToken={authToken}
           facts={facts}
           setFacts={setFacts}
           quiz={quiz}
@@ -85,27 +89,38 @@ export default /*withAuthenticator(*/ function CMS(
       <Footer />
     </>
   );
-} /*)*/
+} )
+
 
 export const getServerSideProps = async () => {
-  // const resFacts = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/facts`);
-  // const facts = await resFacts.json();
 
-  const mockFacts = facts;
-  const mockQuiz = quiz;
-  const mockEvents = events;
-  const mockHouseRecyclingServices = houseRecyclingServices;
-  const mockFlatRecyclingServices = flatRecyclingServices;
-  const mockDumpedRubbishInfo = dumpedRubbishInfo;
+  const headers = {
+    "content-type": "application/json",
+    "x-api-key": `${process.env.FRONTEND_APIKEY}`,
+  }
+  
+  const cats = ["facts", "quiz", "events", "houseRecyclingServices", "flatRecyclingServices", "dumpedRubbishInfo"]
+  const data = Object.fromEntries(cats.map(cat => [cat, ""]))
+
+  for (let i = 0; i < cats.length; i++) {
+    const resapi = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`, {
+      method: "GET",
+      headers: headers,
+    });
+    data[cats[i]] = await resapi.json()
+  }
 
   return {
     props: {
-      facts: mockFacts,
-      quiz: mockQuiz,
-      events: mockEvents,
-      houseRecyclingServices: mockHouseRecyclingServices,
-      flatRecyclingServices: mockFlatRecyclingServices,
-      dumpedRubbishInfo: mockDumpedRubbishInfo,
+      data: {
+        facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
+        quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
+        events: Object.keys(data.events).length !== 0 ? data.events : [],
+        houseRecyclingServices: Object.keys(data.houseRecyclingServices).length !== 0 ? data.houseRecyclingServices : [],
+        flatRecyclingServices: Object.keys(data.flatRecyclingServices).length !== 0 ? data.flatRecyclingServices : [],
+        dumpedRubbishInfo: Object.keys(data.dumpedRubbishInfo).length !== 0 ? data.dumpedRubbishInfo : [],
+      }
     },
-  };
+  }
+
 };

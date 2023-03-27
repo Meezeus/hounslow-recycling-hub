@@ -10,7 +10,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^4.4.0",
+    "@aws-amplify/ui-react": "^4.4.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
@@ -22,7 +22,7 @@
     "@types/react-dom": "18.0.10",
     "@types/uuid": "^9.0.0",
     "antd": "^5.2.1",
-    "aws-amplify": "^5.0.20",
+    "aws-amplify": "^5.0.22",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "eslint-config-prettier": "^8.6.0",
