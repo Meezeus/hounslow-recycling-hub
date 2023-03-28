@@ -23,7 +23,7 @@ import Footer from "@/components/Footer";
 import { Fact } from "@/data/Facts";
 import { Question } from "@/data/Quiz";
 import { Event } from "@/data/Events";
-import { RecyclingService } from "@/data/RecyclingServices";
+import { RecyclingService, service_order } from "@/data/RecyclingServices";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
@@ -203,12 +203,20 @@ export default function Home({ data }: Props) {
         </div>
         <RecyclingServiceAccordionGrid
           showFlatVersion={showFlatVersion!}
-          houseRecyclingServices={data.recyclingServices.filter(
-            (recyclingService) => !recyclingService.forFlats
-          )}
-          flatRecyclingServices={data.recyclingServices.filter(
-            (recyclingService) => recyclingService.forFlats
-          )}
+          houseRecyclingServices={data.recyclingServices
+            .filter((recyclingService) => !recyclingService.forFlats)
+            .sort(
+              (serviceA, serviceB) =>
+                service_order.indexOf(serviceA.id) -
+                service_order.indexOf(serviceB.id)
+            )}
+          flatRecyclingServices={data.recyclingServices
+            .filter((recyclingService) => recyclingService.forFlats)
+            .sort(
+              (serviceA, serviceB) =>
+                service_order.indexOf(serviceA.id) -
+                service_order.indexOf(serviceB.id)
+            )}
           ref={recyclingServiceAccordionGridRef}
         />
 
