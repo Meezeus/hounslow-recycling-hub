@@ -26,8 +26,7 @@ interface Props extends WithAuthenticatorProps {
     facts: Fact[];
     quiz: Question[];
     events: Event[];
-    houseRecyclingServices: RecyclingService[];
-    flatRecyclingServices: RecyclingService[];
+    recyclingServices: RecyclingService[];
     dumpedRubbishInfo: DumpedRubbishInfo[];
   };
 }
@@ -37,10 +36,14 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
   const [quiz, setQuiz] = useState(data.quiz);
   const [events, setEvents] = useState(data.events);
   const [houseRecyclingServices, setHouseRecyclingServices] = useState(
-    data.houseRecyclingServices
+    data.recyclingServices.filter(
+      (recyclingService) => !recyclingService.forFlats
+    )
   );
   const [flatRecyclingServices, setFlatRecyclingServices] = useState(
-    data.flatRecyclingServices
+    data.recyclingServices.filter(
+      (recyclingService) => recyclingService.forFlats
+    )
   );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
     data.dumpedRubbishInfo[0]
@@ -96,8 +99,7 @@ export const getServerSideProps = async () => {
     "facts",
     "quiz",
     "events",
-    "houseRecyclingServices",
-    "flatRecyclingServices",
+    "recyclingServices",
     "dumpedRubbishInfo",
   ];
   const data = Object.fromEntries(cats.map((cat) => [cat, ""]));
@@ -119,13 +121,9 @@ export const getServerSideProps = async () => {
         facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
         quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
         events: Object.keys(data.events).length !== 0 ? data.events : [],
-        houseRecyclingServices:
-          Object.keys(data.houseRecyclingServices).length !== 0
-            ? data.houseRecyclingServices
-            : [],
-        flatRecyclingServices:
-          Object.keys(data.flatRecyclingServices).length !== 0
-            ? data.flatRecyclingServices
+        recyclingServices:
+          Object.keys(data.recyclingServices).length !== 0
+            ? data.recyclingServices
             : [],
         dumpedRubbishInfo:
           Object.keys(data.dumpedRubbishInfo).length !== 0
