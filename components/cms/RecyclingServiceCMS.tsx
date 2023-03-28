@@ -130,8 +130,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
     if (
       recyclingService.title != "" &&
       recyclingService.description != "" &&
-      recyclingService.content != "" &&
-      recyclingService.link != ""
+      recyclingService.content != ""
     ) {
       const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
         method: "POST",
