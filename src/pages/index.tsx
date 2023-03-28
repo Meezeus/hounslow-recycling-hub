@@ -1,11 +1,16 @@
 import { useRef, useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import style from "@/styles/home/Home.module.css";
+import buttonStyle from "@/styles/home/Button.module.css";
 
 // Components
 import Head from "next/head";
 import Popup from "reactjs-popup";
+import Navbar from "@/components/home/Navbar";
 import Header from "@/components/home/Header";
 import EngagingBox from "@/components/home/EngagingBox";
 import Subheading from "@/components/home/Subheading";
+import ImageRecognition from "@/components/home/ImageRecognition";
 import DecisionTree from "@/components/home/DecisionTree";
 import EventCardCarousel from "@/components/home/EventCardCarousel";
 import RecyclingServiceAccordionGrid, {
@@ -38,6 +43,15 @@ export default function Home(props: Props) {
   const [showFlatVersion, setShowFlatVersion] = useState<boolean>();
   const [showPopup, setShowPopup] = useState(false);
 
+  const [headerRef, headerInView] = useInView();
+  const [eventsRef, eventsInView] = useInView();
+  const [recyclingAssistantRef, recyclingAssistantInView] = useInView();
+  const [recyclingServicesRef, recyclingServicesInView] = useInView();
+  const [reportDumpedRubbishRef, reportDumpedRubbishInView] = useInView();
+
+  const recyclingServiceAccordionGridRef =
+    useRef<RecyclingServiceAccordionGridRef>(null);
+
   // This hook is called when the page loads. It attempts to fetch
   // showFlatVersion from local storage. If it cannot be found, it sets it to
   // the default value of false and shows the popup.
@@ -68,11 +82,14 @@ export default function Home(props: Props) {
     setShowFlatVersion(!showFlatVersion);
   }
 
-  const recyclingServiceAccordionGridRef =
-    useRef<RecyclingServiceAccordionGridRef>(null);
-
-  function openAccordion(id: string) {
+  async function jumpToAccordion(
+    event: React.MouseEvent<HTMLButtonElement>,
+    id: string
+  ) {
+    event.stopPropagation();
     recyclingServiceAccordionGridRef.current?.openAccordion(id);
+    await new Promise((r) => setTimeout(r, 250));
+    document.getElementById(id + "-anchor")?.scrollIntoView();
   }
 
   return (
@@ -97,64 +114,121 @@ export default function Home(props: Props) {
           &times;
         </button>
         <h1>What best describes your living situation?</h1>
+        <br />
         <button
           type="button"
-          className="home-popup-button"
+          className={buttonStyle["button"]}
           onClick={() => handlePopupSelection(false)}
         >
           House
         </button>
         <button
           type="button"
-          className="home-popup-button"
+          className={buttonStyle["button"]}
           onClick={() => handlePopupSelection(true)}
         >
           Flat
         </button>
       </Popup>
 
-      <Header
+      <Navbar
         displayEvents={props.events.length > 0}
         showFlatVersion={showFlatVersion!}
         toggle={toggleVersion}
       />
 
-      <EngagingBox
-        showFlatVersion={showFlatVersion!}
-        facts={props.facts}
-        quiz={props.quiz}
-      />
+      <Header ref={headerRef} />
 
-      <Subheading title="Recycling Assistant" id="DecisionTree" />
-      <DecisionTree />
+      <div className={style["page-content"]}>
+        <EngagingBox
+          showFlatVersion={showFlatVersion!}
+          facts={props.facts}
+          quiz={props.quiz}
+        />
 
-      {props.events.length > 0 ? (
-        <>
-          <Subheading title="Events" id="EventCardCarousel" />
-          <EventCardCarousel events={props.events} />
-        </>
-      ) : (
-        ""
+        {props.events.length > 0 ? (
+          <>
+            <div
+              className={
+                eventsInView ? "animate__animated animate__fadeInLeft" : ""
+              }
+            >
+              <Subheading title="Events" id="events" ref={eventsRef} />
+            </div>
+            <EventCardCarousel events={props.events} />
+          </>
+        ) : (
+          ""
+        )}
+
+        <div
+          className={
+            recyclingAssistantInView
+              ? "animate__animated animate__fadeInLeft"
+              : ""
+          }
+        >
+          <Subheading
+            title="Recycling Assistant"
+            id="recycling-assistant"
+            ref={recyclingAssistantRef}
+          />
+        </div>
+        <DecisionTree
+          showFlatVersion={showFlatVersion!}
+          jumpToAccordion={jumpToAccordion}
+        />
+        <ImageRecognition
+          showFlatVersion={showFlatVersion!}
+          jumpToAccordion={jumpToAccordion}
+        />
+
+        <div
+          className={
+            recyclingServicesInView
+              ? "animate__animated animate__fadeInLeft"
+              : ""
+          }
+        >
+          <Subheading
+            title="Recycling Services"
+            id="recycling-services"
+            ref={recyclingServicesRef}
+          />
+        </div>
+        <RecyclingServiceAccordionGrid
+          showFlatVersion={showFlatVersion!}
+          houseRecyclingServices={props.houseRecyclingServices}
+          flatRecyclingServices={props.flatRecyclingServices}
+          ref={recyclingServiceAccordionGridRef}
+        />
+
+        <div
+          className={
+            reportDumpedRubbishInView
+              ? "animate__animated animate__fadeInLeft"
+              : ""
+          }
+        >
+          <Subheading
+            title="Report Dumped Rubbish"
+            id="report-dumped-rubbish"
+            ref={reportDumpedRubbishRef}
+          />
+        </div>
+        <DumpedRubbishSection
+          content={props.dumpedRubbishInfo.content}
+          reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
+          reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
+          payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
+        />
+      </div>
+
+      {!headerInView && (
+        <a href="#">
+          <button className="toTop">Top</button>
+        </a>
       )}
-
-      <Subheading
-        title="Recycling Services"
-        id="RecyclingServiceAccordionGrid"
-      />
-      <RecyclingServiceAccordionGrid
-        showFlatVersion={showFlatVersion!}
-        houseRecyclingServices={props.houseRecyclingServices}
-        flatRecyclingServices={props.flatRecyclingServices}
-        ref={recyclingServiceAccordionGridRef}
-      />
-
-      <Subheading title="Report Dumped Rubbish" id="DumpedRubbish" />
-      <DumpedRubbishSection
-        content={props.dumpedRubbishInfo.content}
-        reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
-        reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
-        payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
-      />
 
       <Footer />
     </>

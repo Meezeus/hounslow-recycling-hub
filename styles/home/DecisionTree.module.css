@@ -1,14 +1,26 @@
 .decision-tree-wrapper {
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  margin: 30px 300px;
   text-align: center;
   padding: 25px 0px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.19);
+  position: relative;
+}
+
+.decision-tree-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  right: -25px;
+  bottom: -25px;
+  background: linear-gradient(to bottom, #642f6c 0%, transparent 100%);
+  border-radius: 20px;
+  z-index: -1;
 }
 
 .decision-tree-title {
-  color: black;
+  color: rgb(43, 32, 32);
   text-align: center;
 }
 
@@ -18,15 +30,7 @@
   text-align: center;
 }
 
-.decision-tree-option {
-  width: 20%;
+.decision-tree-button {
   min-width: 200px;
   margin: 20px 10px 0px 10px;
-  padding: 10px;
-  border-width: 0;
-  border-radius: 5px;
-  background-color: #c29ec7;
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
 }

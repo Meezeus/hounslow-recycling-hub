@@ -1,53 +1,80 @@
-import React, { useState } from "react";
-import { questions } from "@/data/DecisionTreeQuestions";
+import React, { useEffect, useState } from "react";
+import {
+  Answer,
+  houseQuestions,
+  flatQuestions,
+} from "@/data/DecisionTreeQuestions";
 import { Button } from "antd";
 import style from "@/styles/home/DecisionTree.module.css";
+import buttonStyle from "@/styles/home/Button.module.css";
 
-type Option = {
-  id: string;
-  value: string;
-  followUpQuestion: number;
+type DecisionTreeProps = {
+  showFlatVersion: boolean;
+  jumpToAccordion(event: React.MouseEvent<HTMLButtonElement>, id: string): void;
 };
 
-// type Question = {
-//   id: number;
-//   question: string;
-//   options: Option[];
-// };
-
-export default function DecisionTree() {
+export default function DecisionTree(props: DecisionTreeProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const questions = props.showFlatVersion ? flatQuestions : houseQuestions;
 
-  const handleOptionClick = (option: Option) => {
-    setCurrentQuestionIndex(option.followUpQuestion);
-  };
-
-  const handleReset = () => {
+  // This hook is called when the page version changes. It resets the recycling
+  // assistant.
+  useEffect(() => {
     setCurrentQuestionIndex(0);
-  };
+  }, [props.showFlatVersion]);
 
-  const currentQuestion = questions[currentQuestionIndex];
+  function handleAnswerClick(answer: Answer) {
+    setCurrentQuestionIndex(answer.followUpQuestion);
+  }
+
+  function handleResetClick() {
+    setCurrentQuestionIndex(0);
+  }
+
+  function handleMoreInfoClick(
+    event: React.MouseEvent<HTMLButtonElement>,
+    serviceID: string
+  ) {
+    props.jumpToAccordion(event, serviceID);
+  }
 
   return (
     <div className={style["decision-tree-wrapper"]}>
       <div className={style["decision-tree-title"]}>
-        <h2>Find the right recycling service for your item here!</h2>
+        <h2>Find out how to recycle your item here!</h2>
       </div>
       <div className={style["decision-tree"]}>
-        <h3>{currentQuestion.question}</h3>
+        <h3>{questions[currentQuestionIndex].question}</h3>
         <div>
-          {currentQuestion.options.map((option) => (
+          {questions[currentQuestionIndex].answers.map((answer) => (
             <button
-              className={style["decision-tree-option"]}
-              key={option.id}
-              onClick={() => handleOptionClick(option)}
+              className={
+                buttonStyle["button"] + " " + style["decision-tree-button"]
+              }
+              key={answer.id}
+              onClick={() => handleAnswerClick(answer)}
             >
-              {option.value}
+              {answer.answer}
             </button>
           ))}
         </div>
+        <button
+          className={
+            buttonStyle["button"] + " " + style["decision-tree-button"]
+          }
+          type="button"
+          onClick={(event) =>
+            handleMoreInfoClick(
+              event,
+              questions[currentQuestionIndex].serviceID
+            )
+          }
+          hidden={questions[currentQuestionIndex].serviceID == ""}
+        >
+          Click here for more info!
+        </button>
       </div>
-      <Button onClick={handleReset}>Restart</Button>
+      <Button onClick={() => handleResetClick()}>Restart</Button>
     </div>
   );
 }

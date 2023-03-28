@@ -70,7 +70,7 @@ export const houseRecyclingServices = [
   },
   {
     itemImage: "./garden_items.png",
-    title: "Garden Waste Service",
+    title: "Garden Waste Recycling Service",
     id: "garden-waste-recycling-service",
     binImage: "./brown_wheeled_bin.png",
     description: "Garden waste can be recycled using the brown wheeled bin.",
@@ -314,7 +314,7 @@ export const flatRecyclingServices = [
     title: "General Waste Collection Service",
     id: "general-waste-collection-service",
     description:
-      "Rubbish that cannot be recycled can be disposed of using the general waste communal bin.",
+      "Rubbish that cannot be recycled can be disposed of using a communal bin with a black 'general waste' label.",
     content:
       "**What can be collected:** Plastic carrier bags, plastic wrapping and packaging, polystyrene, nappies, etc.  \n" +
       "&nbsp;  \n" +
