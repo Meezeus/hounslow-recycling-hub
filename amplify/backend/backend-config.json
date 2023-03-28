@@ -8,10 +8,7 @@
           "resourceName": "apihrhcmsF"
         },
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "apihrhimagesF"
         }
@@ -66,9 +63,7 @@
       "build": true,
       "dependsOn": [
         {
-          "attributes": [
-            "BucketName"
-          ],
+          "attributes": ["BucketName"],
           "category": "storage",
           "resourceName": "hrhcmsimages"
         }

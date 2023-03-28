@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect, useRef } from "react";
+import { useState, ChangeEvent, MouseEvent, useEffect, useRef } from "react";
 import {
   Button,
   FormControl,
@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { RecyclingService } from "@/data/RecyclingServices";
@@ -20,16 +21,9 @@ type RecyclingServiceCMSProps = {
 };
 
 export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
-  const [recyclingService, setRecyclingService] = useState({
-    itemImage: "",
-    title: "",
-    id: "",
-    binImage: "",
-    description: "",
-    content: "",
-    infographicImage: "",
-    link: "",
-  });
+  const [recyclingService, setRecyclingService] = useState(
+    props.recyclingServices[0]
+  );
 
   const [itemImageFile, setItemImageFile] = useState<File>();
   const [binImageFile, setBinImageFile] = useState<File>();
@@ -108,6 +102,13 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
     }
   };
 
+  function handleRemoveImage(event: MouseEvent<HTMLButtonElement>) {
+    setRecyclingService({
+      ...recyclingService,
+      [(event.target as HTMLButtonElement).name]: "",
+    });
+  }
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setRecyclingService({
       ...recyclingService,
@@ -127,27 +128,27 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    // if (
-    //   recyclingService.title != "" &&
-    //   recyclingService.description != "" &&
-    //   recyclingService.content != "" &&
-    //   recyclingService.link != ""
-    // ) {
-    //   const res = await fetch("/api/f", {
-    //     method: "POST",
-    //     body: JSON.stringify(recyclingService),
-    //     headers: {
-    //       "content-type": "application/json",
-    //       Authorization: props.authToken,
-    //     },
-    //   });
-    //   const status = await res.status;
-    //   if (status >= 200 && status < 300) {
-    //     window.location.reload();
-    //   } else {
-    //     console.log("Request failed with status code: " + status);
-    //   }
-    // }
+    if (
+      recyclingService.id != "" &&
+      recyclingService.title != "" &&
+      recyclingService.description != "" &&
+      recyclingService.content != ""
+    ) {
+      const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
+        method: "POST",
+        body: JSON.stringify(recyclingService),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
+    }
   }
 
   return (
@@ -221,7 +222,6 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             label="Recycling Service"
             name="recycling-service"
             value={recyclingService.id}
-            defaultValue={props.recyclingServices[0].id}
             onChange={(event, child) => handleSelectOnChange(event)}
           >
             {props.recyclingServices.map((service) => (
@@ -290,6 +290,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="itemImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-image-upload"]}>
@@ -301,6 +310,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="binImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-image-upload"]}>
@@ -312,6 +330,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="infographicImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-submit-button"]}>

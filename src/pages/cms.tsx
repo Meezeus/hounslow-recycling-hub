@@ -9,7 +9,6 @@ import {
 
 import Head from "next/head";
 import Header from "@/components/cms/Header";
-import UserHeader from "@/components/cms/UserHeader";
 import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
@@ -62,9 +61,7 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-
-      <UserHeader signOut={signOut} user={user} />
+      <Header signOut={signOut} user={user} />
 
       <div className={style["page-content"]}>
         <CMSTabs
@@ -75,8 +72,10 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
           setQuiz={setQuiz}
           events={events}
           setEvents={setEvents}
-          recyclingServices={recyclingServices}
-          setRecyclingServices={setRecyclingServices}
+          houseRecyclingServices={houseRecyclingServices}
+          setHouseRecyclingServices={setHouseRecyclingServices}
+          flatRecyclingServices={flatRecyclingServices}
+          setFlatRecyclingServices={setFlatRecyclingServices}
           dumpedRubbishInfo={dumpedRubbishInfo}
           setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
@@ -91,7 +90,6 @@ export const getServerSideProps = async () => {
   const headers = {
     "content-type": "application/json",
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
-
   };
 
   const cats = [
