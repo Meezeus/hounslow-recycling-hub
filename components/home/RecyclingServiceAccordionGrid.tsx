@@ -190,8 +190,9 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
-              id={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
+              id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}
               binImage={recyclingService.binImage}
@@ -199,7 +200,7 @@ export default React.forwardRef<
               content={recyclingService.content}
               infographicImage={recyclingService.infographicImage}
               link={recyclingService.link}
-              isOpen={openAccordionID == recyclingService.title}
+              isOpen={openAccordionID == recyclingService.id}
               handleClick={handleClick}
               ref={createAndPushRef()}
             />
@@ -220,8 +221,9 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
-              id={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
+              id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}
               binImage={recyclingService.binImage}
@@ -229,7 +231,7 @@ export default React.forwardRef<
               content={recyclingService.content}
               link={recyclingService.link}
               infographicImage={recyclingService.infographicImage}
-              isOpen={openAccordionID == recyclingService.title}
+              isOpen={openAccordionID == recyclingService.id}
               handleClick={handleClick}
               ref={createAndPushRef()}
             />

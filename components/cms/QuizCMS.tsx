@@ -11,6 +11,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -108,11 +109,8 @@ export default function QuizCMS(props: QuizCMSProps) {
     });
   }
 
-  function handleIDOnChange(event: ChangeEvent<HTMLInputElement>) {
-    setNewQuestion({
-      ...newQuestion,
-      id: event.target.value,
-    });
+  function cancelEdit() {
+    setNewQuestion({ ...newQuestion, id: "" });
   }
 
   async function submitQuestion() {
@@ -128,7 +126,7 @@ export default function QuizCMS(props: QuizCMSProps) {
       (answer) => (correct = correct && answer.answer != "")
     );
     if (correct) {
-      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}` 
+      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}`;
       const res = await fetch(`/api/quiz${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newQuestion),
@@ -138,8 +136,11 @@ export default function QuizCMS(props: QuizCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -162,8 +163,11 @@ export default function QuizCMS(props: QuizCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setQuiz(props.quiz.filter((question) => question.id != id));
+    if (status >= 200 && status < 300) {
+      props.setQuiz(props.quiz.filter((question) => question.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
 
   const answerComponents = [];
@@ -194,13 +198,15 @@ export default function QuizCMS(props: QuizCMSProps) {
     );
   }
 
-  const cmsformtitle = newQuestion.id === "" ? "Create new Question" : `Editing question with ID:: ${newQuestion.id}` 
-
   return (
     <div>
       <form>
         <div id="create-new-question" className={style["subheading"]}>
-          <h1>{ cmsformtitle }</h1>
+          <h1>
+            {newQuestion.id === ""
+              ? "Create New Question"
+              : `Editing question with ID:: ${newQuestion.id}`}
+          </h1>
         </div>
 
         <div className={style["form-field"]}>
@@ -238,7 +244,19 @@ export default function QuizCMS(props: QuizCMSProps) {
 
         {answerComponents}
 
-        <div className={style["form-submit-button"]}>
+        <div className={style["form-buttons"]}>
+          {newQuestion.id !== "" ? (
+            <Button
+              variant="outlined"
+              endIcon={<ClearIcon />}
+              onClick={cancelEdit}
+            >
+              Cancel Edit
+            </Button>
+          ) : (
+            ""
+          )}
+
           <Button
             variant="contained"
             endIcon={<SendIcon />}
@@ -292,9 +310,9 @@ export default function QuizCMS(props: QuizCMSProps) {
 
               <Button
                 className={style["question-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(question.id)}
               >

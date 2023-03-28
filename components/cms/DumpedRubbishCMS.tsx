@@ -33,8 +33,11 @@ export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    // window.location.reload();
+    if (status >= 200 && status < 300) {
+      window.location.reload();
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
 
   return (

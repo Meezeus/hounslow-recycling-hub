@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, useEffect } from "react";
-import { Button, TextField } from "@mui/material"
+import { Button, TextField } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
+
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -55,6 +57,10 @@ export default function EventCMS(props: EventCMSProps) {
     setNewEvent({ ...newEvent, [event.target.name]: event.target.value });
   }
 
+  function cancelEdit() {
+    setNewEvent({ ...newEvent, id: "" });
+  }
+
   async function submitEvent() {
     postImage()
     if (
@@ -62,7 +68,7 @@ export default function EventCMS(props: EventCMSProps) {
       newEvent.startDate != "" &&
       newEvent.endDate != ""
     ) {
-      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}` 
+      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}`;
       const res = await fetch(`/api/events${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newEvent),
@@ -72,8 +78,11 @@ export default function EventCMS(props: EventCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -115,19 +124,22 @@ export default function EventCMS(props: EventCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setEvents(props.events.filter((event) => event.id != id));
-
-    
+    if (status >= 200 && status < 300) {
+      props.setEvents(props.events.filter((event) => event.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
-
-  const cmsformtitle = newEvent.id === "" ? "Create new Event" : `Editing event with ID: ${newEvent.id}` 
 
   return (
     <div>
       <form>
         <div id="create-new-event" className={style["subheading"]}>
-          <h1>{cmsformtitle}</h1>
+          <h1>
+            {newEvent.id === ""
+              ? "Create New Event"
+              : `Editing event with ID: ${newEvent.id}`}
+          </h1>
         </div>
 
         <div className={style["markdown-guide"]}>
@@ -230,8 +242,19 @@ export default function EventCMS(props: EventCMSProps) {
           />
         </div>
 
+        <div className={style["form-buttons"]}>
+          {newEvent.id !== "" ? (
+            <Button
+              variant="outlined"
+              endIcon={<ClearIcon />}
+              onClick={cancelEdit}
+            >
+              Cancel Edit
+            </Button>
+          ) : (
+            ""
+          )}
 
-        <div className={style["form-submit-button"]}>
           <Button
             variant="contained"
             endIcon={<SendIcon />}
@@ -300,9 +323,9 @@ export default function EventCMS(props: EventCMSProps) {
 
               <Button
                 className={style["event-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(event.id)}
               >

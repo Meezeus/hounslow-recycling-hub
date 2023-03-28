@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import { Button, TextField } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -20,9 +21,13 @@ export default function FactCMS(props: FactCMSProps) {
     setNewFact({ ...newFact, [event.target.name]: event.target.value });
   }
 
+  function cancelEdit() {
+    setNewFact({ ...newFact, id: "" });
+  }
+
   async function submitFact() {
     if (newFact.title != "" && newFact.content != "") {
-      const updateurl = newFact.id === "" ? "" : `/${newFact.id}` 
+      const updateurl = newFact.id === "" ? "" : `/${newFact.id}`;
       const res = await fetch(`/api/facts${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newFact),
@@ -32,8 +37,11 @@ export default function FactCMS(props: FactCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -51,17 +59,22 @@ export default function FactCMS(props: FactCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setFacts(props.facts.filter((fact) => fact.id != id));
+    if (status >= 200 && status < 300) {
+      props.setFacts(props.facts.filter((fact) => fact.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
-
-  const cmsformtitle = newFact.id === "" ? "Create new Fact" : `Editing fact with ID: ${newFact.id}` 
 
   return (
     <div>
       <form>
         <div id="create-new-fact" className={style["subheading"]}>
-          <h1>{ cmsformtitle }</h1>
+          <h1>
+            {newFact.id === ""
+              ? "Create New Fact"
+              : `Editing fact with ID: ${newFact.id}`}
+          </h1>
         </div>
 
         <div className={style["markdown-guide"]}>
@@ -116,7 +129,19 @@ export default function FactCMS(props: FactCMSProps) {
           />
         </div>
 
-        <div className={style["form-submit-button"]}>
+        <div className={style["form-buttons"]}>
+          {newFact.id !== "" ? (
+            <Button
+              variant="outlined"
+              endIcon={<ClearIcon />}
+              onClick={cancelEdit}
+            >
+              Cancel Edit
+            </Button>
+          ) : (
+            ""
+          )}
+
           <Button
             variant="contained"
             endIcon={<SendIcon />}
@@ -165,9 +190,9 @@ export default function FactCMS(props: FactCMSProps) {
 
               <Button
                 className={style["fact-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(fact.id)}
               >

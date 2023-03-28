@@ -1,12 +1,7 @@
 {
   "permissions": {
     "storage": {
-      "apihrhcmsS": [
-        "create",
-        "read",
-        "update",
-        "delete"
-      ]
+      "apihrhcmsS": ["create", "read", "update", "delete"]
     }
   },
   "lambdaLayers": []
