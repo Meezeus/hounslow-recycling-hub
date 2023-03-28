@@ -11,6 +11,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -108,11 +109,8 @@ export default function QuizCMS(props: QuizCMSProps) {
     });
   }
 
-  function handleIDOnChange(event: ChangeEvent<HTMLInputElement>) {
-    setNewQuestion({
-      ...newQuestion,
-      id: event.target.value,
-    });
+  function cancelEdit() {
+    setNewQuestion({ ...newQuestion, id: "" });
   }
 
   async function submitQuestion() {
@@ -200,16 +198,15 @@ export default function QuizCMS(props: QuizCMSProps) {
     );
   }
 
-  const cmsformtitle =
-    newQuestion.id === ""
-      ? "Create new Question"
-      : `Editing question with ID:: ${newQuestion.id}`;
-
   return (
     <div>
       <form>
         <div id="create-new-question" className={style["subheading"]}>
-          <h1>{cmsformtitle}</h1>
+          <h1>
+            {newQuestion.id === ""
+              ? "Create New Question"
+              : `Editing question with ID:: ${newQuestion.id}`}
+          </h1>
         </div>
 
         <div className={style["form-field"]}>
@@ -247,7 +244,19 @@ export default function QuizCMS(props: QuizCMSProps) {
 
         {answerComponents}
 
-        <div className={style["form-submit-button"]}>
+        <div className={style["form-buttons"]}>
+          {newQuestion.id !== "" ? (
+            <Button
+              variant="contained"
+              endIcon={<CancelIcon />}
+              onClick={cancelEdit}
+            >
+              Cancel Edit
+            </Button>
+          ) : (
+            ""
+          )}
+
           <Button
             variant="contained"
             endIcon={<SendIcon />}

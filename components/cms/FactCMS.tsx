@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react";
 import { Button, TextField } from "@mui/material";
+import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -18,6 +19,10 @@ export default function FactCMS(props: FactCMSProps) {
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setNewFact({ ...newFact, [event.target.name]: event.target.value });
+  }
+
+  function cancelEdit() {
+    setNewFact({ ...newFact, id: "" });
   }
 
   async function submitFact() {
@@ -61,16 +66,15 @@ export default function FactCMS(props: FactCMSProps) {
     }
   }
 
-  const cmsformtitle =
-    newFact.id === ""
-      ? "Create new Fact"
-      : `Editing fact with ID: ${newFact.id}`;
-
   return (
     <div>
       <form>
         <div id="create-new-fact" className={style["subheading"]}>
-          <h1>{cmsformtitle}</h1>
+          <h1>
+            {newFact.id === ""
+              ? "Create New Fact"
+              : `Editing fact with ID: ${newFact.id}`}
+          </h1>
         </div>
 
         <div className={style["markdown-guide"]}>
@@ -125,7 +129,19 @@ export default function FactCMS(props: FactCMSProps) {
           />
         </div>
 
-        <div className={style["form-submit-button"]}>
+        <div className={style["form-buttons"]}>
+          {newFact.id !== "" ? (
+            <Button
+              variant="contained"
+              endIcon={<CancelIcon />}
+              onClick={cancelEdit}
+            >
+              Cancel Edit
+            </Button>
+          ) : (
+            ""
+          )}
+
           <Button
             variant="contained"
             endIcon={<SendIcon />}
