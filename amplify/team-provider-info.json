@@ -16,14 +16,15 @@
       "function": {
         "apihrhcmsF": {
           "deploymentBucketName": "amplify-hrhcms-prod-175724-deployment",
-          "s3Key": "amplify-builds/apihrhcmsF-446c7662416f64576966-build.zip"
+          "s3Key": "amplify-builds/apihrhcmsF-6e797746787563643331-build.zip"
         }
       },
       "auth": {
         "hrhcms": {}
       },
       "storage": {
-        "apihrhcmsS": {}
+        "apihrhcmsS": {},
+        "hrhcmsimages": {}
       },
       "api": {
         "apihrhcms": {}
