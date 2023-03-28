@@ -8,7 +8,6 @@ export type RecyclingService = {
   content: string;
   infographicImage: string;
   link: string;
-  isHouse: boolean;
 };
 
 export const recyclingServices = [
