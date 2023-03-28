@@ -17,6 +17,10 @@
         "apihrhcmsF": {
           "deploymentBucketName": "amplify-hrhcms-prod-175724-deployment",
           "s3Key": "amplify-builds/apihrhcmsF-6e797746787563643331-build.zip"
+        },
+        "apihrhimagesF": {
+          "deploymentBucketName": "amplify-hrhcms-prod-175724-deployment",
+          "s3Key": "amplify-builds/apihrhimagesF-78536c7a592b31475368-build.zip"
         }
       },
       "auth": {

@@ -16,6 +16,19 @@
           "read"
         ]
       }
+    },
+    "/images/{album}/{name}": {
+      "name": "/images/{album}/{name}",
+      "lambdaFunction": "apihrhimagesF",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
     }
   }
 }

@@ -1,11 +1,12 @@
 import { useState, ChangeEvent, useEffect } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material"
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
 import style from "@/styles/cms/EventCMS.module.css";
+import axios from "axios"
 
 type EventCMSProps = {
   events: Event[];
@@ -55,6 +56,7 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
+    postImage()
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
@@ -72,6 +74,23 @@ export default function EventCMS(props: EventCMSProps) {
       const status = await res.status;
       console.log(status);
       window.location.reload();
+    }
+  }
+
+  async function postImage() {
+    if (
+      imageFile !== undefined
+    ) {
+      const formData = new FormData();
+      formData.append("myimage", imageFile)
+      
+      const res = await axios.post(`/api/images`, formData, {
+        headers: {
+          "content-type": "multipart/form-data",
+          Authorization: props.authToken,
+        },
+      });
+      return res.data
     }
   }
 
