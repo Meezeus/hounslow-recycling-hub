@@ -31,8 +31,7 @@ interface Props extends WithAuthenticatorProps {
     facts: Fact[];
     quiz: Question[];
     events: Event[];
-    houseRecyclingServices: RecyclingService[];
-    flatRecyclingServices: RecyclingService[];
+    recyclingServices: RecyclingService[];
     dumpedRubbishInfo: DumpedRubbishInfo[];
   }
 };
@@ -41,11 +40,8 @@ export default withAuthenticator( function CMS({data, signOut, user} :Props) {
   const [facts, setFacts] = useState(data.facts);
   const [quiz, setQuiz] = useState(data.quiz);
   const [events, setEvents] = useState(data.events);
-  const [houseRecyclingServices, setHouseRecyclingServices] = useState(
-    data.houseRecyclingServices
-  );
-  const [flatRecyclingServices, setFlatRecyclingServices] = useState(
-    data.flatRecyclingServices
+  const [recyclingServices, setRecyclingServices] = useState(
+    data.recyclingServices
   );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
     data.dumpedRubbishInfo[0]
@@ -77,10 +73,8 @@ export default withAuthenticator( function CMS({data, signOut, user} :Props) {
           setQuiz={setQuiz}
           events={events}
           setEvents={setEvents}
-          houseRecyclingServices={houseRecyclingServices}
-          setHouseRecyclingServices={setHouseRecyclingServices}
-          flatRecyclingServices={flatRecyclingServices}
-          setFlatRecyclingServices={setFlatRecyclingServices}
+          recyclingServices={recyclingServices}
+          setRecyclingServices={setRecyclingServices}
           dumpedRubbishInfo={dumpedRubbishInfo}
           setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
@@ -99,7 +93,7 @@ export const getServerSideProps = async () => {
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
   }
   
-  const cats = ["facts", "quiz", "events", "houseRecyclingServices", "flatRecyclingServices", "dumpedRubbishInfo"]
+  const cats = ["facts", "quiz", "events", "recyclingServices", "dumpedRubbishInfo"]
   const data = Object.fromEntries(cats.map(cat => [cat, ""]))
 
   for (let i = 0; i < cats.length; i++) {
@@ -116,8 +110,7 @@ export const getServerSideProps = async () => {
         facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
         quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
         events: Object.keys(data.events).length !== 0 ? data.events : [],
-        houseRecyclingServices: Object.keys(data.houseRecyclingServices).length !== 0 ? data.houseRecyclingServices : [],
-        flatRecyclingServices: Object.keys(data.flatRecyclingServices).length !== 0 ? data.flatRecyclingServices : [],
+        recyclingServices: Object.keys(data.recyclingServices).length !== 0 ? data.recyclingServices : [],
         dumpedRubbishInfo: Object.keys(data.dumpedRubbishInfo).length !== 0 ? data.dumpedRubbishInfo : [],
       }
     },

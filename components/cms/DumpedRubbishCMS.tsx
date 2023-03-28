@@ -24,7 +24,7 @@ export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
   }
 
   async function submitInfo() {
-    const res = await fetch("/api/dumpedRubbishInfo/dumpedRubishInfo", {
+    const res = await fetch("/api/dumpedRubbishInfo/dumpedRubbishInfo", {
       method: "POST",
       body: JSON.stringify(dumpedRubbishInfo),
       headers: {
@@ -34,7 +34,7 @@ export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
     });
     const status = await res.status;
     console.log(status);
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (
