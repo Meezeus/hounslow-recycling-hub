@@ -138,8 +138,11 @@ export default function QuizCMS(props: QuizCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -162,8 +165,11 @@ export default function QuizCMS(props: QuizCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setQuiz(props.quiz.filter((question) => question.id != id));
+    if (status >= 200 && status < 300) {
+      props.setQuiz(props.quiz.filter((question) => question.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
 
   const answerComponents = [];

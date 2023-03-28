@@ -70,8 +70,11 @@ export default function EventCMS(props: EventCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -96,8 +99,11 @@ export default function EventCMS(props: EventCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setEvents(props.events.filter((event) => event.id != id));
+    if (status >= 200 && status < 300) {
+      props.setEvents(props.events.filter((event) => event.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
 
   const cmsformtitle =

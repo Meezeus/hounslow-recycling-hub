@@ -32,8 +32,11 @@ export default function FactCMS(props: FactCMSProps) {
         },
       });
       const status = await res.status;
-      console.log(status);
-      window.location.reload();
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
     }
   }
 
@@ -51,8 +54,11 @@ export default function FactCMS(props: FactCMSProps) {
       },
     });
     const status = await res.status;
-    console.log(status);
-    props.setFacts(props.facts.filter((fact) => fact.id != id));
+    if (status >= 200 && status < 300) {
+      props.setFacts(props.facts.filter((fact) => fact.id != id));
+    } else {
+      console.log("Request failed with status code: " + status);
+    }
   }
 
   const cmsformtitle =
