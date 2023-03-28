@@ -26,7 +26,7 @@ interface Props extends WithAuthenticatorProps {
     quiz: Question[];
     events: Event[];
     recyclingServices: RecyclingService[];
-    dumpedRubbishInfo: DumpedRubbishInfo[];
+    dumpedRubbishInfo: DumpedRubbishInfo;
   };
 }
 
@@ -51,7 +51,7 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
     )
   );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
-    data.dumpedRubbishInfo[0]
+    data.dumpedRubbishInfo
   );
 
   const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
@@ -130,7 +130,7 @@ export const getServerSideProps = async () => {
             : [],
         dumpedRubbishInfo:
           Object.keys(data.dumpedRubbishInfo).length !== 0
-            ? data.dumpedRubbishInfo
+            ? data.dumpedRubbishInfo[0]
             : [],
       },
     },
