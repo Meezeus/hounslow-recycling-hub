@@ -23,19 +23,14 @@ import Footer from "@/components/Footer";
 import { facts, Fact } from "@/data/Facts";
 import { quiz, Question } from "@/data/Quiz";
 import { events, Event } from "@/data/Events";
-import {
-  houseRecyclingServices,
-  flatRecyclingServices,
-  RecyclingService,
-} from "@/data/RecyclingServices";
+import { recyclingServices, RecyclingService } from "@/data/RecyclingServices";
 import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
   facts: Fact[];
   quiz: Question[];
   events: Event[];
-  houseRecyclingServices: RecyclingService[];
-  flatRecyclingServices: RecyclingService[];
+  recyclingServices: RecyclingService[];
   dumpedRubbishInfo: DumpedRubbishInfo;
 };
 
@@ -198,8 +193,12 @@ export default function Home(props: Props) {
         </div>
         <RecyclingServiceAccordionGrid
           showFlatVersion={showFlatVersion!}
-          houseRecyclingServices={props.houseRecyclingServices}
-          flatRecyclingServices={props.flatRecyclingServices}
+          houseRecyclingServices={props.recyclingServices.filter(
+            (recyclingService) => !recyclingService.forFlats
+          )}
+          flatRecyclingServices={props.recyclingServices.filter(
+            (recyclingService) => recyclingService.forFlats
+          )}
           ref={recyclingServiceAccordionGridRef}
         />
 
@@ -252,8 +251,7 @@ export const getServerSideProps = async () => {
   const mockFacts = facts;
   const mockQuiz = quiz;
   const mockEvents = events;
-  const mockHouseRecyclingServices = houseRecyclingServices;
-  const mockFlatRecyclingServices = flatRecyclingServices;
+  const mockRecyclingServices = recyclingServices;
   const mockDumpedRubbishInfo = dumpedRubbishInfo;
 
   return {
@@ -261,8 +259,7 @@ export const getServerSideProps = async () => {
       facts: mockFacts,
       quiz: mockQuiz,
       events: mockEvents,
-      houseRecyclingServices: mockHouseRecyclingServices,
-      flatRecyclingServices: mockFlatRecyclingServices,
+      recyclingServices: mockRecyclingServices,
       dumpedRubbishInfo: mockDumpedRubbishInfo,
     },
   };

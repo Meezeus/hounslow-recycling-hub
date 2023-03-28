@@ -190,7 +190,8 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
               id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}
@@ -220,7 +221,8 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
               id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}

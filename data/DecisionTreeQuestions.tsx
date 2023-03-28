@@ -33,7 +33,7 @@ export const houseQuestions = [
     id: 1,
     question: "You can use the bulky waste collection service!",
     answers: [],
-    serviceID: "bulky-waste-collection-service",
+    serviceID: "house-bulky-waste-collection-service",
   },
   {
     id: 2,
@@ -81,32 +81,32 @@ export const houseQuestions = [
     id: 3,
     question: "You can use the red recycling box!",
     answers: [],
-    serviceID: "plastic-and-metal-recycling-service",
+    serviceID: "house-plastic-and-metal-recycling-service",
   },
   {
     id: 4,
     question: "You can use the blue recycling box!",
     answers: [],
-    serviceID: "paper-and-card-recycling-service",
+    serviceID: "house-paper-and-card-recycling-service",
   },
   {
     id: 5,
     question: "You can use the green recycling box!",
     answers: [],
-    serviceID: "glass-recycling-service",
+    serviceID: "house-glass-recycling-service",
   },
   {
     id: 6,
     question:
       "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
     answers: [],
-    serviceID: "textile-recycling-service",
+    serviceID: "house-textile-recycling-service",
   },
   {
     id: 7,
     question: "You can use the food waste bin!",
     answers: [],
-    serviceID: "food-waste-recycling-service",
+    serviceID: "house-food-waste-recycling-service",
   },
   {
     id: 8,
@@ -146,27 +146,27 @@ export const houseQuestions = [
     id: 10,
     question: "You can use the clinical waste collection service!",
     answers: [],
-    serviceID: "clinical-waste-collection-service",
+    serviceID: "house-clinical-waste-collection-service",
   },
   {
     id: 11,
     question: "You can use the brown wheeled bin!",
     answers: [],
-    serviceID: "garden-waste-recycling-service",
+    serviceID: "house-garden-waste-recycling-service",
   },
   {
     id: 12,
     question:
       "You can use a clearly marked plastic bag and put it alongside your recycling boxes!",
     answers: [],
-    serviceID: "small-electrical-items-recycling-service",
+    serviceID: "house-small-electrical-items-recycling-service",
   },
   {
     id: 13,
     question:
       "Sorry, this item is rubbish and cannot be recycled. Please use the black wheeled bin!",
     answers: [],
-    serviceID: "general-waste-collection-service",
+    serviceID: "house-general-waste-collection-service",
   },
 ];
 
@@ -192,7 +192,7 @@ export const flatQuestions = [
     id: 1,
     question: "You can use the bulky waste collection service!",
     answers: [],
-    serviceID: "bulky-waste-collection-service",
+    serviceID: "flat-bulky-waste-collection-service",
   },
   {
     id: 2,
@@ -251,45 +251,45 @@ export const flatQuestions = [
     question:
       "You can use a communal bin with a red 'household plastic packaging' label!",
     answers: [],
-    serviceID: "plastic-recycling-service",
+    serviceID: "flat-plastic-recycling-service",
   },
   {
     id: 4,
     question:
       "You can use a communal bin with a grey 'tins, cans & aerosols' label!",
     answers: [],
-    serviceID: "metal-recycling-service",
+    serviceID: "flat-metal-recycling-service",
   },
   {
     id: 5,
     question: "You can use a communal bin with a blue 'cardboard' label!",
     answers: [],
-    serviceID: "card-recycling-service",
+    serviceID: "flat-card-recycling-service",
   },
   {
     id: 6,
     question: "You can use a communal bin with a blue 'paper' label!",
     answers: [],
-    serviceID: "paper-recycling-service",
+    serviceID: "flat-paper-recycling-service",
   },
   {
     id: 7,
     question: "You can use a communal bin with a teal 'mixed glass' label!",
     answers: [],
-    serviceID: "glass-recycling-service",
+    serviceID: "flat-glass-recycling-service",
   },
   {
     id: 8,
     question:
       "You can utilise TRAID charity and Salvation Army Textile Banks to get your textiles recycled!",
     answers: [],
-    serviceID: "textiles-recycling",
+    serviceID: "flat-textiles-recycling",
   },
   {
     id: 9,
     question: "You can use a communal bin with a green 'food waste' label!",
     answers: [],
-    serviceID: "food-waste-recycling-service",
+    serviceID: "flat-food-waste-recycling-service",
   },
 
   {
@@ -330,20 +330,20 @@ export const flatQuestions = [
     id: 12,
     question: "You can use the clinical waste collection service!",
     answers: [],
-    serviceID: "clinical-waste-collection-service",
+    serviceID: "flat-clinical-waste-collection-service",
   },
   {
     id: 13,
     question:
       "Sorry, this item is rubbish and cannot be recycled. Please use a communal bin with a black 'general waste' label!",
     answers: [],
-    serviceID: "general-waste-collection-service",
+    serviceID: "flat-general-waste-collection-service",
   },
   {
     id: 14,
     question:
       "You can utilise TRAID charity as an opportunity to get your small electrical appliances recycled!",
     answers: [],
-    serviceID: "small-electrical-items-recycling",
+    serviceID: "flat-small-electrical-items-recycling",
   },
 ];
