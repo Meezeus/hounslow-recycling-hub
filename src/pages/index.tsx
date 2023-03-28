@@ -152,7 +152,15 @@ export default function Home({ data }: Props) {
             >
               <Subheading title="Events" id="events" ref={eventsRef} />
             </div>
-            <EventCardCarousel events={data.events} />
+            <EventCardCarousel
+              events={data.events
+                .sort(
+                  (eventA, eventB) =>
+                    new Date(eventA.startDate).getTime() -
+                    new Date(eventB.startDate).getTime()
+                )
+                .filter((event) => new Date(event.endDate) >= new Date())}
+            />
           </>
         ) : (
           ""
