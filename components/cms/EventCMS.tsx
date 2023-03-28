@@ -185,9 +185,7 @@ export default function EventCMS(props: EventCMSProps) {
               style["event-preview"] + " " + style["event-preview-back"]
             }
           >
-            <ReactMarkdown>
-              {newEvent.description.replace(/\\n/g, "\n")}
-            </ReactMarkdown>
+            <ReactMarkdown>{newEvent.description}</ReactMarkdown>
           </div>
         </div>
 
@@ -311,9 +309,7 @@ export default function EventCMS(props: EventCMSProps) {
                   style["event-preview"] + " " + style["event-preview-back"]
                 }
               >
-                <ReactMarkdown>
-                  {event.description.replace(/\\n/g, "\n")}
-                </ReactMarkdown>
+                <ReactMarkdown>{event.description}</ReactMarkdown>
               </div>
             </div>
 
