@@ -20,8 +20,29 @@
 .header-title {
   margin: auto;
   font-size: 40px;
+  color: white;
 }
 
 .header-description {
   font-size: 17px;
+  color: white;
+}
+
+.header-account {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  right: 30px;
+  bottom: 30px;
+  gap: 20px;
+}
+
+.header-account-user {
+  font-size: 18px;
+  color: white;
+}
+
+.header-account-button {
+  border-radius: 10px;
 }
