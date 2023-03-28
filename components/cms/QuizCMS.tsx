@@ -247,8 +247,8 @@ export default function QuizCMS(props: QuizCMSProps) {
         <div className={style["form-buttons"]}>
           {newQuestion.id !== "" ? (
             <Button
-              variant="contained"
-              endIcon={<CancelIcon />}
+              variant="outlined"
+              endIcon={<ClearIcon />}
               onClick={cancelEdit}
             >
               Cancel Edit
@@ -310,9 +310,9 @@ export default function QuizCMS(props: QuizCMSProps) {
 
               <Button
                 className={style["question-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(question.id)}
               >

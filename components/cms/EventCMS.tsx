@@ -225,8 +225,8 @@ export default function EventCMS(props: EventCMSProps) {
         <div className={style["form-buttons"]}>
           {newEvent.id !== "" ? (
             <Button
-              variant="contained"
-              endIcon={<CancelIcon />}
+              variant="outlined"
+              endIcon={<ClearIcon />}
               onClick={cancelEdit}
             >
               Cancel Edit
@@ -303,9 +303,9 @@ export default function EventCMS(props: EventCMSProps) {
 
               <Button
                 className={style["event-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(event.id)}
               >

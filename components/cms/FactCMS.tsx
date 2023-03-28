@@ -132,8 +132,8 @@ export default function FactCMS(props: FactCMSProps) {
         <div className={style["form-buttons"]}>
           {newFact.id !== "" ? (
             <Button
-              variant="contained"
-              endIcon={<CancelIcon />}
+              variant="outlined"
+              endIcon={<ClearIcon />}
               onClick={cancelEdit}
             >
               Cancel Edit
@@ -190,9 +190,9 @@ export default function FactCMS(props: FactCMSProps) {
 
               <Button
                 className={style["fact-list-button"]}
-                variant="outlined"
-                color="primary"
-                endIcon={<ClearIcon />}
+                variant="contained"
+                color="error"
+                endIcon={<CancelIcon />}
                 type="button"
                 onClick={() => handleDeleteClick(fact.id)}
               >
