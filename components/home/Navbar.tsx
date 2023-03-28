@@ -24,7 +24,7 @@ export default function Navbar(props: NavbarProps) {
       target: "recycling-services-anchor",
     },
     {
-      label: "Report Dumped Rubbish",
+      label: "Report Rubbish",
       target: "report-dumped-rubbish-anchor",
     },
   ];
@@ -69,7 +69,7 @@ export default function Navbar(props: NavbarProps) {
             className={style["navbar-anchor"]}
             href="https://www.hounslow.gov.uk/homepage/86/recycling_and_waste_collection_day_finder"
           >
-            Find Your Collection Day
+            Collection Days
           </a>
         </div>
         <div
