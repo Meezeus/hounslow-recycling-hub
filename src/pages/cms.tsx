@@ -33,7 +33,13 @@ interface Props extends WithAuthenticatorProps {
 export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
   const [facts, setFacts] = useState(data.facts);
   const [quiz, setQuiz] = useState(data.quiz);
-  const [events, setEvents] = useState(data.events);
+  const [events, setEvents] = useState(
+    data.events.sort(
+      (eventA, eventB) =>
+        new Date(eventA.startDate).getTime() -
+        new Date(eventB.startDate).getTime()
+    )
+  );
   const [houseRecyclingServices, setHouseRecyclingServices] = useState(
     data.recyclingServices.filter(
       (recyclingService) => !recyclingService.forFlats
