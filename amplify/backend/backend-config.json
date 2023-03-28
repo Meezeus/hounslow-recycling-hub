@@ -6,6 +6,14 @@
           "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "apihrhcmsF"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "apihrhimagesF"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -53,6 +61,20 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "apihrhimagesF": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "hrhcmsimages"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -71,12 +93,33 @@
           "resourceName": "apihrhcmsF"
         }
       ]
+    },
+    "AMPLIFY_function_apihrhimagesF_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "apihrhimagesF"
+        }
+      ]
+    },
+    "AMPLIFY_function_apihrhimagesF_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "apihrhimagesF"
+        }
+      ]
     }
   },
   "storage": {
     "apihrhcmsS": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
+    },
+    "hrhcmsimages": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }
