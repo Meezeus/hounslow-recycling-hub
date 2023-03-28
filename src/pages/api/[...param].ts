@@ -28,7 +28,7 @@ export default async function handler(
       mode: "cors",
       headers: headers,
     });
-    const body = await resapi.json()
+    const body = await resapi.json();
     res.status(resapi.status).json(body);
   } else if (req.method === "PATCH" || req.method === "POST") {
     const resapi = await fetch(url, {

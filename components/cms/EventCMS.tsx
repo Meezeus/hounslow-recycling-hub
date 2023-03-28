@@ -60,7 +60,7 @@ export default function EventCMS(props: EventCMSProps) {
       newEvent.startDate != "" &&
       newEvent.endDate != ""
     ) {
-      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}` 
+      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}`;
       const res = await fetch(`/api/events${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newEvent),
@@ -98,11 +98,12 @@ export default function EventCMS(props: EventCMSProps) {
     const status = await res.status;
     console.log(status);
     props.setEvents(props.events.filter((event) => event.id != id));
-
-    
   }
 
-  const cmsformtitle = newEvent.id === "" ? "Create new Event" : `Editing event with ID: ${newEvent.id}` 
+  const cmsformtitle =
+    newEvent.id === ""
+      ? "Create new Event"
+      : `Editing event with ID: ${newEvent.id}`;
 
   return (
     <div>
@@ -210,7 +211,6 @@ export default function EventCMS(props: EventCMSProps) {
             onChange={handleChange}
           />
         </div>
-
 
         <div className={style["form-submit-button"]}>
           <Button

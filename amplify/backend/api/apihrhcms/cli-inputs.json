@@ -6,15 +6,8 @@
       "lambdaFunction": "apihrhcmsF",
       "permissions": {
         "setting": "protected",
-        "auth": [
-          "create",
-          "read",
-          "update",
-          "delete"
-        ],
-        "guest": [
-          "read"
-        ]
+        "auth": ["create", "read", "update", "delete"],
+        "guest": ["read"]
       }
     }
   }

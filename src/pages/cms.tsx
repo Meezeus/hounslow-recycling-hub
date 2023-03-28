@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Amplify } from 'aws-amplify';
+import { Amplify } from "aws-amplify";
 
 import Head from "next/head";
 import Header from "@/components/cms/Header";
@@ -8,11 +8,12 @@ import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
 
-import { withAuthenticator,
-  WithAuthenticatorProps, } from '@aws-amplify/ui-react';
+import {
+  withAuthenticator,
+  WithAuthenticatorProps,
+} from "@aws-amplify/ui-react";
 
-
-import awsExports from '../aws-exports';
+import awsExports from "../aws-exports";
 Amplify.configure(awsExports);
 
 // Data Types
@@ -34,10 +35,10 @@ interface Props extends WithAuthenticatorProps {
     houseRecyclingServices: RecyclingService[];
     flatRecyclingServices: RecyclingService[];
     dumpedRubbishInfo: DumpedRubbishInfo[];
-  }
-};
+  };
+}
 
-export default withAuthenticator( function CMS({data, signOut, user} :Props) {
+export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
   const [facts, setFacts] = useState(data.facts);
   const [quiz, setQuiz] = useState(data.quiz);
   const [events, setEvents] = useState(data.events);
@@ -66,7 +67,7 @@ export default withAuthenticator( function CMS({data, signOut, user} :Props) {
 
       <Header />
 
-      <UserHeader signOut={signOut} user={user} /> 
+      <UserHeader signOut={signOut} user={user} />
 
       <div className={style["page-content"]}>
         <CMSTabs
@@ -89,25 +90,33 @@ export default withAuthenticator( function CMS({data, signOut, user} :Props) {
       <Footer />
     </>
   );
-} )
-
+});
 
 export const getServerSideProps = async () => {
-
   const headers = {
     "content-type": "application/json",
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
-  }
-  
-  const cats = ["facts", "quiz", "events", "houseRecyclingServices", "flatRecyclingServices", "dumpedRubbishInfo"]
-  const data = Object.fromEntries(cats.map(cat => [cat, ""]))
+  };
+
+  const cats = [
+    "facts",
+    "quiz",
+    "events",
+    "houseRecyclingServices",
+    "flatRecyclingServices",
+    "dumpedRubbishInfo",
+  ];
+  const data = Object.fromEntries(cats.map((cat) => [cat, ""]));
 
   for (let i = 0; i < cats.length; i++) {
-    const resapi = await fetch(`${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`, {
-      method: "GET",
-      headers: headers,
-    });
-    data[cats[i]] = await resapi.json()
+    const resapi = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`,
+      {
+        method: "GET",
+        headers: headers,
+      }
+    );
+    data[cats[i]] = await resapi.json();
   }
 
   return {
@@ -116,11 +125,19 @@ export const getServerSideProps = async () => {
         facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
         quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
         events: Object.keys(data.events).length !== 0 ? data.events : [],
-        houseRecyclingServices: Object.keys(data.houseRecyclingServices).length !== 0 ? data.houseRecyclingServices : [],
-        flatRecyclingServices: Object.keys(data.flatRecyclingServices).length !== 0 ? data.flatRecyclingServices : [],
-        dumpedRubbishInfo: Object.keys(data.dumpedRubbishInfo).length !== 0 ? data.dumpedRubbishInfo : [],
-      }
+        houseRecyclingServices:
+          Object.keys(data.houseRecyclingServices).length !== 0
+            ? data.houseRecyclingServices
+            : [],
+        flatRecyclingServices:
+          Object.keys(data.flatRecyclingServices).length !== 0
+            ? data.flatRecyclingServices
+            : [],
+        dumpedRubbishInfo:
+          Object.keys(data.dumpedRubbishInfo).length !== 0
+            ? data.dumpedRubbishInfo
+            : [],
+      },
     },
-  }
-
+  };
 };

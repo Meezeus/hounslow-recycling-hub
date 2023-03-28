@@ -128,7 +128,7 @@ export default function QuizCMS(props: QuizCMSProps) {
       (answer) => (correct = correct && answer.answer != "")
     );
     if (correct) {
-      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}` 
+      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}`;
       const res = await fetch(`/api/quiz${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newQuestion),
@@ -194,13 +194,16 @@ export default function QuizCMS(props: QuizCMSProps) {
     );
   }
 
-  const cmsformtitle = newQuestion.id === "" ? "Create new Question" : `Editing question with ID:: ${newQuestion.id}` 
+  const cmsformtitle =
+    newQuestion.id === ""
+      ? "Create new Question"
+      : `Editing question with ID:: ${newQuestion.id}`;
 
   return (
     <div>
       <form>
         <div id="create-new-question" className={style["subheading"]}>
-          <h1>{ cmsformtitle }</h1>
+          <h1>{cmsformtitle}</h1>
         </div>
 
         <div className={style["form-field"]}>

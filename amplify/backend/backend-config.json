@@ -3,10 +3,7 @@
     "apihrhcms": {
       "dependsOn": [
         {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "function",
           "resourceName": "apihrhcmsF"
         }
@@ -20,21 +17,15 @@
       "dependsOn": [],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
+        "mfaTypes": ["SMS"],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [
-          "EMAIL"
-        ],
+        "signupAttributes": ["EMAIL"],
         "socialProviders": [],
         "usernameAttributes": [],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+        "verificationMechanisms": ["EMAIL"]
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito",
@@ -50,19 +41,12 @@
             "Arn": "TABLE_ARN",
             "Name": "TABLE_NAME"
           },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
+          "attributes": ["Name", "Arn"],
           "category": "storage",
           "resourceName": "apihrhcmsS"
         },
         {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
+          "attributes": ["Name", "Arn", "StreamArn"],
           "category": "storage",
           "resourceName": "apihrhcmsS"
         }

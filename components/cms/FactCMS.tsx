@@ -22,7 +22,7 @@ export default function FactCMS(props: FactCMSProps) {
 
   async function submitFact() {
     if (newFact.title != "" && newFact.content != "") {
-      const updateurl = newFact.id === "" ? "" : `/${newFact.id}` 
+      const updateurl = newFact.id === "" ? "" : `/${newFact.id}`;
       const res = await fetch(`/api/facts${updateurl}`, {
         method: "POST",
         body: JSON.stringify(newFact),
@@ -55,13 +55,16 @@ export default function FactCMS(props: FactCMSProps) {
     props.setFacts(props.facts.filter((fact) => fact.id != id));
   }
 
-  const cmsformtitle = newFact.id === "" ? "Create new Fact" : `Editing fact with ID: ${newFact.id}` 
+  const cmsformtitle =
+    newFact.id === ""
+      ? "Create new Fact"
+      : `Editing fact with ID: ${newFact.id}`;
 
   return (
     <div>
       <form>
         <div id="create-new-fact" className={style["subheading"]}>
-          <h1>{ cmsformtitle }</h1>
+          <h1>{cmsformtitle}</h1>
         </div>
 
         <div className={style["markdown-guide"]}>

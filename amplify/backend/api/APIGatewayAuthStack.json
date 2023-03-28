@@ -34,9 +34,7 @@
           "Statement": [
             {
               "Effect": "Allow",
-              "Action": [
-                "execute-api:Invoke"
-              ],
+              "Action": ["execute-api:Invoke"],
               "Resource": [
                 {
                   "Fn::Join": [
@@ -117,9 +115,7 @@
           "Statement": [
             {
               "Effect": "Allow",
-              "Action": [
-                "execute-api:Invoke"
-              ],
+              "Action": ["execute-api:Invoke"],
               "Resource": [
                 {
                   "Fn::Join": [
