@@ -23,10 +23,8 @@ type CMSTabsProps = {
   setQuiz(quiz: Question[]): void;
   events: Event[];
   setEvents(events: Event[]): void;
-  houseRecyclingServices: RecyclingService[];
-  setHouseRecyclingServices(houseRecyclingServices: RecyclingService[]): void;
-  flatRecyclingServices: RecyclingService[];
-  setFlatRecyclingServices(flatRecyclingServices: RecyclingService[]): void;
+  recyclingServices: RecyclingService[];
+  setRecyclingServices(recyclingServices: RecyclingService[]): void;
   dumpedRubbishInfo: DumpedRubbishInfo;
   setDumpedRubbishInfo(dumpedRubbishInfo: DumpedRubbishInfo): void;
 };
@@ -90,7 +88,7 @@ export default function CMSTabs(props: CMSTabsProps) {
       <TabPanel value={value} index={3}>
         <RecyclingServiceCMS
           authToken={props.authToken}
-          recyclingServices={props.houseRecyclingServices}
+          recyclingServices={props.props.houseRecyclingServices}
           setRecyclingServices={props.setHouseRecyclingServices}
         />
       </TabPanel>

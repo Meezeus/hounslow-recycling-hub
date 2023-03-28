@@ -75,10 +75,8 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
           setQuiz={setQuiz}
           events={events}
           setEvents={setEvents}
-          houseRecyclingServices={houseRecyclingServices}
-          setHouseRecyclingServices={setHouseRecyclingServices}
-          flatRecyclingServices={flatRecyclingServices}
-          setFlatRecyclingServices={setFlatRecyclingServices}
+          recyclingServices={recyclingServices}
+          setRecyclingServices={setRecyclingServices}
           dumpedRubbishInfo={dumpedRubbishInfo}
           setDumpedRubbishInfo={setDumpedRubbishInfo}
         />
@@ -93,6 +91,7 @@ export const getServerSideProps = async () => {
   const headers = {
     "content-type": "application/json",
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
+
   };
 
   const cats = [
