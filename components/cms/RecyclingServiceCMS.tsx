@@ -21,16 +21,9 @@ type RecyclingServiceCMSProps = {
 };
 
 export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
-  const [recyclingService, setRecyclingService] = useState({
-    itemImage: "",
-    title: "",
-    id: "",
-    binImage: "",
-    description: "",
-    content: "",
-    infographicImage: "",
-    link: "",
-  });
+  const [recyclingService, setRecyclingService] = useState(
+    props.recyclingServices[0]
+  );
 
   const [itemImageFile, setItemImageFile] = useState<File>();
   const [binImageFile, setBinImageFile] = useState<File>();
@@ -136,6 +129,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
 
   async function submitService() {
     if (
+      recyclingService.id != "" &&
       recyclingService.title != "" &&
       recyclingService.description != "" &&
       recyclingService.content != ""
@@ -228,7 +222,6 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             label="Recycling Service"
             name="recycling-service"
             value={recyclingService.id}
-            defaultValue={props.recyclingServices[0].id}
             onChange={(event, child) => handleSelectOnChange(event)}
           >
             {props.recyclingServices.map((service) => (
