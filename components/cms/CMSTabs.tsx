@@ -45,23 +45,25 @@ export default function CMSTabs(props: CMSTabsProps) {
         bgcolor: "background.paper",
       }}
     >
-      <Tabs
-        centered
-        variant="standard"
-        value={value}
-        onChange={(event, value) => handleChange(value)}
-        textColor="secondary"
-        indicatorColor="secondary"
-        aria-label="Category Tabs"
-        sx={{ borderBottom: 1, borderColor: "divider" }}
-      >
-        <Tab label="Facts" {...a11yProps(0)} />
-        <Tab label="Questions" {...a11yProps(1)} />
-        <Tab label="Events" {...a11yProps(2)} />
-        <Tab label="Recycling Services (House)" {...a11yProps(3)} />
-        <Tab label="Recycling Services (Flat)" {...a11yProps(4)} />
-        <Tab label="Report Dumped Rubbish" {...a11yProps(5)} />
-      </Tabs>
+      <Box sx={{ display: "flex", justifyContent: "center", width: "100%" }}>
+        <Tabs
+          variant="scrollable"
+          scrollButtons="auto"
+          value={value}
+          onChange={(event, value) => handleChange(value)}
+          textColor="secondary"
+          indicatorColor="secondary"
+          aria-label="Category Tabs"
+          sx={{ borderBottom: 1, borderColor: "divider" }}
+        >
+          <Tab label="Facts" {...a11yProps(0)} />
+          <Tab label="Questions" {...a11yProps(1)} />
+          <Tab label="Events" {...a11yProps(2)} />
+          <Tab label="Recycling Services (House)" {...a11yProps(3)} />
+          <Tab label="Recycling Services (Flat)" {...a11yProps(4)} />
+          <Tab label="Report Dumped Rubbish" {...a11yProps(5)} />
+        </Tabs>
+      </Box>
 
       <TabPanel value={value} index={0}>
         <FactCMS
