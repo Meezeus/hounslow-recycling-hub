@@ -1,5 +1,11 @@
 import { useState } from "react";
 import { Amplify } from "aws-amplify";
+import awsExports from "../aws-exports";
+Amplify.configure(awsExports);
+import {
+  withAuthenticator,
+  WithAuthenticatorProps,
+} from "@aws-amplify/ui-react";
 
 import Head from "next/head";
 import Header from "@/components/cms/Header";
@@ -8,24 +14,12 @@ import CMSTabs from "@/components/cms/CMSTabs";
 import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
 
-import {
-  withAuthenticator,
-  WithAuthenticatorProps,
-} from "@aws-amplify/ui-react";
-
-import awsExports from "../aws-exports";
-Amplify.configure(awsExports);
-
 // Data Types
-import { facts, Fact } from "@/data/Facts";
-import { quiz, Question } from "@/data/Quiz";
-import { events, Event } from "@/data/Events";
-import {
-  houseRecyclingServices,
-  flatRecyclingServices,
-  RecyclingService,
-} from "@/data/RecyclingServices";
-import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
+import { Fact } from "@/data/Facts";
+import { Question } from "@/data/Quiz";
+import { Event } from "@/data/Events";
+import { RecyclingService } from "@/data/RecyclingServices";
+import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 interface Props extends WithAuthenticatorProps {
   data: {
