@@ -127,27 +127,27 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    // if (
-    //   recyclingService.title != "" &&
-    //   recyclingService.description != "" &&
-    //   recyclingService.content != "" &&
-    //   recyclingService.link != ""
-    // ) {
-    //   const res = await fetch("/api/f", {
-    //     method: "POST",
-    //     body: JSON.stringify(recyclingService),
-    //     headers: {
-    //       "content-type": "application/json",
-    //       Authorization: props.authToken,
-    //     },
-    //   });
-    //   const status = await res.status;
-    //   if (status >= 200 && status < 300) {
-    //     window.location.reload();
-    //   } else {
-    //     console.log("Request failed with status code: " + status);
-    //   }
-    // }
+    if (
+      recyclingService.title != "" &&
+      recyclingService.description != "" &&
+      recyclingService.content != "" &&
+      recyclingService.link != ""
+    ) {
+      const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
+        method: "POST",
+        body: JSON.stringify(recyclingService),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
+    }
   }
 
   return (
