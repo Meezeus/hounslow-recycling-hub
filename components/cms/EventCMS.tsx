@@ -53,6 +53,10 @@ export default function EventCMS(props: EventCMSProps) {
     }
   };
 
+  function handleRemoveImage() {
+    setNewEvent({ ...newEvent, image: "" });
+  }
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setNewEvent({ ...newEvent, [event.target.name]: event.target.value });
   }
@@ -190,6 +194,14 @@ export default function EventCMS(props: EventCMSProps) {
         <div className={style["form-image-upload"]}>
           <span>Upload an image for the event here:</span>
           <input type="file" accept="image/*" onChange={handleImageUpload} />
+          <Button
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-text-field"]}>

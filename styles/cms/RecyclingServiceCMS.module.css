@@ -48,7 +48,7 @@
 .form-image-upload {
   padding-left: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr auto;
 }
 
 .form-text-field {

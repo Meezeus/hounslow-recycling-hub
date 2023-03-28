@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, useEffect, useRef } from "react";
+import { useState, ChangeEvent, MouseEvent, useEffect, useRef } from "react";
 import {
   Button,
   FormControl,
@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { RecyclingService } from "@/data/RecyclingServices";
@@ -107,6 +108,13 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
       }
     }
   };
+
+  function handleRemoveImage(event: MouseEvent<HTMLButtonElement>) {
+    setRecyclingService({
+      ...recyclingService,
+      [(event.target as HTMLButtonElement).name]: "",
+    });
+  }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setRecyclingService({
@@ -289,6 +297,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="itemImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-image-upload"]}>
@@ -300,6 +317,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="binImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-image-upload"]}>
@@ -311,6 +337,15 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          <Button
+            name="infographicImage"
+            size="small"
+            variant="outlined"
+            endIcon={<ClearIcon />}
+            onClick={handleRemoveImage}
+          >
+            Remove Image
+          </Button>
         </div>
 
         <div className={style["form-submit-button"]}>
