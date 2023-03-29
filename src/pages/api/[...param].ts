@@ -10,7 +10,7 @@ export default async function handler(
   const { param } = req.query;
   const category = param !== undefined ? param[0] : "";
   const id = param !== undefined ? param[1] : "";
-  const url = `${api}/${category}` + `${id !== undefined ? `/${id}` : ""}`;
+  const url = `${api}/content/${category}` + `${id !== undefined ? `/${id}` : ""}`;
   const token =
     req.headers.authorization !== undefined ? req.headers.authorization : "";
 

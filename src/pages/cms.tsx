@@ -89,7 +89,6 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
 export const getServerSideProps = async () => {
   const headers = {
     "content-type": "application/json",
-    "x-api-key": `${process.env.FRONTEND_APIKEY}`,
   };
 
   const cats = [

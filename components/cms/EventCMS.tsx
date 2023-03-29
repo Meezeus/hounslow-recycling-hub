@@ -95,13 +95,16 @@ export default function EventCMS(props: EventCMSProps) {
       const formData = new FormData();
       formData.append("myimage", imageFile);
 
-      const res = await axios.post(`/api/images`, formData, {
+      const res = await fetch(`/api/images/events`, {
+        method: "POST",
+        body: formData,
         headers: {
           "content-type": "multipart/form-data",
           Authorization: props.authToken,
         },
       });
-      return res.data;
+      const resjson = res.json()
+      return resjson;
     }
   }
 
