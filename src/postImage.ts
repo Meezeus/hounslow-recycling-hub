@@ -1,4 +1,4 @@
-export default async function postImage(imageFile : File) {
+export default async function postImage(imageFile : File | undefined) {
     if (imageFile !== undefined) {
 
       const res = await fetch(`/api/images/${imageFile.name}`, {
