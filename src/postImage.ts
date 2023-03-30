@@ -3,7 +3,7 @@ export default function postImage(
   authToken: string
 ) {
   if (!imageFile) {
-    return;
+    return "";
   }
 
   let reader = new FileReader();
