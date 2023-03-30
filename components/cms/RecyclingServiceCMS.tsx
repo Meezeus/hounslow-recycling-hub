@@ -145,9 +145,9 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
     );
     setRecyclingService({
       ...recyclingService,
-      itemImage: itemImageLink,
-      binImage: binImageLink,
-      infographicImage: infographicImageLink,
+      itemImage: itemImageLink!,
+      binImage: binImageLink!,
+      infographicImage: infographicImageLink!,
     });
     if (
       recyclingService.id != "" &&
