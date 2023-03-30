@@ -12,9 +12,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { RecyclingService } from "@/data/RecyclingServices";
-import style from "@/styles/cms/RecyclingServiceCMS.module.css";
-
 import postImage from "@/src/postImage";
+import style from "@/styles/cms/RecyclingServiceCMS.module.css";
 
 type RecyclingServiceCMSProps = {
   recyclingServices: RecyclingService[];
@@ -130,23 +129,17 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    const itemimagelink = await postImage(itemImageFile, props.authToken);
-    const binimagelink = await postImage(binImageFile, props.authToken);
-    const infoimagelink = await postImage(
+    const itemImageLink = await postImage(itemImageFile, props.authToken);
+    const binImageLink = await postImage(binImageFile, props.authToken);
+    const infographicImageLink = await postImage(
       infographicImageFile,
       props.authToken
     );
     setRecyclingService({
       ...recyclingService,
-      itemImage: itemimagelink,
-    });
-    setRecyclingService({
-      ...recyclingService,
-      binImage: binimagelink,
-    });
-    setRecyclingService({
-      ...recyclingService,
-      infographicImage: infoimagelink,
+      itemImage: itemImageLink,
+      binImage: binImageLink,
+      infographicImage: infographicImageLink,
     });
     if (
       recyclingService.id != "" &&

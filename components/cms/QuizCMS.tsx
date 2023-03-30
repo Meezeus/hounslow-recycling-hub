@@ -126,8 +126,8 @@ export default function QuizCMS(props: QuizCMSProps) {
       (answer) => (correct = correct && answer.answer != "")
     );
     if (correct) {
-      const updateurl = newQuestion.id === "" ? "" : `/${newQuestion.id}`;
-      const res = await fetch(`/api/quiz${updateurl}`, {
+      const updateURL = newQuestion.id === "" ? "" : `/${newQuestion.id}`;
+      const res = await fetch(`/api/quiz${updateURL}`, {
         method: "POST",
         body: JSON.stringify(newQuestion),
         headers: {

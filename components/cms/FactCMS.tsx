@@ -27,8 +27,8 @@ export default function FactCMS(props: FactCMSProps) {
 
   async function submitFact() {
     if (newFact.title != "" && newFact.content != "") {
-      const updateurl = newFact.id === "" ? "" : `/${newFact.id}`;
-      const res = await fetch(`/api/facts${updateurl}`, {
+      const updateURL = newFact.id === "" ? "" : `/${newFact.id}`;
+      const res = await fetch(`/api/facts${updateURL}`, {
         method: "POST",
         body: JSON.stringify(newFact),
         headers: {

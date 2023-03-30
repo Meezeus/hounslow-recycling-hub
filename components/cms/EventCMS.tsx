@@ -1,15 +1,13 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import { Button, TextField } from "@mui/material";
 import CancelIcon from "@mui/icons-material/Cancel";
-
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
-import style from "@/styles/cms/EventCMS.module.css";
-
 import postImage from "@/src/postImage";
+import style from "@/styles/cms/EventCMS.module.css";
 
 type EventCMSProps = {
   events: Event[];
@@ -67,16 +65,16 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    const imagelink = await postImage(imageFile, props.authToken);
-    setNewEvent({ ...newEvent, image: imagelink });
+    const imageLink = await postImage(imageFile, props.authToken);
+    setNewEvent({ ...newEvent, image: imageLink });
 
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
       newEvent.endDate != ""
     ) {
-      const updateurl = newEvent.id === "" ? "" : `/${newEvent.id}`;
-      const res = await fetch(`/api/events${updateurl}`, {
+      const updateURL = newEvent.id === "" ? "" : `/${newEvent.id}`;
+      const res = await fetch(`/api/events${updateURL}`, {
         method: "POST",
         body: JSON.stringify(newEvent),
         headers: {
