@@ -1,4 +1,4 @@
-export default async function postImage(imageFile : File | undefined) {
+export default async function postImage(imageFile : File | undefined, authToken : string) {
     if (imageFile !== undefined) {
 
       const res = await fetch(`/api/images/${imageFile.name}`, {
@@ -6,7 +6,7 @@ export default async function postImage(imageFile : File | undefined) {
         body: imageFile,
         headers: {
           "content-type": "application/octet-stream",
-          Authorization: props.authToken,
+          Authorization: authToken,
         },
       });
       const linktoimage =  await '${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/${imageFile.name}'
