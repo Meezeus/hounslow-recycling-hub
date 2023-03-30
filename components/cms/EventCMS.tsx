@@ -8,7 +8,8 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
 import style from "@/styles/cms/EventCMS.module.css";
-import axios from "axios";
+
+import postImage from "@/src/postImage";
 
 type EventCMSProps = {
   events: Event[];
@@ -66,7 +67,9 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    postImage();
+    const imagelink = postImage(imageFile);
+    setNewEvent({ ...newEvent, image: imagelink });
+
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
@@ -87,24 +90,6 @@ export default function EventCMS(props: EventCMSProps) {
       } else {
         console.log("Request failed with status code: " + status);
       }
-    }
-  }
-
-  async function postImage() {
-    if (imageFile !== undefined) {
-      const formData = new FormData();
-      formData.append("myimage", imageFile);
-
-      const res = await fetch(`/api/images/events`, {
-        method: "POST",
-        body: formData,
-        headers: {
-          "content-type": "multipart/form-data",
-          Authorization: props.authToken,
-        },
-      });
-      const resjson = res.json()
-      return resjson;
     }
   }
 
