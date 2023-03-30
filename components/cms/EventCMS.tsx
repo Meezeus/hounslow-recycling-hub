@@ -92,14 +92,12 @@ export default function EventCMS(props: EventCMSProps) {
 
   async function postImage() {
     if (imageFile !== undefined) {
-      const formData = new FormData();
-      formData.append("myimage", imageFile);
 
-      const res = await fetch(`/api/images/events`, {
-        method: "POST",
-        body: formData,
+      const res = await fetch(`/api/images/${imageFile.name}`, {
+        method: "PUT",
+        body: imageFile,
         headers: {
-          "content-type": "multipart/form-data",
+          "content-type": "application/octet-stream",
           Authorization: props.authToken,
         },
       });
