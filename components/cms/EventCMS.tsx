@@ -67,7 +67,7 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    const imagelink = await postImage(imageFile);
+    const imagelink = await postImage(imageFile, props.authToken);
     setNewEvent({ ...newEvent, image: imagelink });
 
     if (
