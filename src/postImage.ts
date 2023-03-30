@@ -9,7 +9,8 @@ export default async function postImage(imageFile : File) {
           Authorization: props.authToken,
         },
       });
-      const resjson = res.json()
-      return resjson;
+      const linktoimage = '${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/${imageFile.name}'
+      return linktoimage;
     }
+    return "";
   }
