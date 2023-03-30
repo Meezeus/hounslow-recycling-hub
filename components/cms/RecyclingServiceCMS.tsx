@@ -130,9 +130,21 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    postImage(itemImageFile);
-    postImage(binImageFile);
-    postImage(infographicImageFile);
+    const itemimagelink = postImage(itemImageFile);
+    const binimagelink = postImage(binImageFile);
+    const infoimagelink = postImage(infographicImageFile);
+    setRecyclingService({
+      ...recyclingService,
+      itemImage: itemimagelink,
+    });
+    setRecyclingService({
+      ...recyclingService,
+      binImage: binimagelink,
+    });
+    setRecyclingService({
+      ...recyclingService,
+      infographicImage: infoimagelink,
+    });
     if (
       recyclingService.id != "" &&
       recyclingService.title != "" &&
