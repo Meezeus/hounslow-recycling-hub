@@ -24,7 +24,7 @@ export default function Navbar(props: NavbarProps) {
       target: "recycling-services-anchor",
     },
     {
-      label: "Report Rubbish",
+      label: "Dumped Rubbish",
       target: "report-dumped-rubbish-anchor",
     },
   ];
