@@ -12,7 +12,7 @@ export default async function handler(
   const url = `${api}/images/${ibn}/${filename}`;
   const token =
     req.headers.authorization !== undefined ? req.headers.authorization : "";
-    
+
   // construct headers
   const headers = {
     "content-type": "image/png",
@@ -27,7 +27,7 @@ export default async function handler(
       body: req.body,
       headers: headers,
     });
-    const resapibody = await resapi.body
+    const resapibody = await resapi.body;
     res.status(resapi.status).json(resapibody);
   }
 }

@@ -1,5 +1,7 @@
-export default function postImage(imageFile : File | undefined, authToken : string) {
-
+export default function postImage(
+  imageFile: File | undefined,
+  authToken: string
+) {
   if (!imageFile) {
     return;
   }
@@ -16,12 +18,11 @@ export default function postImage(imageFile : File | undefined, authToken : stri
       method: "PUT",
       body: encodedImage,
       headers: {
-        Authorization: authToken
+        Authorization: authToken,
       },
     });
-    if(res.status === 200){
-      return `${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/${fileName}`
-    }
-    else return "";
-  }
+    if (res.status === 200) {
+      return `${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/${fileName}`;
+    } else return "";
+  };
 }
