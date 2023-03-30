@@ -46,7 +46,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
       "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been washed, squashed and with lids included for plastics. ",
-    infographicImage: "/red_recycling_box_infographic.png",
+    infographicImage: "./red_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1597/plastic_recycling_in_your_red_box",
   },
   {
@@ -60,7 +60,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
       "You should place the box at the front edge of your property by 7am on the collection day and ensure that all items have been loosely placed inside. ",
-    infographicImage: "/blue_recycling_box_infographic.png",
+    infographicImage: "./blue_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1598/paper_and_card_recycling_in_your_blue_box",
   },
   {
@@ -73,7 +73,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly with collection between 7am and 5pm. " +
       "You should place the box at the front edge of your property by 7am on the collection day. ",
-    infographicImage: "/green_recycling_box_infographic.png",
+    infographicImage: "./green_recycling_box_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1599/glass_recycling_in_your_green_box",
   },
   {
@@ -94,7 +94,7 @@ export const recyclingServices = [
       "&nbsp;  \n" +
       "Both bins should be lined with a biodegradable food waste bag. " +
       "Do not use plastic bags in either of the bins. ",
-    infographicImage: "/food_waste_bin_infographic.png",
+    infographicImage: "./food_waste_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/1602/food_waste_recycling",
   },
   {
@@ -279,7 +279,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly. " +
       "Please ensure that all items have been loosely placed inside the bin. ",
-    infographicImage: "/metal_communal_bin_infographic.png",
+    infographicImage: "./metal_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
   {
@@ -307,7 +307,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly. " +
       "Please ensure that all items have been loosely placed inside the bin. ",
-    infographicImage: "/paper_communal_bin_infographic.png",
+    infographicImage: "./paper_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
   {
@@ -321,7 +321,7 @@ export const recyclingServices = [
     content:
       "**How:** The recycling process takes place weekly. " +
       "Please ensure that all items have been loosely placed inside the bin. ",
-    infographicImage: "/glass_communal_bin_infographic.png",
+    infographicImage: "./glass_communal_bin_infographic.png",
     link: "https://www.hounslow.gov.uk/info/20128/household_recycling_and_waste_collections/24/recycling_and_rubbish_collections_from_your_flat",
   },
   {
