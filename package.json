@@ -24,6 +24,7 @@
     "animate.css": "^4.1.1",
     "antd": "^5.2.1",
     "aws-amplify": "^5.0.22",
+    "aws-sdk": "^2.1346.0",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.5",
     "eslint-config-prettier": "^8.6.0",

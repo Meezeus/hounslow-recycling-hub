@@ -86,7 +86,7 @@ export default function EventCMS(props: EventCMSProps) {
       });
       const status = await res.status;
       if (status >= 200 && status < 300) {
-        window.location.reload();
+        // window.location.reload();
       } else {
         console.log("Request failed with status code: " + status);
       }
