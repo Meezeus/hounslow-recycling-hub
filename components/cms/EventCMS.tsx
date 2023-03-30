@@ -8,7 +8,6 @@ import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
 import style from "@/styles/cms/EventCMS.module.css";
-import axios from "axios";
 
 type EventCMSProps = {
   events: Event[];
