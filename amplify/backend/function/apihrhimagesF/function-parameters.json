@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "storage": {
-      "hrhcmsimages": ["create", "read", "update", "delete"]
-    }
-  },
-  "lambdaLayers": []
-}
