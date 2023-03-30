@@ -12,8 +12,8 @@ const s3 = new S3({
   region,
 });
 
-const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
-const bodyParser = require('body-parser')
+const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+const bodyParser = require("body-parser");
 const express = require("express");
 
 const userIdPresent = false; // TODO: update in case is required to use that definition
@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 
 const fs = require("fs");
 const util = requrie("util");
-const unlinkFile = util.promisify(fs.unlink)
+const unlinkFile = util.promisify(fs.unlink);
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
@@ -54,28 +54,24 @@ function uploadImage(file, key) {
   return s3.upload(uploadParams).promise();
 }
 
-
-
-
 /************************************
  * HTTP post method for insert object *
  *************************************/
 
 app.post(path + hashKeyPath, upload.single("myimage"), async (req, res) => {
-    const album = req.params[partitionKeyName];
-    const name = req.params[sortKeyName];
-    const key = `${album}/${name}`
+  const album = req.params[partitionKeyName];
+  const name = req.params[sortKeyName];
+  const key = `${album}/${name}`;
 
-    const file = req.file;
+  const file = req.file;
 
-    const result = await uploadImage(file, key);
+  const result = await uploadImage(file, key);
 
-    await unlinkFile(file.path)
+  await unlinkFile(file.path);
 
-    res.send(result);
-    res.statusCode(200);
-  }
-);
+  res.send(result);
+  res.statusCode(200);
+});
 
 app.listen(3000, function () {
   console.log("App started");

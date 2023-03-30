@@ -20,7 +20,7 @@ export default async function handler(
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
     Authorization: token,
   };
-    
+
   if (req.method === "PUT") {
     const resapi = await fetch(url, {
       method: req.method,
@@ -28,7 +28,7 @@ export default async function handler(
       body: req.body,
       headers: headers,
     });
-    const resapijson = await resapi.json()
+    const resapijson = await resapi.json();
     res.status(resapi.status).json(resapijson);
   }
 }

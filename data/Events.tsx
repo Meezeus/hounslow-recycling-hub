@@ -52,5 +52,5 @@ export const events = [
     description:
       "**What:** *The Global Recycling Foundation* is pleased to announce the theme of *Global Recycling Day 2023* as *#RecyclingHeroes*. This will recognise the people, places and activities that showcase what an important role recycling plays in contributing to an environmentally stable planet and a greener future which will benefit all.  \n&nbsp;  \n**Competition:** We are inviting nominations for *#RecyclingHeroes*. Ten winners will be chosen from across the globe and each one will be awarded a prize of *US $1000* and will also feature on all our social media channels. *For more info on nominations*, [see here](https://www.globalrecyclingday.com/recycling-heroes/2023-competition/).",
     id: "3",
-  }
+  },
 ];
