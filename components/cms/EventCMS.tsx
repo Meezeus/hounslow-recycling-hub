@@ -9,6 +9,8 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
 import style from "@/styles/cms/EventCMS.module.css";
 
+import postImage from "@/src/postImage";
+
 type EventCMSProps = {
   events: Event[];
   setEvents(events: Event[]): void;
@@ -86,22 +88,6 @@ export default function EventCMS(props: EventCMSProps) {
       } else {
         console.log("Request failed with status code: " + status);
       }
-    }
-  }
-
-  async function postImage() {
-    if (imageFile !== undefined) {
-
-      const res = await fetch(`/api/images/${imageFile.name}`, {
-        method: "PUT",
-        body: imageFile,
-        headers: {
-          "content-type": "application/octet-stream",
-          Authorization: props.authToken,
-        },
-      });
-      const resjson = res.json()
-      return resjson;
     }
   }
 
