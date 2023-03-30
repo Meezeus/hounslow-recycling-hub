@@ -24,6 +24,7 @@ export default async function handler(
 
   // handle requests
   if (req.method === "GET" || req.method === "DELETE") {
+    console.log(url)
     const resapi = await fetch(url, {
       method: req.method,
       mode: "cors",

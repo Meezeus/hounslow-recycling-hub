@@ -8,15 +8,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   // construct url
-  const { param } = req.query;
-  const filename = param !== undefined ? param[0] : "";
+  const { filename } = req.query;
   const url = `${api}/images/${ibn}/${filename}`;
   const token =
     req.headers.authorization !== undefined ? req.headers.authorization : "";
-
+    
   // construct headers
   const headers = {
-    "content-type": "application/octet-stream",
+    "content-type": "image/png",
     "x-api-key": `${process.env.FRONTEND_APIKEY}`,
     Authorization: token,
   };
@@ -28,7 +27,7 @@ export default async function handler(
       body: req.body,
       headers: headers,
     });
-    const resapijson = await resapi.json();
-    res.status(resapi.status).json(resapijson);
+    const resapibody = await resapi.body
+    res.status(resapi.status).json(resapibody);
   }
 }
