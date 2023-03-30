@@ -67,7 +67,7 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    postImage();
+    postImage(imageFile);
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
