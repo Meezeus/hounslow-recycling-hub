@@ -76,6 +76,14 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [infographicImageFile]);
 
+  // This hook should run last. The other hooks will delete the images from the
+  // current recycling object. This hook refreshes the object so that it has
+  // them again.
+  useEffect(() => {
+    setRecyclingService(props.recyclingServices[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // This function is called when the user selects a file to upload.
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files![0];
