@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "paths": {
+    "/{category}/{id}": {
+      "name": "/{category}/{id}",
+      "lambdaFunction": "apihrhcmsF",
+      "permissions": {
+        "setting": "protected",
+        "auth": ["create", "read", "update", "delete"],
+        "guest": ["read"]
+      }
+    },
+    "/images/{album}/{name}": {
+      "name": "/images/{album}/{name}",
+      "lambdaFunction": "apihrhimagesF",
+      "permissions": {
+        "setting": "private",
+        "auth": ["create", "read", "update", "delete"]
+      }
+    }
+  }
+}

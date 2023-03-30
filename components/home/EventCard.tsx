@@ -1,15 +1,13 @@
-import ReactMarkdown from "react-markdown";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { Event } from "@/data/Events";
 import style from "@/styles/home/EventCard.module.css";
 
-export type EventCardProps = {
-  image: string;
-  title: string;
-  date: string;
-  description: string;
+type EventCardsProps = {
+  event: Event;
 };
 
-export default function EventCard(props: EventCardProps) {
+export default function EventCard(props: EventCardsProps) {
   const [isFlipped, setFlipped] = useState(false);
 
   return (
@@ -27,17 +25,22 @@ export default function EventCard(props: EventCardProps) {
           <div>
             <img
               className={style["event-card-image"]}
-              src={props.image}
+              src={props.event.image}
               alt=""
             />
           </div>
           <div>
-            <h2>{props.title}</h2>
-            <h3>{props.date}</h3>
+            <h2>{props.event.title}</h2>
+            <h3>
+              {props.event.startDate}
+              {props.event.startDate != props.event.endDate
+                ? ` - ${props.event.endDate}`
+                : ""}
+            </h3>
           </div>
         </div>
         <div className={style["event-card-back"]}>
-          <ReactMarkdown>{props.description}</ReactMarkdown>
+          <ReactMarkdown>{props.event.description}</ReactMarkdown>
         </div>
       </div>
     </div>

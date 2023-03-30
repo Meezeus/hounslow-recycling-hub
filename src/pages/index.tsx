@@ -19,26 +19,24 @@ import RecyclingServiceAccordionGrid, {
 import DumpedRubbishSection from "@/components/home/DumpedRubbishSection";
 import Footer from "@/components/Footer";
 
-// API URL
-import { api } from "@/config/api";
-
 // Data and Data Types
-import {
-  houseRecyclingServices,
-  flatRecyclingServices,
-  RecyclingServices,
-} from "@/data/RecyclingServices";
-import { events, Events } from "@/data/Events";
-import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
+import { Fact } from "@/data/Facts";
+import { Question } from "@/data/Quiz";
+import { Event } from "@/data/Events";
+import { RecyclingService, service_order } from "@/data/RecyclingServices";
+import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 type Props = {
-  events: Events[];
-  houseRecyclingServices: RecyclingServices[];
-  flatRecyclingServices: RecyclingServices[];
-  dumpedRubbishInfo: DumpedRubbishInfo;
+  data: {
+    facts: Fact[];
+    quiz: Question[];
+    events: Event[];
+    recyclingServices: RecyclingService[];
+    dumpedRubbishInfo: DumpedRubbishInfo;
+  };
 };
 
-export default function Home(props: Props) {
+export default function Home({ data }: Props) {
   const [showFlatVersion, setShowFlatVersion] = useState<boolean>();
   const [showPopup, setShowPopup] = useState(false);
 
@@ -131,7 +129,7 @@ export default function Home(props: Props) {
       </Popup>
 
       <Navbar
-        displayEvents={props.events.length > 0}
+        displayEvents={data.events.length > 0}
         showFlatVersion={showFlatVersion!}
         toggle={toggleVersion}
       />
@@ -139,9 +137,13 @@ export default function Home(props: Props) {
       <Header ref={headerRef} />
 
       <div className={style["page-content"]}>
-        <EngagingBox showFlatVersion={showFlatVersion!} />
+        <EngagingBox
+          showFlatVersion={showFlatVersion!}
+          facts={data.facts}
+          quiz={data.quiz}
+        />
 
-        {props.events.length > 0 ? (
+        {data.events.length > 0 ? (
           <>
             <div
               className={
@@ -150,7 +152,15 @@ export default function Home(props: Props) {
             >
               <Subheading title="Events" id="events" ref={eventsRef} />
             </div>
-            <EventCardCarousel events={props.events} />
+            <EventCardCarousel
+              events={data.events
+                .sort(
+                  (eventA, eventB) =>
+                    new Date(eventA.startDate).getTime() -
+                    new Date(eventB.startDate).getTime()
+                )
+                .filter((event) => new Date(event.endDate) >= new Date())}
+            />
           </>
         ) : (
           ""
@@ -193,8 +203,20 @@ export default function Home(props: Props) {
         </div>
         <RecyclingServiceAccordionGrid
           showFlatVersion={showFlatVersion!}
-          houseRecyclingServices={props.houseRecyclingServices}
-          flatRecyclingServices={props.flatRecyclingServices}
+          houseRecyclingServices={data.recyclingServices
+            .filter((recyclingService) => !recyclingService.forFlats)
+            .sort(
+              (serviceA, serviceB) =>
+                service_order.indexOf(serviceA.id) -
+                service_order.indexOf(serviceB.id)
+            )}
+          flatRecyclingServices={data.recyclingServices
+            .filter((recyclingService) => recyclingService.forFlats)
+            .sort(
+              (serviceA, serviceB) =>
+                service_order.indexOf(serviceA.id) -
+                service_order.indexOf(serviceB.id)
+            )}
           ref={recyclingServiceAccordionGridRef}
         />
 
@@ -212,10 +234,10 @@ export default function Home(props: Props) {
           />
         </div>
         <DumpedRubbishSection
-          content={props.dumpedRubbishInfo.content}
-          reportPublicForm={props.dumpedRubbishInfo.reportPublicForm}
-          reportPrivateForm={props.dumpedRubbishInfo.reportPrivateForm}
-          payPenaltyLink={props.dumpedRubbishInfo.payPenaltyLink}
+          content={data.dumpedRubbishInfo.content}
+          reportPublicForm={data.dumpedRubbishInfo.reportPublicForm}
+          reportPrivateForm={data.dumpedRubbishInfo.reportPrivateForm}
+          payPenaltyLink={data.dumpedRubbishInfo.payPenaltyLink}
         />
       </div>
 
@@ -231,33 +253,46 @@ export default function Home(props: Props) {
 }
 
 export const getServerSideProps = async () => {
-  /*  
-  FETCHING DATA FROM BACKEND
-  UNCOMMENT WHEN READY TO DEPLOY
+  const headers = {
+    "content-type": "application/json",
+    "x-api-key": `${process.env.FRONTEND_APIKEY}`,
+  };
 
-  const resE = await fetch(`${api}/events`)
-  const events = await resE.json()
+  const cats = [
+    "facts",
+    "quiz",
+    "events",
+    "recyclingServices",
+    "dumpedRubbishInfo",
+  ];
+  const data = Object.fromEntries(cats.map((cat) => [cat, ""]));
 
-  const resHRS = await fetch(`${api}/houserecyclingservices`)
-  const houseRecyclingServices = await resHRS.json()
-
-  const resFRS = await fetch(`${api}/flatrecyclingservices`)
-  const flatRecyclingServices = await resFRS.json()
-
-  */
-
-  // Mock data from data folder
-  const mockEvents = events;
-  const mockHouseRecyclingServices = houseRecyclingServices;
-  const mockFlatRecyclingServices = flatRecyclingServices;
-  const mockDumpedRubbishInfo = dumpedRubbishInfo;
+  for (let i = 0; i < cats.length; i++) {
+    const resapi = await fetch(
+      `${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`,
+      {
+        method: "GET",
+        headers: headers,
+      }
+    );
+    data[cats[i]] = await resapi.json();
+  }
 
   return {
     props: {
-      events: mockEvents,
-      houseRecyclingServices: mockHouseRecyclingServices,
-      flatRecyclingServices: mockFlatRecyclingServices,
-      dumpedRubbishInfo: mockDumpedRubbishInfo,
+      data: {
+        facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
+        quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
+        events: Object.keys(data.events).length !== 0 ? data.events : [],
+        recyclingServices:
+          Object.keys(data.recyclingServices).length !== 0
+            ? data.recyclingServices
+            : [],
+        dumpedRubbishInfo:
+          Object.keys(data.dumpedRubbishInfo).length !== 0
+            ? data.dumpedRubbishInfo[0]
+            : [],
+      },
     },
   };
 };
