@@ -14,6 +14,8 @@ import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { RecyclingService } from "@/data/RecyclingServices";
 import style from "@/styles/cms/RecyclingServiceCMS.module.css";
 
+import postImage from "@/src/postImage";
+
 type RecyclingServiceCMSProps = {
   recyclingServices: RecyclingService[];
   setRecyclingServices(recyclingServices: RecyclingService[]): void;
@@ -128,6 +130,9 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
+    postImage(itemImageFile);
+    postImage(binImageFile);
+    postImage(infographicImageFile);
     if (
       recyclingService.id != "" &&
       recyclingService.title != "" &&
