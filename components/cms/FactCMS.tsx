@@ -92,15 +92,11 @@ export default function FactCMS(props: FactCMSProps) {
         <div className={style["form-fact-preview"]}>
           <div>
             <h2>
-              <ReactMarkdown>
-                {newFact.title.replace(/\\n/g, "\n")}
-              </ReactMarkdown>
+              <ReactMarkdown>{newFact.title}</ReactMarkdown>
             </h2>
           </div>
           <div>
-            <ReactMarkdown>
-              {newFact.content.replace(/\\n/g, "\n")}
-            </ReactMarkdown>
+            <ReactMarkdown>{newFact.content}</ReactMarkdown>
           </div>
         </div>
 
@@ -162,15 +158,11 @@ export default function FactCMS(props: FactCMSProps) {
             <div className={style["fact-list-fact"]}>
               <div>
                 <h2>
-                  <ReactMarkdown>
-                    {fact.title.replace(/\\n/g, "\n")}
-                  </ReactMarkdown>
+                  <ReactMarkdown>{fact.title}</ReactMarkdown>
                 </h2>
               </div>
               <div>
-                <ReactMarkdown>
-                  {fact.content.replace(/\\n/g, "\n")}
-                </ReactMarkdown>
+                <ReactMarkdown>{fact.content}</ReactMarkdown>
               </div>
             </div>
 

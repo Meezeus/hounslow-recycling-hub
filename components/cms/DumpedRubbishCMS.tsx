@@ -60,9 +60,7 @@ export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
         </div>
 
         <div className={style["form-content-preview"]}>
-          <ReactMarkdown>
-            {dumpedRubbishInfo.content.replace(/\\n/g, "\n")}
-          </ReactMarkdown>
+          <ReactMarkdown>{dumpedRubbishInfo.content}</ReactMarkdown>
         </div>
 
         <div className={style["form-text-field"]}>

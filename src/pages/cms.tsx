@@ -17,7 +17,7 @@ import style from "@/styles/cms/CMS.module.css";
 import { Fact } from "@/data/Facts";
 import { Question } from "@/data/Quiz";
 import { Event } from "@/data/Events";
-import { RecyclingService } from "@/data/RecyclingServices";
+import { RecyclingService, service_order } from "@/data/RecyclingServices";
 import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 interface Props extends WithAuthenticatorProps {
@@ -26,26 +26,40 @@ interface Props extends WithAuthenticatorProps {
     quiz: Question[];
     events: Event[];
     recyclingServices: RecyclingService[];
-    dumpedRubbishInfo: DumpedRubbishInfo[];
+    dumpedRubbishInfo: DumpedRubbishInfo;
   };
 }
 
 export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
   const [facts, setFacts] = useState(data.facts);
   const [quiz, setQuiz] = useState(data.quiz);
-  const [events, setEvents] = useState(data.events);
-  const [houseRecyclingServices, setHouseRecyclingServices] = useState(
-    data.recyclingServices.filter(
-      (recyclingService) => !recyclingService.forFlats
+  const [events, setEvents] = useState(
+    data.events.sort(
+      (eventA, eventB) =>
+        new Date(eventA.startDate).getTime() -
+        new Date(eventB.startDate).getTime()
     )
+  );
+  const [houseRecyclingServices, setHouseRecyclingServices] = useState(
+    data.recyclingServices
+      .filter((recyclingService) => !recyclingService.forFlats)
+      .sort(
+        (serviceA, serviceB) =>
+          service_order.indexOf(serviceA.id) -
+          service_order.indexOf(serviceB.id)
+      )
   );
   const [flatRecyclingServices, setFlatRecyclingServices] = useState(
-    data.recyclingServices.filter(
-      (recyclingService) => recyclingService.forFlats
-    )
+    data.recyclingServices
+      .filter((recyclingService) => recyclingService.forFlats)
+      .sort(
+        (serviceA, serviceB) =>
+          service_order.indexOf(serviceA.id) -
+          service_order.indexOf(serviceB.id)
+      )
   );
   const [dumpedRubbishInfo, setDumpedRubbishInfo] = useState(
-    data.dumpedRubbishInfo[0]
+    data.dumpedRubbishInfo
   );
 
   const token = user?.getSignInUserSession()?.getIdToken().getJwtToken();
@@ -123,7 +137,7 @@ export const getServerSideProps = async () => {
             : [],
         dumpedRubbishInfo:
           Object.keys(data.dumpedRubbishInfo).length !== 0
-            ? data.dumpedRubbishInfo
+            ? data.dumpedRubbishInfo[0]
             : [],
       },
     },
