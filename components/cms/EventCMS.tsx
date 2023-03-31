@@ -24,11 +24,11 @@ export default function EventCMS(props: EventCMSProps) {
     description: "",
     id: "",
   });
-
+  const [readyToSend, setReadyToSend] = useState(false);
   const [imageFile, setImageFile] = useState<File>();
 
-  // This hook is called whenever the image file changes. It creates the URL for
-  // the image.
+  // This hook is called whenever the image file changes. It creates the
+  // temporary URL for the image.
   useEffect(() => {
     if (imageFile) {
       const objectUrl = URL.createObjectURL(imageFile);
@@ -40,6 +40,35 @@ export default function EventCMS(props: EventCMSProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageFile]);
+
+  // This hook is called whenever the the user clicks the submit button. It
+  // waits until the state has updated and it is ready to send and then sends
+  // the data.
+  useEffect(() => {
+    async function sendData() {
+      const updateURL = newEvent.id === "" ? "" : `/${newEvent.id}`;
+      const res = await fetch(`/api/events${updateURL}`, {
+        method: "POST",
+        body: JSON.stringify(newEvent),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
+    }
+
+    if (readyToSend) {
+      sendData();
+      setReadyToSend(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readyToSend]);
 
   // This function is called when the user selects a file to upload.
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,29 +94,14 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    const imageLink = await postImage(imageFile, props.authToken);
-    setNewEvent({ ...newEvent, image: imageLink! });
-
+    const imageLink = await postImage(imageFile);
+    setNewEvent({ ...newEvent, image: imageLink });
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
       newEvent.endDate != ""
     ) {
-      const updateURL = newEvent.id === "" ? "" : `/${newEvent.id}`;
-      const res = await fetch(`/api/events${updateURL}`, {
-        method: "POST",
-        body: JSON.stringify(newEvent),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
+      setReadyToSend(true);
     }
   }
 

@@ -25,6 +25,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   const [recyclingService, setRecyclingService] = useState(
     props.recyclingServices[0]
   );
+  const [readyToSend, setReadyToSend] = useState(false);
 
   const [itemImageFile, setItemImageFile] = useState<File>();
   const [binImageFile, setBinImageFile] = useState<File>();
@@ -75,6 +76,34 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [infographicImageFile]);
+
+  // This hook is called whenever the the user clicks the submit button. It
+  // waits until the state has updated and it is ready to send and then sends
+  // the data.
+  useEffect(() => {
+    async function sendData() {
+      const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
+        method: "POST",
+        body: JSON.stringify(recyclingService),
+        headers: {
+          "content-type": "application/json",
+          Authorization: props.authToken,
+        },
+      });
+      const status = await res.status;
+      if (status >= 200 && status < 300) {
+        window.location.reload();
+      } else {
+        console.log("Request failed with status code: " + status);
+      }
+    }
+
+    if (readyToSend) {
+      sendData();
+      setReadyToSend(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readyToSend]);
 
   // This hook should run last. The other hooks will delete the images from the
   // current recycling object. This hook refreshes the object so that it has
@@ -137,17 +166,14 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    const itemImageLink = await postImage(itemImageFile, props.authToken);
-    const binImageLink = await postImage(binImageFile, props.authToken);
-    const infographicImageLink = await postImage(
-      infographicImageFile,
-      props.authToken
-    );
+    const itemImageLink = await postImage(itemImageFile);
+    const binImageLink = await postImage(binImageFile);
+    const infographicImageLink = await postImage(infographicImageFile);
     setRecyclingService({
       ...recyclingService,
-      itemImage: itemImageLink!,
-      binImage: binImageLink!,
-      infographicImage: infographicImageLink!,
+      itemImage: itemImageLink,
+      binImage: binImageLink,
+      infographicImage: infographicImageLink,
     });
     if (
       recyclingService.id != "" &&
@@ -155,20 +181,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
       recyclingService.description != "" &&
       recyclingService.content != ""
     ) {
-      const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
-        method: "POST",
-        body: JSON.stringify(recyclingService),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
+      setReadyToSend(true);
     }
   }
 

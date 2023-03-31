@@ -1,28 +1,20 @@
-export default function postImage(
-  imageFile: File | undefined,
-  authToken: string
-) {
+import { Amplify, Storage } from "aws-amplify";
+import awsconfig from "./aws-exports";
+Amplify.configure(awsconfig);
+
+export default async function postImage(imageFile: File | undefined) {
   if (!imageFile) {
     return "";
+  } else {
+    let iurl = "";
+    try {
+      await Storage.put(imageFile.name, imageFile, {
+        contentType: "image/png", // contentType is optional
+      });
+      iurl = `${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/public/${imageFile.name}`;
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+    return iurl;
   }
-
-  let reader = new FileReader();
-  reader.readAsDataURL(imageFile!);
-
-  reader.onload = async function () {
-    const encodedResult = reader.result;
-    const encodedImage = new String(encodedResult).split(",", 2)[1];
-
-    const fileName = imageFile.name.replace(/[^A-Za-z0-9.]/g, "");
-    const res = await fetch(`/api/images/${fileName}`, {
-      method: "PUT",
-      body: encodedImage,
-      headers: {
-        Authorization: authToken,
-      },
-    });
-    if (res.status === 200) {
-      return `${process.env.NEXT_PUBLIC_IMAGE_BUCKET_URL}/${fileName}`;
-    } else return "";
-  };
 }
