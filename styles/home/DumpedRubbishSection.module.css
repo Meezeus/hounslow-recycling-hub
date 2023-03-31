@@ -20,7 +20,6 @@
 .dumped-rubbish-text {
   font-size: 18px;
   color: black;
-  list-style-position: inside;
 }
 
 .dumped-rubbish-text li::marker {

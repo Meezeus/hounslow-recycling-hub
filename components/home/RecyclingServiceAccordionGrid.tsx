@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from "react";
 import RecyclingServiceAccordion from "@/components/home/RecyclingServiceAccordion";
-import { RecyclingServices } from "@/data/RecyclingServices";
+import { RecyclingService } from "@/data/RecyclingServices";
 import style from "@/styles/home/RecyclingServiceAccordionGrid.module.css";
 
 export type RecyclingServiceAccordionGridRef = {
@@ -15,8 +15,8 @@ export type RecyclingServiceAccordionGridRef = {
 
 type RecyclingServiceAccordionGridProps = {
   showFlatVersion: boolean;
-  houseRecyclingServices: Array<RecyclingServices>;
-  flatRecyclingServices: Array<RecyclingServices>;
+  houseRecyclingServices: RecyclingService[];
+  flatRecyclingServices: RecyclingService[];
 };
 
 export default React.forwardRef<
@@ -27,7 +27,7 @@ export default React.forwardRef<
   const previousOpenAccordionID = useRef("");
   const accordionsMaxHeight = useRef(0); // This is the (closed) height of the tallest accordion.
   const [windowWidth, setWindowWidth] = useState(0);
-  let refs: Array<React.RefObject<HTMLDivElement>> = [];
+  let refs: React.RefObject<HTMLDivElement>[] = [];
 
   // This hook runs when the page version changes. It updates the variable
   // keeping track of the max height of the accordions.
@@ -190,14 +190,15 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
               id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}
               binImage={recyclingService.binImage}
               description={recyclingService.description}
               content={recyclingService.content}
-              infographic={recyclingService.infographic}
+              infographicImage={recyclingService.infographicImage}
               link={recyclingService.link}
               isOpen={openAccordionID == recyclingService.id}
               handleClick={handleClick}
@@ -220,7 +221,8 @@ export default React.forwardRef<
           )
           .map((recyclingService) => (
             <RecyclingServiceAccordion
-              key={recyclingService.title}
+              forFlats={recyclingService.forFlats}
+              key={recyclingService.id}
               id={recyclingService.id}
               itemImage={recyclingService.itemImage}
               title={recyclingService.title}
@@ -228,7 +230,7 @@ export default React.forwardRef<
               description={recyclingService.description}
               content={recyclingService.content}
               link={recyclingService.link}
-              infographic={recyclingService.infographic}
+              infographicImage={recyclingService.infographicImage}
               isOpen={openAccordionID == recyclingService.id}
               handleClick={handleClick}
               ref={createAndPushRef()}

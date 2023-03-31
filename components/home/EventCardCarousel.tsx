@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import EventCard from "./EventCard";
-import { Events } from "@/data/Events";
+import { Event } from "@/data/Events";
 import style from "@/styles/home/EventCardCarousel.module.css";
 import buttonStyle from "@/styles/home/Button.module.css";
 
 type EventCardCarouselProps = {
-  events: Array<Events>;
+  events: Event[];
 };
 
 export default function EventCardCarousel(props: EventCardCarouselProps) {
@@ -43,13 +43,7 @@ export default function EventCardCarousel(props: EventCardCarouselProps) {
       </div>
       <div className={style["event-card-carousel"]}>
         {displayedEvents.map((event) => (
-          <EventCard
-            key={props.events.indexOf(event)}
-            image={event.image}
-            title={event.title}
-            date={event.date}
-            description={event.description}
-          />
+          <EventCard key={props.events.indexOf(event)} event={event} />
         ))}
       </div>
       <div className={style["event-card-carousel-button-div"]}>

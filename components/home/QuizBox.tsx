@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { quizQuestions } from "@/data/Quiz";
-import style from "@/styles/home/Question.module.css";
+import React, { useState } from "react";
+import { Question } from "@/data/Quiz";
+import style from "@/styles/home/QuizBox.module.css";
 
-type QuizQuestion = {
-  question: string;
-  answers: Array<Option>;
+type QuizBoxProps = {
+  quiz: Question[];
 };
 
-type Option = {
-  answer: string;
-  correct: boolean;
-};
-
-export default function Question() {
-  const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion>(
-    quizQuestions[Math.floor(Math.random() * quizQuestions.length)]
+export default function QuizBox(props: QuizBoxProps) {
+  const [currentQuestion, setCurrentQuestion] = useState<Question>(
+    props.quiz[Math.floor(Math.random() * props.quiz.length)]
   );
   const [isAnswerSelected, setAnswerSelected] = useState(false);
 
@@ -24,7 +18,7 @@ export default function Question() {
       await new Promise((r) => setTimeout(r, 10000));
       setAnswerSelected(false);
       setCurrentQuestion(
-        quizQuestions[Math.floor(Math.random() * quizQuestions.length)]
+        props.quiz[Math.floor(Math.random() * props.quiz.length)]
       );
     }
   };
@@ -33,20 +27,20 @@ export default function Question() {
     <div className={style["question-box"]}>
       <h2>{currentQuestion.question}</h2>
       <div className={style["question-box-answers"]}>
-        {currentQuestion.answers.map((option) => (
+        {currentQuestion.answers.map((answer) => (
           <button
-            key={currentQuestion.answers.indexOf(option)}
+            key={currentQuestion.answers.indexOf(answer)}
             className={
               style["answer-button"] +
               (isAnswerSelected
-                ? option.correct
+                ? answer.correct
                   ? " " + style["border-correct"]
                   : " " + style["border-incorrect"]
                 : "")
             }
             onClick={() => handleAnswerClick()}
           >
-            {option.answer}
+            {answer.answer}
           </button>
         ))}
       </div>
