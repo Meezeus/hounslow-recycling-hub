@@ -14,11 +14,15 @@ import Footer from "@/components/Footer";
 import style from "@/styles/cms/CMS.module.css";
 
 // Data Types
-import { Fact } from "@/data/Facts";
-import { Question } from "@/data/Quiz";
-import { Event } from "@/data/Events";
-import { RecyclingService, service_order } from "@/data/RecyclingServices";
-import { DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
+import { Fact, facts } from "@/data/Facts";
+import { Question, quiz } from "@/data/Quiz";
+import { Event, events } from "@/data/Events";
+import {
+  RecyclingService,
+  recyclingServices,
+  service_order,
+} from "@/data/RecyclingServices";
+import { dumpedRubbishInfo, DumpedRubbishInfo } from "@/data/DumpedRubbishInfo";
 
 interface Props extends WithAuthenticatorProps {
   data: {
@@ -101,44 +105,56 @@ export default withAuthenticator(function CMS({ data, signOut, user }: Props) {
 });
 
 export const getServerSideProps = async () => {
-  const headers = {
-    "content-type": "application/json",
-  };
+  // const headers = {
+  //   "content-type": "application/json",
+  // };
 
-  const cats = [
-    "facts",
-    "quiz",
-    "events",
-    "recyclingServices",
-    "dumpedRubbishInfo",
-  ];
-  const data = Object.fromEntries(cats.map((cat) => [cat, ""]));
+  // const cats = [
+  //   "facts",
+  //   "quiz",
+  //   "events",
+  //   "recyclingServices",
+  //   "dumpedRubbishInfo",
+  // ];
+  // const data = Object.fromEntries(cats.map((cat) => [cat, ""]));
 
-  for (let i = 0; i < cats.length; i++) {
-    const resapi = await fetch(
-      `${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`,
-      {
-        method: "GET",
-        headers: headers,
-      }
-    );
-    data[cats[i]] = await resapi.json();
-  }
+  // for (let i = 0; i < cats.length; i++) {
+  //   const resapi = await fetch(
+  //     `${process.env.NEXT_PUBLIC_BASEURL}/api/${cats[i]}`,
+  //     {
+  //       method: "GET",
+  //       headers: headers,
+  //     }
+  //   );
+  //   data[cats[i]] = await resapi.json();
+  // }
+
+  // return {
+  //   props: {
+  //     data: {
+  //       facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
+  //       quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
+  //       events: Object.keys(data.events).length !== 0 ? data.events : [],
+  //       recyclingServices:
+  //         Object.keys(data.recyclingServices).length !== 0
+  //           ? data.recyclingServices
+  //           : [],
+  //       dumpedRubbishInfo:
+  //         Object.keys(data.dumpedRubbishInfo).length !== 0
+  //           ? data.dumpedRubbishInfo[0]
+  //           : [],
+  //     },
+  //   },
+  // };
 
   return {
     props: {
       data: {
-        facts: Object.keys(data.facts).length !== 0 ? data.facts : [],
-        quiz: Object.keys(data.quiz).length !== 0 ? data.quiz : [],
-        events: Object.keys(data.events).length !== 0 ? data.events : [],
-        recyclingServices:
-          Object.keys(data.recyclingServices).length !== 0
-            ? data.recyclingServices
-            : [],
-        dumpedRubbishInfo:
-          Object.keys(data.dumpedRubbishInfo).length !== 0
-            ? data.dumpedRubbishInfo[0]
-            : [],
+        facts: facts,
+        quiz: quiz,
+        events: events,
+        recyclingServices: recyclingServices,
+        dumpedRubbishInfo: dumpedRubbishInfo,
       },
     },
   };
