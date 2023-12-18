@@ -43,16 +43,13 @@ export default React.forwardRef<
       }
     });
 
-    // Find the height of the tallest accordion, ignoring the one that is
-    // potentially open.
+    // Find the height of the tallest accordion.
     let calculatedMaxHeight = 0;
     refs.forEach((ref) => {
-      if (ref.current?.id != openAccordionID) {
-        calculatedMaxHeight = Math.max(
-          calculatedMaxHeight,
-          ref.current?.offsetHeight || 0
-        );
-      }
+      calculatedMaxHeight = Math.max(
+        calculatedMaxHeight,
+        ref.current?.offsetHeight || 0
+      );
     });
 
     // Update max height.
