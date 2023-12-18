@@ -1,7 +1,7 @@
 export type Fact = {
+  id: string;
   title: string;
   content: string;
-  id: string;
 };
 
 export const facts = [
