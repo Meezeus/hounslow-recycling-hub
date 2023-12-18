@@ -175,7 +175,7 @@ export default function QuizCMS(props: QuizCMSProps) {
           <h1>
             {newQuestion.id === ""
               ? "Create New Question"
-              : `Editing question with ID:: ${newQuestion.id}`}
+              : `Editing question with ID: ${newQuestion.id}`}
           </h1>
         </div>
 
