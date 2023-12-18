@@ -12,13 +12,8 @@ export default function Header() {
           Content Management System
         </div>
         <div className={style["header-account"]}>
-          <div className={style["header-account-user"]}>
-            Welcome User!
-          </div>
-          <Button
-            variant="contained"
-            endIcon={<LogoutIcon />}
-          >
+          <div className={style["header-account-user"]}>Welcome User!</div>
+          <Button variant="contained" endIcon={<LogoutIcon />}>
             Sign out
           </Button>
         </div>

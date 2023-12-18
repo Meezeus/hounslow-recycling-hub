@@ -76,7 +76,7 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    setNewEvent({ ...newEvent});
+    setNewEvent({ ...newEvent });
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&

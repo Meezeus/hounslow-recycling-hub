@@ -32,7 +32,7 @@ export const events = [
     description:
       "**What:** *BRAG (Brentford Recycling Action Group)* is a non-political community waste action group made up of local Brentford residents. " +
       "We work to raise awareness of waste issues and to promote activities and facilities to improve the local environment for the benefit of local people. " +
-      "Meet our fun and enthusiastic group and get inspired!  \n"+
+      "Meet our fun and enthusiastic group and get inspired!  \n" +
       "&nbsp;  \n" +
       "**When:** Our *monthly meetings* take place the *first Tuesday of the month*. " +
       "The meeting *starts at 7pm* and *finishes at 8pm*.  \n" +

@@ -133,7 +133,11 @@ export default function Home({ data }: Props) {
       </Popup>
 
       <Navbar
-        displayEvents={data.events.filter((event) => new Date(event.endDate) >= new Date("2023-03-31")).length > 0}
+        displayEvents={
+          data.events.filter(
+            (event) => new Date(event.endDate) >= new Date("2023-03-31")
+          ).length > 0
+        }
         showFlatVersion={showFlatVersion!}
         toggle={toggleVersion}
       />
@@ -153,7 +157,9 @@ export default function Home({ data }: Props) {
               - Once directly below
               - Once in the EventCardCarousel section below
          */}
-        {data.events.filter((event) => new Date(event.endDate) >= new Date("2023-03-31")).length > 0 ? (
+        {data.events.filter(
+          (event) => new Date(event.endDate) >= new Date("2023-03-31")
+        ).length > 0 ? (
           <>
             <div
               className={
@@ -169,7 +175,9 @@ export default function Home({ data }: Props) {
                     new Date(eventA.startDate).getTime() -
                     new Date(eventB.startDate).getTime()
                 )
-                .filter((event) => new Date(event.endDate) >= new Date("2023-03-31"))}
+                .filter(
+                  (event) => new Date(event.endDate) >= new Date("2023-03-31")
+                )}
             />
           </>
         ) : (

@@ -124,7 +124,8 @@ export default function QuizCMS(props: QuizCMSProps) {
     newQuestion.answers.forEach(
       (answer) => (correct = correct && answer.answer != "")
     );
-    if (correct) {}
+    if (correct) {
+    }
   }
 
   function handleEditClick(question: Question) {

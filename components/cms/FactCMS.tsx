@@ -25,7 +25,8 @@ export default function FactCMS(props: FactCMSProps) {
   }
 
   async function submitFact() {
-    if (newFact.title != "" && newFact.content != "") {}
+    if (newFact.title != "" && newFact.content != "") {
+    }
   }
 
   function handleEditClick(fact: Fact) {

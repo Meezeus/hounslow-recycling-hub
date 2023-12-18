@@ -65,24 +65,15 @@ export default function CMSTabs(props: CMSTabsProps) {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <FactCMS
-          facts={props.facts}
-          setFacts={props.setFacts}
-        />
+        <FactCMS facts={props.facts} setFacts={props.setFacts} />
       </TabPanel>
 
       <TabPanel value={value} index={1}>
-        <QuizCMS
-          quiz={props.quiz}
-          setQuiz={props.setQuiz}
-        />
+        <QuizCMS quiz={props.quiz} setQuiz={props.setQuiz} />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-        <EventCMS
-          events={props.events}
-          setEvents={props.setEvents}
-        />
+        <EventCMS events={props.events} setEvents={props.setEvents} />
       </TabPanel>
 
       <TabPanel value={value} index={3}>

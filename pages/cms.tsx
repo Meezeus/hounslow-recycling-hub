@@ -25,7 +25,7 @@ type Props = {
     recyclingServices: RecyclingService[];
     dumpedRubbishInfo: DumpedRubbishInfo;
   };
-}
+};
 
 export default function CMS({ data }: Props) {
   const [facts, setFacts] = useState(data.facts);
@@ -69,7 +69,7 @@ export default function CMS({ data }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header/>
+      <Header />
 
       <div className={style["page-content"]}>
         <CMSTabs
