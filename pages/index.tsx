@@ -133,7 +133,7 @@ export default function Home({ data }: Props) {
       </Popup>
 
       <Navbar
-        displayEvents={data.events.length > 0}
+        displayEvents={data.events.filter((event) => new Date(event.endDate) >= new Date("2023-03-31")).length > 0}
         showFlatVersion={showFlatVersion!}
         toggle={toggleVersion}
       />
@@ -148,7 +148,11 @@ export default function Home({ data }: Props) {
         />
 
         {/* Remove the date "2023-03-31" to use the current date!
-            Note this needs to be done in two places! */}
+            Note this needs to be done in three places:
+              - Once in the Navbar section above
+              - Once directly below
+              - Once in the EventCardCarousel section below
+         */}
         {data.events.filter((event) => new Date(event.endDate) >= new Date("2023-03-31")).length > 0 ? (
           <>
             <div
