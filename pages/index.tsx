@@ -147,7 +147,7 @@ export default function Home({ data }: Props) {
           quiz={data.quiz}
         />
 
-        {data.events.length > 0 ? (
+        {data.events.filter((event) => new Date(event.endDate) >= new Date()).length > 0 ? (
           <>
             <div
               className={
