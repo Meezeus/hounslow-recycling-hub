@@ -6,8 +6,8 @@ import {
   labelToHouseServices,
 } from "@/data/ImageRecognitionMapping";
 
-const ML_ENDPOINT =
-  "https://ijtiasa89d.execute-api.eu-west-2.amazonaws.com/default/ML_model";
+// const ML_ENDPOINT =
+//   "https://ijtiasa89d.execute-api.eu-west-2.amazonaws.com/default/ML_model";
 
 const ACCEPTABLE_IMAGE_TYPES = ["png", "jpg", "jpeg"];
 const MAX_IMAGE_FILE_SIZE = 4000000;
@@ -72,35 +72,37 @@ export default function ImageRecognition(props: ImageRecognitionProps) {
       return;
     }
 
-    let reader = new FileReader();
-    reader.readAsDataURL(imageFile!);
+    setImageCategory("rubbish");
 
-    reader.onload = function () {
-      const encodedResult = reader.result;
-      const encodedImage = new String(encodedResult).split(",", 2)[1];
+    // let reader = new FileReader();
+    // reader.readAsDataURL(imageFile!);
 
-      fetch(ML_ENDPOINT, {
-        method: "POST",
-        body: encodedImage,
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length == 0) {
-            // No category exceeded the minimum confidence.
-            setImageCategory("rubbish");
-          } else if (data.length > 0 && "Name" in data[0]) {
-            // Image classified successfully.
-            setImageCategory(data[0]["Name"]);
-          } else {
-            // Error with AWS Rekognition
-            console.error("Error while reading response data: ", data);
-          }
-        });
-    };
+    // reader.onload = function () {
+    //   const encodedResult = reader.result;
+    //   const encodedImage = new String(encodedResult).split(",", 2)[1];
 
-    reader.onerror = function (error) {
-      console.error("Error while reading file: ", error);
-    };
+    //   fetch(ML_ENDPOINT, {
+    //     method: "POST",
+    //     body: encodedImage,
+    //   })
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       if (data.length == 0) {
+    //         // No category exceeded the minimum confidence.
+    //         setImageCategory("rubbish");
+    //       } else if (data.length > 0 && "Name" in data[0]) {
+    //         // Image classified successfully.
+    //         setImageCategory(data[0]["Name"]);
+    //       } else {
+    //         // Error with AWS Rekognition
+    //         console.error("Error while reading response data: ", data);
+    //       }
+    //     });
+    // };
+
+    // reader.onerror = function (error) {
+    //   console.error("Error while reading file: ", error);
+    // };
   };
 
   return (
