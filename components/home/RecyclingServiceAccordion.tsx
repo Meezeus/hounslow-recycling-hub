@@ -1,5 +1,5 @@
 import { RecyclingService } from "@/data/RecyclingServices";
-import React, { Ref } from "react";
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import style from "@/styles/home/RecyclingServiceAccordion.module.css";
 import homeStyle from "@/styles/home/Home.module.css";
