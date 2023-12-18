@@ -11,7 +11,6 @@ import style from "@/styles/cms/FactCMS.module.css";
 type FactCMSProps = {
   facts: Fact[];
   setFacts(facts: Fact[]): void;
-  authToken: string;
 };
 
 export default function FactCMS(props: FactCMSProps) {
@@ -26,23 +25,7 @@ export default function FactCMS(props: FactCMSProps) {
   }
 
   async function submitFact() {
-    if (newFact.title != "" && newFact.content != "") {
-      const updateURL = newFact.id === "" ? "" : `/${newFact.id}`;
-      const res = await fetch(`/api/facts${updateURL}`, {
-        method: "POST",
-        body: JSON.stringify(newFact),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
-    }
+    if (newFact.title != "" && newFact.content != "") {}
   }
 
   function handleEditClick(fact: Fact) {
@@ -50,21 +33,7 @@ export default function FactCMS(props: FactCMSProps) {
     document.getElementById("create-new-fact")?.scrollIntoView();
   }
 
-  async function handleDeleteClick(id: string) {
-    const res = await fetch(`/api/facts/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        Authorization: props.authToken,
-      },
-    });
-    const status = await res.status;
-    if (status >= 200 && status < 300) {
-      props.setFacts(props.facts.filter((fact) => fact.id != id));
-    } else {
-      console.log("Request failed with status code: " + status);
-    }
-  }
+  async function handleDeleteClick(id: string) {}
 
   return (
     <div>

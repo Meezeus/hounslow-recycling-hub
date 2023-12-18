@@ -8,7 +8,6 @@ import style from "@/styles/cms/DumpedRubbishCMS.module.css";
 type DumpedRubbishCMSProps = {
   dumpedRubbishInfo: DumpedRubbishInfo;
   setDumpedRubbishInfo(dumpedRubbishInfo: DumpedRubbishInfo): void;
-  authToken: string;
 };
 
 export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
@@ -23,22 +22,7 @@ export default function DumpedRubbishCMS(props: DumpedRubbishCMSProps) {
     });
   }
 
-  async function submitInfo() {
-    const res = await fetch("/api/dumpedRubbishInfo/dumpedRubbishInfo", {
-      method: "POST",
-      body: JSON.stringify(dumpedRubbishInfo),
-      headers: {
-        "content-type": "application/json",
-        Authorization: props.authToken,
-      },
-    });
-    const status = await res.status;
-    if (status >= 200 && status < 300) {
-      window.location.reload();
-    } else {
-      console.log("Request failed with status code: " + status);
-    }
-  }
+  async function submitInfo() {}
 
   return (
     <div>

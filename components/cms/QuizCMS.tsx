@@ -15,13 +15,12 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
-import { Question, Answer } from "@/data/Quiz";
+import { Question } from "@/data/Quiz";
 import style from "@/styles/cms/QuizCMS.module.css";
 
 type QuizCMSProps = {
   quiz: Question[];
   setQuiz(quiz: Question[]): void;
-  authToken: string;
 };
 
 export default function QuizCMS(props: QuizCMSProps) {
@@ -125,23 +124,7 @@ export default function QuizCMS(props: QuizCMSProps) {
     newQuestion.answers.forEach(
       (answer) => (correct = correct && answer.answer != "")
     );
-    if (correct) {
-      const updateURL = newQuestion.id === "" ? "" : `/${newQuestion.id}`;
-      const res = await fetch(`/api/quiz${updateURL}`, {
-        method: "POST",
-        body: JSON.stringify(newQuestion),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
-    }
+    if (correct) {}
   }
 
   function handleEditClick(question: Question) {
@@ -154,21 +137,7 @@ export default function QuizCMS(props: QuizCMSProps) {
     document.getElementById("create-new-question")?.scrollIntoView();
   }
 
-  async function handleDeleteClick(id: string) {
-    const res = await fetch(`/api/quiz/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        Authorization: props.authToken,
-      },
-    });
-    const status = await res.status;
-    if (status >= 200 && status < 300) {
-      props.setQuiz(props.quiz.filter((question) => question.id != id));
-    } else {
-      console.log("Request failed with status code: " + status);
-    }
-  }
+  async function handleDeleteClick(id: string) {}
 
   const answerComponents = [];
   for (let i = 0; i < numberOfAnswers; i++) {

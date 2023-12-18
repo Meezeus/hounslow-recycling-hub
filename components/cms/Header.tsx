@@ -2,12 +2,7 @@ import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import style from "@/styles/cms/Header.module.css";
 
-type HeaderProps = {
-  user: any;
-  signOut: any;
-};
-
-export default function Header(props: HeaderProps) {
+export default function Header() {
   return (
     <>
       <div className={style["header"]} id="Header">
@@ -18,10 +13,9 @@ export default function Header(props: HeaderProps) {
         </div>
         <div className={style["header-account"]}>
           <div className={style["header-account-user"]}>
-            Welcome {props.user.username}
+            Welcome User!
           </div>
           <Button
-            onClick={props.signOut}
             variant="contained"
             endIcon={<LogoutIcon />}
           >

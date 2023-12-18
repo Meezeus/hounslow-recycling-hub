@@ -6,13 +6,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Event } from "@/data/Events";
-import postImage from "@/src/postImage";
 import style from "@/styles/cms/EventCMS.module.css";
 
 type EventCMSProps = {
   events: Event[];
   setEvents(events: Event[]): void;
-  authToken: string;
 };
 
 export default function EventCMS(props: EventCMSProps) {
@@ -45,23 +43,7 @@ export default function EventCMS(props: EventCMSProps) {
   // waits until the state has updated and it is ready to send and then sends
   // the data.
   useEffect(() => {
-    async function sendData() {
-      const updateURL = newEvent.id === "" ? "" : `/${newEvent.id}`;
-      const res = await fetch(`/api/events${updateURL}`, {
-        method: "POST",
-        body: JSON.stringify(newEvent),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
-    }
+    async function sendData() {}
 
     if (readyToSend) {
       sendData();
@@ -94,8 +76,7 @@ export default function EventCMS(props: EventCMSProps) {
   }
 
   async function submitEvent() {
-    const imageLink = await postImage(imageFile);
-    setNewEvent({ ...newEvent, image: imageLink });
+    setNewEvent({ ...newEvent});
     if (
       newEvent.title != "" &&
       newEvent.startDate != "" &&
@@ -117,21 +98,7 @@ export default function EventCMS(props: EventCMSProps) {
     document.getElementById("create-new-event")?.scrollIntoView();
   }
 
-  async function handleDeleteClick(id: string) {
-    const res = await fetch(`/api/events/${id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        Authorization: props.authToken,
-      },
-    });
-    const status = await res.status;
-    if (status >= 200 && status < 300) {
-      props.setEvents(props.events.filter((event) => event.id != id));
-    } else {
-      console.log("Request failed with status code: " + status);
-    }
-  }
+  async function handleDeleteClick(id: string) {}
 
   return (
     <div>

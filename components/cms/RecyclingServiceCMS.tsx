@@ -12,13 +12,11 @@ import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { RecyclingService } from "@/data/RecyclingServices";
-import postImage from "@/src/postImage";
 import style from "@/styles/cms/RecyclingServiceCMS.module.css";
 
 type RecyclingServiceCMSProps = {
   recyclingServices: RecyclingService[];
   setRecyclingServices(recyclingServices: RecyclingService[]): void;
-  authToken: string;
 };
 
 export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
@@ -81,22 +79,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   // waits until the state has updated and it is ready to send and then sends
   // the data.
   useEffect(() => {
-    async function sendData() {
-      const res = await fetch(`/api/recyclingServices/${recyclingService.id}`, {
-        method: "POST",
-        body: JSON.stringify(recyclingService),
-        headers: {
-          "content-type": "application/json",
-          Authorization: props.authToken,
-        },
-      });
-      const status = await res.status;
-      if (status >= 200 && status < 300) {
-        window.location.reload();
-      } else {
-        console.log("Request failed with status code: " + status);
-      }
-    }
+    async function sendData() {}
 
     if (readyToSend) {
       sendData();
@@ -166,15 +149,7 @@ export default function RecyclingServiceCMS(props: RecyclingServiceCMSProps) {
   }
 
   async function submitService() {
-    const itemImageLink = await postImage(itemImageFile);
-    const binImageLink = await postImage(binImageFile);
-    const infographicImageLink = await postImage(infographicImageFile);
-    setRecyclingService({
-      ...recyclingService,
-      itemImage: itemImageLink,
-      binImage: binImageLink,
-      infographicImage: infographicImageLink,
-    });
+    setRecyclingService({ ...recyclingService });
     if (
       recyclingService.id != "" &&
       recyclingService.title != "" &&
