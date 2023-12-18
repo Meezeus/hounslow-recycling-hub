@@ -46,9 +46,11 @@
 }
 
 .form-image-upload {
-  padding-left: 10px;
+  padding: 5px;
   display: grid;
   grid-template-columns: 1fr 1fr auto;
+  grid-column-gap: 10px;
+  align-items: center;
 }
 
 .form-text-field {
