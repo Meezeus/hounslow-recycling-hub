@@ -147,7 +147,9 @@ export default function Home({ data }: Props) {
           quiz={data.quiz}
         />
 
-        {data.events.filter((event) => new Date(event.endDate) >= new Date()).length > 0 ? (
+        {/* Remove the date "2023-03-31" to use the current date!
+            Note this needs to be done in two places! */}
+        {data.events.filter((event) => new Date(event.endDate) >= new Date("2023-03-31")).length > 0 ? (
           <>
             <div
               className={
@@ -163,7 +165,7 @@ export default function Home({ data }: Props) {
                     new Date(eventA.startDate).getTime() -
                     new Date(eventB.startDate).getTime()
                 )
-                .filter((event) => new Date(event.endDate) >= new Date())}
+                .filter((event) => new Date(event.endDate) >= new Date("2023-03-31"))}
             />
           </>
         ) : (
