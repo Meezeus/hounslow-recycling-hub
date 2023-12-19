@@ -27,10 +27,9 @@ Accelerator](https://www.kcl.ac.uk/informatics/engagement/impact-accelerator).
   you do.
 
 * **Quiz questions.** What kind of items go in a red recycling box? Where do you
-  put your empty metal cans? How can you recycle that old couch? Show off your
-  street-smarts!
+  put your empty metal cans? How can you recycle that old couch?
 
-* **Events.** Find out what's happening in your borough and get involved!
+* **Events.** Find out what's happening in the borough and get involved!
 
 * **Recycling Assistant.** So you want to recycle that *thing*, but you're not
   sure how? Just answer these simple questions, or let our **image recognition
@@ -46,16 +45,17 @@ Accelerator](https://www.kcl.ac.uk/informatics/engagement/impact-accelerator).
   easy. Almost everything on the website can be modified by you - no technical
   expertise needed!
 
-NOTE: Hounslow Recycling Hub used AWS for its backend. These services have since
-been disabled, which affects some of the functionality of the website. All data
-is now loaded from files instead of being retrieved from a database. The CMS can
-no longer be used to modify the data. Finally, the recycling assistant image
-recognition machine learning model will now classify all images as rubbish. 
+**NOTE**: Hounslow Recycling Hub used AWS for its backend. These services have
+since been disabled, which affects some of the functionality of the website. All
+data is now loaded from files instead of being retrieved from a database. The
+CMS can no longer be used to modify the data. Finally, the recycling assistant
+image recognition machine learning model will now classify all images as
+rubbish. 
 
-NOTE: The event carousel normally filters events so as to not show ones that
-have taken place in the past. This has been disabled, as otherwise in time all
-events will eventually become outdated. The "current date" of the website has
-been frozen to "2023-03-31" in order to showcase the event carousel.
+**NOTE**: The event carousel normally filters events so as to not show ones that
+have taken place in the past. This behaviour has been modified, as otherwise in
+time all events will eventually become outdated. The "current date" of the
+website has been frozen to "2023-03-31" in order to showcase the event carousel.
 
 ## Installation / Usage
 
@@ -74,8 +74,8 @@ locally on your machine.
 5. The app can then be accessed by going to http://localhost:3000 while the CMS
 can be found at http://localhost:3000/cms.
 
-NOTE: Hounslow Recycling Hub used AWS for its backend. These services have since
-been disabled and the affected code has been removed from the codebase.
+**NOTE**: Hounslow Recycling Hub used AWS for its backend. These services have
+since been disabled and the affected code has been removed from the codebase.
 Modifications have been made to allow the website to function to a certain
 degree without a backend.
 
@@ -83,10 +83,10 @@ degree without a backend.
 
 The module 7CCSMGPR [Impact
 Accelerator](https://www.kcl.ac.uk/informatics/engagement/impact-accelerator)
-was a collaborative effort between KCL (King's College London) and AWS (Amazon
-Web Services). Throughout the year, students attended AWS-led workshops to gain
-insight and knowledge about AWS methodology and technology. The goal was to then
-apply this knowledge to a real-world scenario.
+was a collaborative effort between **KCL (King's College London)** and **AWS
+(Amazon Web Services)**. Throughout the year, students attended AWS-led
+workshops to gain insight and knowledge about AWS methodology and technology.
+The goal was to then apply this knowledge to a real-world scenario.
 
 Students were split into teams and assigned a public sector organisation to be
 their **challenge sponsor**. Each challenge sponsor had a problem that they
@@ -117,13 +117,13 @@ Our solution to this challenge was **Hounslow Recycling Hub**.
 
 For more information about the project, see the included
 [report](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/report.pdf)
-or [project
+and [project
 video](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/project_video.mp4).
 
 ## Contributions
 
 This project was a group effort. The members of the Black Team are listed below
-in alphabetical order:
+in (surname) alphabetical order:
 
 * Kacper Dudzinski (me)
 * Haoxuan Feng
