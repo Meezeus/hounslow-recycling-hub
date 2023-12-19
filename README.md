@@ -115,8 +115,7 @@ fly-tipping etc."
 
 Our solution to this challenge was **Hounslow Recycling Hub**.
 
-For more information about the project, see the included
-[report](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/report.pdf)
+For more information about the project, see the included [report](/report.pdf)
 and [project video](https://www.youtube.com/watch?v=nN0HIbI2EKQ).
 
 ## Contributions
