@@ -1,67 +1,153 @@
-# Hounslow Recycling Hub - Black Team
+# Hounslow Recycling Hub
 
-An engaging and easy-to-navigate Recycling Information Hub for Hounslow Council.
+**Hounslow Recycling Hub** is a web application which provides concise and
+practical information about recycling in the **London Borough of Hounslow**. The
+website was created during the 4th year of the MSci Computer Science degree
+programme at King's College London, for the module 7CCSMGPR [Impact
+Accelerator](https://www.kcl.ac.uk/informatics/engagement/impact-accelerator). 
 
-Kacper Dudzinski (K1921541)\
-Haoxuan Feng (K1925595)\
-Ai Jian (K1897735)\
-Mirela Manoleva (K19016984)\
-Fatlir Topalli (K1921543)\
-Zihao You (K1923149)
+## Features
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+* **Single page design.** All information is located on one page so as to be
+  easily accessible; no more getting lost in a navigational web (you can close
+  all those tabs now).
 
-## Getting Started
+* **Minimal, relevant content.** Nobody wants to be overwhelmed with walls of
+  text. Our goal is to show information that is relevant to you, in a simple,
+  concise manner. Most content is 'hidden' unless you choose to reveal it.
 
-## Run app in a Docker development container
+* **Interactive design.** Click, click, click away! Our website contains many
+  components for you to interact with. 
 
-For the first time, run:
+* **Navbar.** If one page is still too much, we have a handy navbar to help you
+  navigate.
 
-```bash
-sudo docker compose up --build
-```
+* **Fun facts.** Did you know that every year, British households create over
+  26m tonnes of waste, which is equivalent to 260 large cruise ships? Well now
+  you do.
 
-Every other time, run without --build:
+* **Quiz questions.** What kind of items go in a red recycling box? Where do you
+  put your empty metal cans? How can you recycle that old couch? Show off your
+  street-smarts!
 
-```bash
-sudo docker compose up
-```
+* **Events.** Find out what's happening in your borough and get involved!
 
-Open http://localhost:3000 with your browser to see the result.
+* **Recycling Assistant.** So you want to recycle that *thing*, but you're not
+  sure how? Just answer these simple questions, or let our **image recognition
+  machine learning model** figure it out for you!   
 
-## Run app normally
+* **Recycling Services.** All you need to know about the recycling services
+  available to you.
 
-First, run the development server:
+* **Flytipping.** Have you see dumped rubbish where it shouldn't be? Let the
+  borough know!
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+* **Content Management System (CMS).** Change is inevitable... and in our case
+  easy. Almost everything on the website can be modified by you - no technical
+  expertise needed!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+NOTE: Hounslow Recycling Hub used AWS for its backend. These services have since
+been disabled, which affects some of the functionality of the website. All data
+is now loaded from files instead of being retrieved from a database. The CMS can
+no longer be used to modify the data. Finally, the recycling assistant image
+recognition machine learning model will now classify all images as rubbish. 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+NOTE: The event carousel normally filters events so as to not show ones that
+have taken place in the past. This has been disabled, as otherwise in time all
+events will eventually become outdated. The "current date" of the website has
+been frozen to "2023-03-31" in order to showcase the event carousel.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation / Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Make sure you have [Node.js](https://nodejs.org/en) installed.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Clone the GitHub repository.
 
-## Learn More
+3. Open a command line terminal in the root directory and type in `npm install`.
+Allow time for
+[npm](https://nodejs.org/en/learn/getting-started/an-introduction-to-the-npm-package-manager)
+to download and install all the required packages.
 
-To learn more about Next.js, take a look at the following resources:
+4. In the command line terminal, type in `npm run dev`. This will start a server
+locally on your machine.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. The app can then be accessed by going to http://localhost:3000 while the CMS
+can be found at http://localhost:3000/cms.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+NOTE: Hounslow Recycling Hub used AWS for its backend. These services have since
+been disabled and the affected code has been removed from the codebase.
+Modifications have been made to allow the website to function to a certain
+degree without a backend.
 
-## Deploy on Vercel
+## Further Information
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The module 7CCSMGPR [Impact
+Accelerator](https://www.kcl.ac.uk/informatics/engagement/impact-accelerator)
+was a collaborative effort between KCL (King's College London) and AWS (Amazon
+Web Services). Throughout the year, students attended AWS-led workshops to gain
+insight and knowledge about AWS methodology and technology. The goal was to then
+apply this knowledge to a real-world scenario.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Students were split into teams and assigned a public sector organisation to be
+their **challenge sponsor**. Each challenge sponsor had a problem that they
+believed could be solved using modern technology approaches. It was up to the
+teams to communicate with their challenge sponsors and learn what that problem
+is, figure out how to solve it and then implement the solution using AWS.
+Regular meetings with the challenge sponsors ensured that the teams were on the
+right track and that the solutions they were developing were in line with their
+sponsor's expectations. 
+
+I was part of the **Black Team**, and our challenge sponsor was the **London
+Borough of Hounslow**. Their challenge to us was as follows:
+
+<p align="center"><i>
+"Our specific challenge for you relates to a Greener Hounslow as one of our
+high-level priorities."
+</i></p>
+
+<p align="center"><i>
+"The objective is to enhance existing channels of communication to our residents
+by the provision of clear, engaging, enhanced (potentially interactive)
+promotion and signposting of services available and how to access them with the
+objective of increasing resident uptake and minimising misuse of bin types,
+fly-tipping etc."
+</i></p>
+
+Our solution to this challenge was **Hounslow Recycling Hub**.
+
+For more information about the project, see the included
+[report](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/report.pdf)
+or [project
+video](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/project_video.mp4).
+
+## Contributions
+
+This project was a group effort. The members of the Black Team are listed below
+in alphabetical order:
+
+* Kacper Dudzinski (me)
+* Haoxuan Feng
+* Ai Jian
+* Mirela Manoleva
+* Fatlir Topalli
+* Zihao You
+
+## Gallery
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-1.png?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-2.png?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-3.jpg?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-4.png?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-5.jpg?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-6.jpg?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-7.jpg?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-8.jpg?raw=true)
+
+![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-9.jpg?raw=true)
