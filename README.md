@@ -136,18 +136,34 @@ in (surname) alphabetical order:
 
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-1.png?raw=true)
 
+<hr />
+
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-2.png?raw=true)
+
+<hr />
 
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-3.jpg?raw=true)
 
+<hr />
+
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-4.png?raw=true)
+
+<hr />
 
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-5.jpg?raw=true)
 
+<hr />
+
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-6.jpg?raw=true)
+
+<hr />
 
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-7.jpg?raw=true)
 
+<hr />
+
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-8.jpg?raw=true)
+
+<hr />
 
 ![](https://github.com/Meezeus/hounslow-recycling-hub/blob/3ea949190c5e879967d55868434f16afd85865a0/gallery/image-9.jpg?raw=true)
