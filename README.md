@@ -116,7 +116,7 @@ fly-tipping etc."
 Our solution to this challenge was **Hounslow Recycling Hub**.
 
 For more information about the project, see the included [report](/report.pdf)
-and [project video](https://www.youtube.com/watch?v=nN0HIbI2EKQ).
+and [project video](https://youtu.be/nN0HIbI2EKQ).
 
 ## Contributions
 
