@@ -117,8 +117,7 @@ Our solution to this challenge was **Hounslow Recycling Hub**.
 
 For more information about the project, see the included
 [report](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/report.pdf)
-and [project
-video](https://github.com/Meezeus/hounslow-recycling-hub/blob/main/project_video.mp4).
+and [project video](https://www.youtube.com/watch?v=nN0HIbI2EKQ).
 
 ## Contributions
 
